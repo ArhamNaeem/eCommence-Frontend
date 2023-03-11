@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -32,7 +33,12 @@ const ProductDisplay = () => {
 
   return (
     <>
-      <div className=" overflow-hidden text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full">
+      <motion.div
+
+        initial={{ x: "60vw" }}
+        animate={{ x: 0 }}
+        className=" overflow-hidden text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full"
+      >
         <div className="flex items-center">
           <hr className="border border-gray-300  flex-grow mr-2" />
           <h2 className="text-5xl  font-semi-bold text-shadow-200">Products</h2>
@@ -53,22 +59,23 @@ const ProductDisplay = () => {
           {products.map((product, index) => (
             <div
               key={index}
-              className=" w-full h-72  transition-all duration-500 hover:shadow-xl shadow-black hover:scale-105"
+              className=" w-full h-72  transition-all duration-500 hover:shadow-xl shadow-black hover:scale-105 "
             >
               <div className="w-full h-full flex justify-center  relative">
                 <h1 className="z-10 absolute text-5xl top-1/3 text-shadow-100 ">
                   {product.name}
                 </h1>
                 <img
-                  className="opacity-70  w-full rounded-lg h-full  "
+                  loading="lazy"
+                  className="opacity-70 w-full rounded-lg h-full hover:opacity-100"
                   src={product.img}
-                  style={{ maxWidth: "100%" }}
+                  // style={{ maxWidth: "100%" }}
                 />
               </div>
             </div>
           ))}
         </Carousel>
-      </div>
+      </motion.div>
     </>
   );
 };

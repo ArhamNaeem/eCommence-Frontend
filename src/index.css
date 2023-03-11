@@ -8,23 +8,32 @@
 .text-shadow-200{
     text-shadow: black 0 0 2px;
 }
+.text-shadow-white-200{
+    text-shadow: whitesmoke 0 0 4px;
+}
+
+.carousel .control-arrow {
+  height: 78%;
+  border-radius: 5px;
+  /* background-color: none; */
+}
 
 
-
- @keyframes carousel {
-    0% {
-      transform: translateX(0%);
-    }
-    25% {
-      transform: translateX(-100%);
-    }
-    50% {
-      transform: translateX(-200%);
-    }
-    75% {
-      transform: translateX(-300%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
-  }
+.line {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  height: 100px;
+  rotate: -90deg;
+  background-color: grey;
+}
+.line-before {
+ left: -70px;
+ top:-35px
+}
+.line-after {
+  right: -70px;
+  top:-35px
+}

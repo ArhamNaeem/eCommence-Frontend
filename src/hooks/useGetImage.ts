@@ -29,7 +29,7 @@ export const useGetImage = () => {
     let i = 0;
     const intervalId = setInterval(() => {
       setImg(imgUrl[i]);
-      console.log(imgUrl[i]);
+      // console.log(imgUrl[i]);
       i = (i + 1) % imgUrl.length;
     }, 5000);
 
@@ -37,3 +37,4 @@ export const useGetImage = () => {
   }, [imgUrl]);
     return {img}
 };
+export default useGetImage

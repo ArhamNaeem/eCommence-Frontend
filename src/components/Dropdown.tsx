@@ -1,12 +1,12 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import React, { useState } from 'react'
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useState } from "react";
 interface propType {
-    clicked: boolean;
+  clicked: boolean;
 }
 
-const Dropdown = (props:propType) => {
+const Dropdown = (props: propType) => {
   // const angularBracket =  '&#12297;'
-  const [hovered,setHovered]= useState(false)
+  const [hovered, setHovered] = useState(false);
   return (
     <div>
       <AnimatePresence>
@@ -16,9 +16,9 @@ const Dropdown = (props:propType) => {
             animate={{ y: 0 }}
             exit={{ y: "-100vh" }}
             transition={{ type: "tween", duration: 0.6 }}
-            className="h-screen  text-white w-full absolute z-10  bg-black"
+            className=" fixed h-screen  text-white w-full z-10  bg-black"
           >
-            <h1 className='text-3xl w-96'>
+            <h1 className="text-3xl w-96">
               Achieving our goal, to provide you with high-quality products at
               affordable prices. Happy shopping!
             </h1>
@@ -41,6 +41,6 @@ const Dropdown = (props:propType) => {
       </AnimatePresence>
     </div>
   );
-}
+};
 
-export default Dropdown
+export default Dropdown;
