@@ -1,12 +1,25 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, useRef, useEffect } from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { useGetImage } from "../../hooks/useGetImage";
+import Footer from "./Footer";
 import BusinessDescription from "./sections/BusinessDescription";
-const Dropdown = lazy(() => import('../Dropdown'));
-const ProductDisplay = lazy(() => import('./sections/ProductDisplay'));
-const SellersThoughts = lazy(() => import('./sections/SellersThoughts'));
+const Dropdown = lazy(() => import("./Dropdown"));
+const ProductDisplay = lazy(() => import("./sections/ProductDisplay"));
+const SellersThoughts = lazy(() => import("./sections/SellersThoughts"));
 const Header = () => {
+  const myRef = useRef();
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      console.log(entry);
+    });
+
+    if (myRef.current) {
+      observer.observe(myRef.current);
+    }
+  }, [myRef.current]);
+
   const [clicked, setClicked] = useState(false);
   const { img } = useGetImage();
   const [text] = useTypewriter({
@@ -65,85 +78,84 @@ const Header = () => {
           </svg>
         )}
       </button>
-        <div className="h-screen ">
-          <motion.div
-            style={{
-              backgroundImage: `url(${img})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              opacity: 0.7,
-            }}
-            className="h-full pt-1 shadow-inner shadow-black  overflow-hidden"
-          >
-            <div className="flex items-center w-full bg-black backdrop-blur-sm bg-opacity-25 mt-3  p-2 ">
-              <motion.svg
-                initial={{ rotate: -180 }}
-                animate={{ rotate: -12 }}
-                className="mx-6"
-                width="90"
-                height="90"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <motion.circle
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  cx="20.5"
-                  cy="41.5"
-                  r="3.5"
-                  fill="black"
-                />
-                <motion.circle
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  cx="37.5"
-                  cy="41.5"
-                  r="3.5"
-                  fill="black"
-                />
-                <motion.path
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  d="M5 6L14 12L19 34H39L44 17H25"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <motion.path
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  d="M25 26L32.2727 26L41 26"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </motion.svg>
+      <div className= " h-screen ">
+        <motion.div
+          style={{
+            backgroundImage: `url(${img})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.7,
+          }}
+          className="h-full pt-1 shadow-inner shadow-black  overflow-hidden"
+        >
+          <div className="flex items-center w-full bg-black backdrop-blur-sm bg-opacity-25 mt-3  p-2 ">
+            <motion.svg
+              initial={{ rotate: -180 }}
+              animate={{ rotate: -12 }}
+              className="mx-6"
+              width="90"
+              height="90"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.circle
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                cx="20.5"
+                cy="41.5"
+                r="3.5"
+                fill="black"
+              />
+              <motion.circle
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                cx="37.5"
+                cy="41.5"
+                r="3.5"
+                fill="black"
+              />
+              <motion.path
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                d="M5 6L14 12L19 34H39L44 17H25"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <motion.path
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                d="M25 26L32.2727 26L41 26"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </motion.svg>
 
-              <h1 className="text-6xl  text-white font-semibold text-shadow-100 ">
-                VibeKart
-              </h1>
-            </div>
-            <div className="h-full flex items-center  text-6xl text-white font-semibold text-shadow-100 ml-10">
-              <p className="w-1/2 h-2/5">
-                {text}
-                <Cursor />
-              </p>
-            </div>
-          </motion.div>
-        </div>
-
-
+            <h1 className="text-6xl  text-white font-semibold text-shadow-100 ">
+              VibeKart
+            </h1>
+          </div>
+          <div className="h-full flex items-center  text-6xl text-white font-semibold text-shadow-100 ml-10">
+            <p className="w-1/2 h-2/5">
+              {text}
+              <Cursor />
+            </p>
+          </div>
+        </motion.div>
+      </div>
       <Suspense fallback="loading">
-        <ProductDisplay />
+        <ProductDisplay entryRef={myRef} />
         <SellersThoughts />
-        <BusinessDescription/>
+        <BusinessDescription />
+        <Footer/>
       </Suspense>
     </>
   );

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const ProductDisplay = () => {
+const ProductDisplay = (props:any) => {
   const products = [
     {
       name: "Clothes",
@@ -34,9 +34,9 @@ const ProductDisplay = () => {
   return (
     <>
       <motion.div
-
-        initial={{ x: "60vw" }}
-        animate={{ x: 0 }}
+        ref={props.entryRef}
+        // initial={{ x: "60vw" }}
+        // animate={{ x: 0 }}
         className=" overflow-hidden text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full"
       >
         <div className="flex items-center">
@@ -61,13 +61,13 @@ const ProductDisplay = () => {
               key={index}
               className=" w-full h-72  transition-all duration-500 hover:shadow-xl shadow-black hover:scale-105 "
             >
-              <div className="w-full h-full flex justify-center  relative">
-                <h1 className="z-10 absolute text-5xl top-1/3 text-shadow-100 ">
+              <div className=" hover:opacity-100 hover:z-50 w-full h-full flex justify-center  relative">
+                <h1 className="z-10 absolute text-5xl top-1/3 text-shadow-100  ">
                   {product.name}
                 </h1>
                 <img
                   loading="lazy"
-                  className="opacity-70 w-full rounded-lg h-full hover:opacity-100"
+                  className=" opacity-70 w-full rounded-lg h-full"
                   src={product.img}
                   // style={{ maxWidth: "100%" }}
                 />
