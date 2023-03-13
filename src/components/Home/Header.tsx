@@ -39,6 +39,7 @@ const Header = () => {
       {/* <AnimatePresence> */}
       <Dropdown clicked={clicked} />
       <button
+        onScroll={()=>{console.log(scrollY)} }
         className="z-50 fixed mt-8  h-16 rounded-full w-16 right-20 bg-white  hover:scale-105 transition-all shadow-sm shadow-black "
         onClick={() => setClicked((clicked) => !clicked)}
       >
@@ -78,26 +79,29 @@ const Header = () => {
           </svg>
         )}
       </button>
-      <div className= " h-screen ">
+      <div className=" h-screen ">
         <motion.div
           style={{
             backgroundImage: `url(${img})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.7,
+            // opacity: 0.7,
           }}
-          className="h-full pt-1 shadow-inner shadow-black  overflow-hidden"
+          className="h-full shadow-inner shadow-black  overflow-hidden"
         >
+          <div className="bg-black absolute opacity-40 h-full w-full  text-6xl"/>
+
           <div className="flex items-center w-full bg-black backdrop-blur-sm bg-opacity-25 mt-3  p-2 ">
             <motion.svg
               initial={{ rotate: -180 }}
               animate={{ rotate: -12 }}
               className="mx-6"
-              width="90"
+              width={`90`}
               height="90"
               viewBox="0 0 48 48"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              
             >
               <motion.circle
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -139,12 +143,12 @@ const Header = () => {
               />
             </motion.svg>
 
-            <h1 className="text-6xl  text-white font-semibold text-shadow-100 ">
+            <h1 className=" text-2xl lg:text-6xl  text-white font-semibold text-shadow-100 ">
               VibeKart
             </h1>
           </div>
-          <div className="h-full flex items-center  text-6xl text-white font-semibold text-shadow-100 ml-10">
-            <p className="w-1/2 h-2/5">
+          <div className="h-full relative z-20 flex items-center text-2xl lg:text-6xl text-white font-semibold text-shadow-100 ml-10">
+            <p className=" w-3/4  lg:w-1/2 h-2/5">
               {text}
               <Cursor />
             </p>
@@ -155,7 +159,7 @@ const Header = () => {
         <ProductDisplay entryRef={myRef} />
         <SellersThoughts />
         <BusinessDescription />
-        <Footer/>
+        <Footer />
       </Suspense>
     </>
   );
