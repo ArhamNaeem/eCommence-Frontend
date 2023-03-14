@@ -15,11 +15,11 @@ const Dropdown = (props: propType) => {
       <AnimatePresence>
         {props.clicked && (
           <motion.div
-            initial={{ y: "-100vh" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100vh" }}
+            initial={{ x: "100vh" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100vh" }}
             transition={{ type: "tween", duration: 0.6 }}
-            className=" fixed h-screen  text-white w-full z-50  bg-black"
+            className="right-0 fixed h-screen  text-white w-2/5 z-50  bg-black"
           >
             {/* <h1 className="text-3xl w-96">
               Achieving our goal, to provide you with high-quality products at

@@ -9,12 +9,21 @@ const ProductDisplay = lazy(() => import("./sections/ProductDisplay"));
 const SellersThoughts = lazy(() => import("./sections/SellersThoughts"));
 const Header = () => {
   const myRef = useRef();
+  const scrollYRef = useRef(0);
+  const [scrollDirection,setScrollDirection] = useState<boolean|undefined>()
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
       console.log(entry);
     });
-
+    window.addEventListener('scroll', (e) => {
+      if (scrollYRef.current < scrollY) {
+        setScrollDirection(scrollDirection => true)
+      } else if(scrollYRef.current > scrollY){
+        setScrollDirection(scrollDirection => false)
+      }
+      scrollYRef.current = scrollY
+    })
     if (myRef.current) {
       observer.observe(myRef.current);
     }
@@ -38,10 +47,16 @@ const Header = () => {
     <>
       {/* <AnimatePresence> */}
       <Dropdown clicked={clicked} />
-      <button
-        onScroll={()=>{console.log(scrollY)} }
+      <motion.button
         className="z-50 fixed mt-8  h-16 rounded-full w-16 right-20 bg-white  hover:scale-105 transition-all shadow-sm shadow-black "
         onClick={() => setClicked((clicked) => !clicked)}
+         initial={scrollDirection? { y: '0' }:{}}
+        animate={ scrollDirection ? {y:'-100vh'}:!scrollDirection? {y:0}:{}}
+        transition={{
+          ease: 'easeInOut',
+          duration:0.5
+
+        }}
       >
         {!clicked && (
           <svg
@@ -78,8 +93,10 @@ const Header = () => {
             />
           </svg>
         )}
-      </button>
-      <div className=" h-screen ">
+      </motion.button>
+      <div
+ 
+        className=" h-screen ">
         <motion.div
           style={{
             backgroundImage: `url(${img})`,
@@ -110,7 +127,7 @@ const Header = () => {
                 cx="20.5"
                 cy="41.5"
                 r="3.5"
-                fill="black"
+                fill="white"
               />
               <motion.circle
                 initial={{ opacity: 0 }}
@@ -119,14 +136,14 @@ const Header = () => {
                 cx="37.5"
                 cy="41.5"
                 r="3.5"
-                fill="black"
+                fill="white"
               />
               <motion.path
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 d="M5 6L14 12L19 34H39L44 17H25"
-                stroke="black"
+                stroke="white"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -136,7 +153,7 @@ const Header = () => {
                 animate={{ pathLength: 1, opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 d="M25 26L32.2727 26L41 26"
-                stroke="black"
+                stroke="white"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -159,7 +176,7 @@ const Header = () => {
         <ProductDisplay entryRef={myRef} />
         <SellersThoughts />
         <BusinessDescription />
-        <Footer />
+        <Footer  />
       </Suspense>
     </>
   );
