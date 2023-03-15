@@ -48,9 +48,7 @@ const ProductDisplay = (props:any) => {
     <>
       <motion.div
         ref={props.entryRef}
-        // initial={{ x: "60vw" }}
-        // animate={{ x: 0 }}
-        className=" overflow-hidden text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full"
+        className=" overflow-hidden border  text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full"
       >
         <div className="flex items-center">
           <hr className="border border-gray-300  flex-grow mr-2" />

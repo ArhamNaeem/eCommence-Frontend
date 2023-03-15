@@ -1,7 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, lazy, Suspense, useRef, useEffect } from "react";
+import { useState, lazy, Suspense, useRef } from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { useGetImage } from "../../hooks/useGetImage";
+import { useHandleLoading } from "../../hooks/useHandleLoading";
+import Logo from "../../utils/Logo";
 import Footer from "./Footer";
 import BusinessDescription from "./sections/BusinessDescription";
 const Dropdown = lazy(() => import("./Dropdown"));
@@ -9,28 +11,9 @@ const ProductDisplay = lazy(() => import("./sections/ProductDisplay"));
 const SellersThoughts = lazy(() => import("./sections/SellersThoughts"));
 const Header = () => {
   const myRef = useRef();
-  const scrollYRef = useRef(0);
-  const [scrollDirection,setScrollDirection] = useState<boolean|undefined>()
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      console.log(entry);
-    });
-    window.addEventListener('scroll', (e) => {
-      if (scrollYRef.current < scrollY) {
-        setScrollDirection(scrollDirection => true)
-      } else if(scrollYRef.current > scrollY){
-        setScrollDirection(scrollDirection => false)
-      }
-      scrollYRef.current = scrollY
-    })
-    if (myRef.current) {
-      observer.observe(myRef.current);
-    }
-  }, [myRef.current]);
-
-  const [clicked, setClicked] = useState(false);
   const { img } = useGetImage();
+  const {scrollDirection} = useHandleLoading(myRef)
+  const [clicked, setClicked] = useState(false);
   const [text] = useTypewriter({
     words: [
       "Shop the world at your fingertips!",
@@ -48,15 +31,17 @@ const Header = () => {
       {/* <AnimatePresence> */}
       <Dropdown clicked={clicked} />
       <motion.button
+        
         className="z-50 fixed mt-8  h-16 rounded-full w-16 right-20 bg-white  hover:scale-105 transition-all shadow-sm shadow-black "
         onClick={() => setClicked((clicked) => !clicked)}
          initial={scrollDirection? { y: '0' }:{}}
-        animate={ scrollDirection ? {y:'-100vh'}:!scrollDirection? {y:0}:{}}
+        animate={ scrollDirection ? {y:'-100vh'}:!scrollDirection? {y:0}: {}}
         transition={{
           ease: 'easeInOut',
           duration:0.5
 
         }}
+      
       >
         {!clicked && (
           <svg
@@ -77,7 +62,6 @@ const Header = () => {
             />
           </svg>
         )}
-        {/* //here */}
         {clicked && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -102,67 +86,15 @@ const Header = () => {
             backgroundImage: `url(${img})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            // opacity: 0.7,
           }}
           className="h-full shadow-inner shadow-black  overflow-hidden"
         >
           <div className="bg-black absolute opacity-40 h-full w-full  text-6xl"/>
 
-          <div className="flex items-center w-full bg-black backdrop-blur-sm bg-opacity-25 mt-3  p-2 ">
-            <motion.svg
-              initial={{ rotate: -180 }}
-              animate={{ rotate: -12 }}
-              className="mx-6"
-              width={`90`}
-              height="90"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              
-            >
-              <motion.circle
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                cx="20.5"
-                cy="41.5"
-                r="3.5"
-                fill="white"
-              />
-              <motion.circle
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                cx="37.5"
-                cy="41.5"
-                r="3.5"
-                fill="white"
-              />
-              <motion.path
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                d="M5 6L14 12L19 34H39L44 17H25"
-                stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <motion.path
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                d="M25 26L32.2727 26L41 26"
-                stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </motion.svg>
+          <div className="flex items-center w-full bg-black bg-opacity-25 backdrop-blur-sm  mt-3  p-2 ">
+            <Logo width={90} height={90} ml={8} mr={8} mt={0} mb={0} textSize = {'6xl'} />
 
-            <h1 className=" text-2xl lg:text-6xl  text-white font-semibold text-shadow-100 ">
-              VibeKart
-            </h1>
+            
           </div>
           <div className="h-full relative z-20 flex items-center text-2xl lg:text-6xl text-white font-semibold text-shadow-100 ml-10">
             <p className=" w-3/4  lg:w-1/2 h-2/5">

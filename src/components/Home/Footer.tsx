@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
+import Logo from "../../utils/Logo";
 
 const Footer = () => {
   const getYear = () => {
@@ -11,60 +12,12 @@ const Footer = () => {
       <div className="relative flex h-vh-80 w-full bg-black">
         <section className=" w-1/2 h-5/6 flex flex-col items-center">
           <div className="flex">
-            <motion.svg
-              initial={{ rotate: -180 }}
-              animate={{ rotate: -12, y: 30, x: 20 }}
-              className="mr-11 mt-1"
-              width={`80`}
-              height="80"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <motion.circle
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                cx="20.5"
-                cy="41.5"
-                r="3.5"
-                fill="white"
-              />
-              <motion.circle
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                cx="37.5"
-                cy="41.5"
-                r="3.5"
-                fill="white"
-              />
-              <motion.path
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                d="M5 6L14 12L19 34H39L44 17H25"
-                stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <motion.path
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                d="M25 26L32.2727 26L41 26"
-                stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </motion.svg>
-            <h1 className="text-white text-6xl font-semibold mt-10">
-              VibeKart
-            </h1>
+            <Logo height={80} width={80}
+              mr={11} mt={10} ml={0} mb={0} textMarginTop={12}
+            textSize = {'6xl'}
+            />
           </div>
-          <p className="text-white ml-36 mt-2 text-sm">
+          <p className="text-white ml-36 text-sm">
             ULTIMATE SHOPPING DESTINATION
           </p>
           <button className="h-1/5 w-1/2 mt-16  rounded-lg font-semibold transition-all duration-300 hover:bg-slate-200 bg-white ">
