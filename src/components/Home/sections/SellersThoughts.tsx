@@ -1,19 +1,9 @@
 import { motion } from "framer-motion";
 import React from "react";
+import { useSellerThoughts } from "../../../hooks/useSellerThoughts";
 
 const SellersThoughts = () => {
-  const addRotation = (className:string) => {
-              document.querySelector(`.${className}`)?.classList.add("-rotate-6")
-    
-  }
-  const removeRotation = (className:string) => {
-              document
-                .querySelector(`.${className}`)
-                ?.classList.remove("-rotate-6");
-    
-  }
-
-
+  const { addRotation, removeRotation } = useSellerThoughts();
   return (
     <>
       <div className="h-screen flex items-center justify-between text-5xl bg-black bg-opacity-10 ">
