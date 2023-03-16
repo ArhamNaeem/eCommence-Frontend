@@ -2,25 +2,10 @@ import React, { useEffect, useMemo, useState } from 'react'
 import Logo from '../../utils/Logo'
 
 const Navbar = () => {
-  // const [itemsBought, setItemsBought] = useState(0);
-  // const [isThreeDigit, setIsThreeDigit] = useState('top-2');
-  // const showBoughtItems = useRef("");
-  // const itemsBoughtRef = useRef(itemsBought);
-  // const [distance,setDistance] = useState('1.2rem')
-  // const changeDistance = () => {
-  //   if (itemsBoughtRef.current >= 100) {
-  //     showBoughtItems.current = '99+';
-  //     setIsThreeDigit((isThreeDigit) => "top-3 left-[0.8rem] text-sm  tracking-tighter");
-  //     return;
-  //   }
-  //   itemsBoughtRef.current >= 10 ? setDistance(distance=>'0.93rem') : setDistance(distance => '1.2rem')
-  // }
-
-
   const [itemsBought, setItemsBought] = useState(0);
   const [distance, isThreeDigit,showBoughtItems] = useMemo(() => {
     const showBoughtItems = itemsBought >= 99 ? '99+' : "";
-    const distance = itemsBought >= 10 ? '0.93rem' : '1.2rem';
+    const distance = itemsBought >= 10 ? 0.93 : 1.2;
     const isThreeDigit = itemsBought >= 99 ? 'top-3 left-[0.8rem] text-sm  tracking-tighter' : 'top-2';
     return [distance,isThreeDigit,showBoughtItems]
   },[itemsBought])
@@ -67,12 +52,10 @@ const Navbar = () => {
             </button>
           </div>
           <button
-            onClick={() =>   setItemsBought(itemsBought => itemsBought + 10)}
-         
-        
+            onClick={() => setItemsBought(itemsBought => itemsBought + 10)}
             className="relative mr-14 mt-3 flex">
             {/* when >=10 0.93rem */}
-            <h5 className={`absolute left-[${distance}] ${isThreeDigit} `}>
+            <h5 className={`absolute left-[${distance}rem] ${isThreeDigit} `}>
    
               {showBoughtItems? showBoughtItems:itemsBought}
             </h5>
@@ -96,6 +79,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+      
     </>
   );
 }
