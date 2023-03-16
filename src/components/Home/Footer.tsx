@@ -13,7 +13,7 @@ const Footer = () => {
         <section className=" w-1/2 h-5/6 flex flex-col items-center">
           <div className="flex">
             <Logo height={80} width={80}
-              mr={11} mt={10} ml={0} mb={0} textMarginTop={12}
+              mr={8} mt={8} ml={0} mb={0} textMarginTop={12}
             textSize = {'6xl'}
             />
           </div>

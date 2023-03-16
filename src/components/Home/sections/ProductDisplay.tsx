@@ -1,25 +1,46 @@
-import { motion } from "framer-motion";
+import { easeIn, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useCarouseLogic } from "../../../hooks/useCarouselLogic";
 
-const ProductDisplay = (props:any) => {
-  const { products,carouselProps } = useCarouseLogic();
+const ProductDisplay = (props: any) => {
+  const { products, carouselProps } = useCarouseLogic();
+  const [visibility, setVisibility] = useState("invisible");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    console.log(props.intersecting);
+    props.intersecting ? setVisibility("visible") : setVisibility("invisible");
+  }, [props.intersecting]);
+
+  useEffect(() => {
+    if (visibility === "visible") {
+      setIsVisible(true);
+    }
+  }, [visibility]);
 
   return (
     <>
       <motion.div
+        initial={{ x: "-100vh" }}
+        animate={isVisible ? { x: 0 } : {}}
+        transition={{ease:easeIn}}
         ref={props.entryRef}
-        className=" overflow-hidden border  text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full"
+        className={` ${visibility}   overflow-hidden border  text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full`}
       >
-        <div className="flex items-center">
+        <motion.div
+          initial={{  x: "-200vh" }}
+          animate={isVisible ? { x:0 } : {}}
+          transition={{ delay: 0.5 }}
+          className="flex items-center"
+        >
           <hr className="border border-gray-300  flex-grow mr-2" />
-          <h2 className="text-4xl lg:text-5xl  font-semi-bold text-shadow-200">
+          <h2 className="text-4xl lg:text-5xl font-semi-bold text-shadow-200">
             Products
           </h2>
           <hr className="border border-gray-300 flex-grow ml-2" />
-        </div>
+        </motion.div>
         <Carousel
           showThumbs={false}
           infiniteLoop={true}

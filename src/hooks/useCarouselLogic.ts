@@ -7,7 +7,7 @@ export const useCarouseLogic = () => {
          img: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2xvdGhpbmclMjBzaG9wfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
        },
        {
-         name: "Shoes",
+         name: "Sneakers",
          img: "https://cdn.luxe.digital/media/20220626132753/on-running-sneakers-review-luxe-digital.jpg",
        },
        {
