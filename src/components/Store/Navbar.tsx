@@ -1,29 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useNavbarLogic } from '../../hooks/useNavbarLogic';
 import Logo from '../../utils/Logo'
 
 const Navbar = () => {
-  const [itemsBought, setItemsBought] = useState(0);
-  const [distance, isThreeDigit,showBoughtItems] = useMemo(() => {
-    const showBoughtItems = itemsBought >= 99 ? '99+' : "";
-    const distance = itemsBought >= 10 ? 0.93 : 1.2;
-    const isThreeDigit = itemsBought >= 99 ? 'top-3 left-[0.8rem] text-sm  tracking-tighter' : 'top-2';
-    return [distance,isThreeDigit,showBoughtItems]
-  },[itemsBought])
-
-  useEffect(() => {
-      const addPlaceholderValue = (() => {
-        const parent = document.getElementById("products");
-        const opt = document.createElement('option');
-        opt.value=""
-        opt.text = "Categories";
-        parent?.insertBefore(opt, parent.firstChild);
-        opt.style.display='none'
-        opt.selected=true
-
-    })()
-  
-  },[])
-
+  const {itemsBought,setItemsBought,showBoughtItems,distance,isThreeDigit} = useNavbarLogic()
 
   return (
     <>
