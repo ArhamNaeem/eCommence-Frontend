@@ -93,7 +93,7 @@ const Header = () => {
         >
           <div className="bg-black absolute opacity-40 h-full w-full  text-6xl" />
 
-          <div className="flex items-center w-full bg-black bg-opacity-25 backdrop-blur-sm  mt-3  p-2 ">
+          <div className=" w-full bg-black bg-opacity-25 backdrop-blur-sm  mt-3  p-2 ">
             <Logo
               width={90}
               height={90}
@@ -101,7 +101,7 @@ const Header = () => {
               mr={8}
               mt={0}
               mb={0}
-              textSize={"6xl"}
+              textSize={"7xl"}
             />
           </div>
           <div className="h-full relative z-20 flex items-center text-2xl lg:text-6xl text-white font-semibold text-shadow-100 ml-10">

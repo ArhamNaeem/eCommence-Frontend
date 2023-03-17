@@ -4,7 +4,7 @@ import React from 'react'
 const Logo = (props:any) => {
   return (
     <>
-      <div className='flex'>
+      <div className='flex items-center'>
         <motion.svg
           initial={{ rotate: -180 }}
           animate={{ rotate: -12 }}

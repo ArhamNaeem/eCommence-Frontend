@@ -37,7 +37,7 @@ const BusinessDescription = () => {
           />
         </motion.div>
 
-        <div className=" bg-gradient-to-bl rounded-tl-none from-gray-400 to-gray-300 bg-opacity-10 p-6 shadow-lg shadow-slate-600 rounded-lg  top-28 left-12  text-slate-800 absolute text-lg w-2/5">
+        <div className=" bg-gradient-to-bl rounded-tl-none from-gray-400 to-gray-300 bg-opacity-10 p-6 shadow-lg h-4/5 shadow-slate-600 rounded-lg  top-28 left-12  text-slate-800 absolute text-lg w-2/5">
           "At VibeKart, we believe that the success of our business is tied to
           the success of our sellers and the satisfaction of our customers.
           That's why we've made it our mission to provide the best possible
