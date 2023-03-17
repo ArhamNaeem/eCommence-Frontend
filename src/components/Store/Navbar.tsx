@@ -3,7 +3,7 @@ import { useNavbarLogic } from '../../hooks/useNavbarLogic';
 import Logo from '../../utils/Logo'
 
 const Navbar = () => {
-  const {itemsBought,setItemsBought,showBoughtItems,distance,isThreeDigit} = useNavbarLogic()
+  const {itemsBought,setItemsBought,showBoughtItems,isThreeDigit} = useNavbarLogic()
 
   return (
     <>
@@ -11,10 +11,11 @@ const Navbar = () => {
         <div className="flex w-full items-center justify-center">
           <Logo width={50} height={50} mt={1} ml={2} mr={2} textMarginTop={3} />
 
-          <div className=" w-2/3  h-full flex items-center justify-center mt-3 ">
-            <div className="w-20 h-10 mr-5 mt-2 ">
+          <div className=" w-2/3  h-full flex items-center justify-center  mt-3 ">
+            <div className="w-20 h-10 mr-[3.7rem] mt-2 ">
               <select id="products" className="p-1 rounded-sm bg-black border ">
-                <option value="cloth">Clothes</option>
+                <option value="cloth">Men's fashion</option>
+                <option value="cloth">Women's fashion</option>
                 <option value="sneaker">Sneakers</option>
                 <option value="cosmetics">Cosmetics</option>
                 <option value="deco">Decorations</option>
@@ -32,12 +33,15 @@ const Navbar = () => {
             </button>
           </div>
           <button
-            onClick={() => setItemsBought(itemsBought => itemsBought + 10)}
-            className="relative mr-14 mt-3 flex">
+            onClick={() => {
+              setItemsBought((itemsBought) => itemsBought + 1)
+           
+            }}
+            className="relative mr-14 mt-3 flex"
+          >
             {/* when >=10 0.93rem */}
-            <h5 className={`absolute left-[${distance}rem] ${isThreeDigit} `}>
-   
-              {showBoughtItems? showBoughtItems:itemsBought}
+            <h5 className={`absolute ${isThreeDigit} `}>
+              {showBoughtItems ? showBoughtItems : itemsBought}
             </h5>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -55,11 +59,10 @@ const Navbar = () => {
                  1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
               />
             </svg>
-            <p className='text-lg mr-1 mt-2'>Cart</p>
+            <p className="text-lg mr-1 mt-2">Cart</p>
           </button>
         </div>
       </div>
-      
     </>
   );
 }

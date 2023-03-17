@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       height: {
         "vh-105": "105vh",
+        "vh-60": "60vh",
         "vh-75": "75vh",
         "vh-85": "85vh",
         "vh-80": "80vh",
@@ -18,6 +19,7 @@ module.exports = {
       width: {
         "3/10": "30%",
       },
+     
     },
   },
   plugins: [],

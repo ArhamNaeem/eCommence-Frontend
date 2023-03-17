@@ -2,14 +2,14 @@ import { useState, useMemo, useEffect } from "react";
 
 export const useNavbarLogic = () => {
       const [itemsBought, setItemsBought] = useState(0);
-      const [distance, isThreeDigit, showBoughtItems] = useMemo(() => {
+  const [ isThreeDigit, showBoughtItems] = useMemo(() => {
         const showBoughtItems = itemsBought >= 99 ? "99+" : "";
-        const distance = itemsBought >= 10 ? 0.93 : 1.2;
+        const distance = itemsBought >= 10 ? '0.9rem' : '1.2rem';
         const isThreeDigit =
           itemsBought >= 99
             ? "top-3 left-[0.8rem] text-sm  tracking-tighter"
-            : "top-2";
-        return [distance, isThreeDigit, showBoughtItems];
+            : `top-2 left-[${distance}]`;
+        return [ isThreeDigit, showBoughtItems];
       }, [itemsBought]);
 
       useEffect(() => {
@@ -24,5 +24,5 @@ export const useNavbarLogic = () => {
         };
         addPlaceholderValue();
       }, []);
-   return {itemsBought,distance,isThreeDigit,setItemsBought,showBoughtItems}
+   return {itemsBought,isThreeDigit,setItemsBought,showBoughtItems}
 }
