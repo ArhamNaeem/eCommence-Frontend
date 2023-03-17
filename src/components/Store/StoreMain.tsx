@@ -1,4 +1,6 @@
 import React from 'react'
+import Footer from '../Home/Footer';
+import AllProducts from './AllProducts';
 import FreeDelivery from './FreeDelivery';
 import Navbar from './Navbar';
 import Products from './Products';
@@ -8,7 +10,9 @@ const StoreMain = () => {
     <>
       <Navbar />
       <FreeDelivery />
-      <Products/>
+      <Products />
+      <AllProducts />
+      <Footer/>
     </>
   );
 }
