@@ -1,9 +1,9 @@
 import React from 'react'
 import Footer from '../Home/Footer';
-import AllProducts from './AllProducts';
-import FreeDelivery from './FreeDelivery';
+import AllProducts from './sections/AllProducts';
+import FreeDelivery from './sections/FreeDelivery';
 import Navbar from './Navbar';
-import Products from './Products';
+import Products from './sections/Products';
 
 const StoreMain = () => {
   return (
