@@ -12,10 +12,9 @@ const Navbar = () => {
           <Logo width={50} height={50} mt={1} ml={2} mr={2} textMarginTop={3} />
 
           <div className=" w-2/3  h-full flex items-center justify-center  mt-3 ">
-            <div className="w-20 h-10 mr-[3.7rem] mt-2 ">
+            <div className="w-20 h-10 mr-6 mt-2 ">
               <select id="products" className="p-1 rounded-sm bg-black border ">
-                <option value="cloth">Men's fashion</option>
-                <option value="cloth">Women's fashion</option>
+                <option value="cloth">Clothes</option>
                 <option value="sneaker">Sneakers</option>
                 <option value="cosmetics">Cosmetics</option>
                 <option value="deco">Decorations</option>
