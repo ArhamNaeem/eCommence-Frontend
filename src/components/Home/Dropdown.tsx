@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import StoreMain from "../Store/StoreMain";
 interface propType {
   clicked: boolean;
 }
@@ -40,7 +39,7 @@ const Dropdown = (props: propType) => {
               </ul>
             </div> */}
             <button
-              onClick={()=> navigate('/store')}
+              onClick={()=> navigate('/mall')}
               className="text-6xl">
               Store
           </button>

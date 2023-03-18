@@ -1,3 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone, faAddressBook } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+library.add(faEnvelope,faPhone,faAddressBook)
 import { motion } from "framer-motion";
 import React from "react";
 import Logo from "../../utils/Logo";
@@ -35,8 +39,20 @@ const Footer = () => {
               Contact us with any questions or feedback and our customer care
               team will be happy to assist you
             </p>
-            <p className="mt-10 text-xl ">&#9993; vibekart@gmail.com</p>
-            <p className="my-3 text-xl">&#9742; +92-123-4567891</p>
+
+            <p className="mt-8 text-lg ">
+              <FontAwesomeIcon icon="envelope" className="mx-2" />
+              vibekart@gmail.com
+            </p>
+
+            <p className="my-2 text-lg">
+              <FontAwesomeIcon icon="phone" className="mx-2" />
+              +92-123-4567891
+            </p>
+            <p className="my-2 text-lg">
+              <FontAwesomeIcon icon="address-book" className="mx-2" />
+              456 Maple Avenue, Springfield, USA 67890
+            </p>
           </div>
 
           <button
