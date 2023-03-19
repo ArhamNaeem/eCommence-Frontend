@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Products = () => {
+  const navigate = useNavigate();
   const productImgs = [
     {
       link: "https://images.unsplash.com/photo-1603798125914-7b5d27789248?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
@@ -33,8 +34,9 @@ const Products = () => {
         <h1 className="text-center text-7xl mb-10 font-bold ">CATEGORIES</h1>
         <div className="  w-full flex flex-wrap  justify-center m-auto">
           {productImgs.map((product, index) => (
-            <div
+            <button
               key={index}
+              onClick={() => navigate(`/mall/store/${product.title.toLowerCase()}`)}
               className="relative m-3 border hover:scale-105  transition-all duration-300 shadow-lg  flex justify-center  shadow-slate-400 h-96 w-5/12"
             >
               <div className="h-full w-full ">
@@ -48,7 +50,7 @@ const Products = () => {
               <p className="top-1/3 z-50 text-shadow-100 text-white text-5xl absolute border border-x-0 border-y-1 border-white py-3 transition-colors duration-300 hover:text-slate-200">
                 {product?.title}
               </p>
-            </div>
+            </button>
           ))}
         </div>
       </div>

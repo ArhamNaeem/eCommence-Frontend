@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useNavbarLogic } from '../../hooks/useNavbarLogic';
 import Logo from '../../utils/Logo'
-
 const Navbar = () => {
   const {itemsBought,setItemsBought,showBoughtItems,isThreeDigit} = useNavbarLogic()
-
+  const navigate = useNavigate();
   return (
     <>
       <div className="p-2 pb-0 bg-gradient-to-br from-black to-slate-800 h-20 w-full text-white">
@@ -13,13 +13,16 @@ const Navbar = () => {
 
           <div className=" w-2/3  h-full flex items-center justify-center  mt-3 ">
             <div className="w-20 h-10 mr-6 mt-2 ">
-              <select id="products" className="p-1 rounded-sm bg-black border ">
-                <option value="cloth">Clothes</option>
-                <option value="sneaker">Sneakers</option>
+              <select
+                onChange={(e)=>navigate(`store/${e.target.value}`)}
+                id="products" className="p-1 rounded-sm bg-black border ">
+                <option
+                  value="clothes">Clothes</option>
+                <option value="shoes">Shoes</option>
                 <option value="cosmetics">Cosmetics</option>
-                <option value="deco">Decorations</option>
+                <option value="decorations">Decorations</option>
                 <option value="furniture">Furniture</option>
-                <option value="appliance">Appliances</option>
+                <option value="appliances">Appliances</option>
               </select>
             </div>
 
