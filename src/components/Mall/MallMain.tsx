@@ -4,6 +4,7 @@ import FreeDelivery from './sections/FreeDelivery';
 import Navbar from './Navbar';
 import Products from './sections/Products';
 
+
 const MallMain = () => {
   return (
     <>

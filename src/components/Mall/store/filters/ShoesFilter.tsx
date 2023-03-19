@@ -1,73 +1,81 @@
 import React from 'react'
 
-const ClothesFilter = () => {
+const ShoesFilter = () => {
   return (
     <>
       <div>
         <h1 className="text-2xl font-semibold mb-3">Category</h1>
         <ul className="text-sm ml-5">
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Men Shirts
+            Sneakers
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Men T-Shirts
+            Dress Shoes
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Men Trousers
+            Loafers
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Men Jeans
+            Scandals
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Women T-Shirts
+            Flats
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Women Jeans
+            Sports Shoes
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Women Trousers
-          </li>
-          <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Women Dresses
+            Heels
           </li>
         </ul>
       </div>
       <div className="mt-6">
-              <h1 className="text-2xl font-semibold mb-3">Price</h1>
+        <h1 className="text-2xl font-semibold mb-3">Price</h1>
         <ul className="text-sm ml-3">
-              
-        <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
-          <input type="radio" name="price" id="hightolow" className="mx-2" />
-          <label htmlFor="hightolow">High - Low</label>
-              </li>
-        <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
-          <input type="radio" name="price" id="lowtohigh" className="mx-2" />
-          <label htmlFor="lowtohigh">Low - High</label>
-                  </li>
-                  </ul>
+          <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
+            <input type="radio" name="price" id="hightolow" className="mx-2" />
+            <label htmlFor="hightolow">High - Low</label>
+          </li>
+          <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
+            <input type="radio" name="price" id="lowtohigh" className="mx-2" />
+            <label htmlFor="lowtohigh">Low - High</label>
+          </li>
+        </ul>
       </div>
       <div className="mt-6">
         <h1 className="text-2xl font-semibold mb-3">Size</h1>
         <ul className="text-sm ml-3">
           <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
-            <input type="checkbox" id="small" className="mx-2" />
-            <label htmlFor="small">Small</label>
+            <input type="checkbox" id="38" className="mx-2" />
+            <label htmlFor="38">38</label>
           </li>
           <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
-            <input type="checkbox" id="medium" className="mx-2" />
-            <label htmlFor="medium">Medium</label>
+            <input type="checkbox" id="39" className="mx-2" />
+            <label htmlFor="39">39</label>
           </li>
           <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
-            <input type="checkbox" id="large" className="mx-2" />
-            <label htmlFor="large">Large</label>
+            <input type="checkbox" id="40" className="mx-2" />
+            <label htmlFor="40">40</label>
           </li>
           <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
-            <input type="checkbox" id="xl" className="mx-2" />
-            <label htmlFor="xl">XL</label>
+            <input type="checkbox" id="41" className="mx-2" />
+            <label htmlFor="41">41</label>
           </li>
           <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
-            <input type="checkbox" id="xxl" className="mx-2" />
-            <label htmlFor="xxl">XXL</label>
+            <input type="checkbox" id="42" className="mx-2" />
+            <label htmlFor="42">42</label>
+          </li>
+          <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
+            <input type="checkbox" id="43" className="mx-2" />
+            <label htmlFor="43">43</label>
+          </li>
+          <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
+            <input type="checkbox" id="44" className="mx-2" />
+            <label htmlFor="44">44</label>
+          </li>
+          <li className="my-1 hover:text-slate-300 flex transition-colors duration-300">
+            <input type="checkbox" id="45" className="mx-2" />
+            <label htmlFor="45">45</label>
           </li>
         </ul>
       </div>
@@ -105,4 +113,4 @@ const ClothesFilter = () => {
   );
 }
 
-export default ClothesFilter
+export default ShoesFilter
