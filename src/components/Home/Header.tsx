@@ -31,19 +31,17 @@ const Header = () => {
   });
   return (
     <>
+      <Dropdown clicked={clicked} />
       <AnimatePresence>
-        <Dropdown clicked={clicked} />
         <motion.button
           className="z-50 fixed mt-8  h-16 rounded-full w-16 right-20 bg-white  hover:scale-105 transition-all shadow-sm shadow-black "
           onClick={() => setClicked((clicked) => !clicked)}
           initial={scrollDirection ? { y: "0" } : {}}
           animate={scrollDirection ? { y: "-100vh" } : {}}
           exit={scrollDirection ? { y: "0" } : {}}
-
           transition={{
             ease: "easeInOut",
             duration: 0.5,
-
           }}
         >
           {!clicked && (

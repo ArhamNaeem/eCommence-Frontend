@@ -4,7 +4,12 @@ import FreeDelivery from './sections/FreeDelivery';
 import Navbar from './Navbar';
 import Products from './sections/Products';
  
+
+
 const MallMain = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />
