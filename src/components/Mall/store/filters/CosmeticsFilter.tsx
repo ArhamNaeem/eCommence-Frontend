@@ -6,7 +6,7 @@ const CosmeticsFilter = () => {
       <div>
         <h1 className="text-2xl font-semibold mb-3">Category</h1>
         <ul className="text-sm ml-5">
-          <h1 className="text-lg font-semibold">Face</h1>
+          <h2 className="text-lg font-semibold">Face</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Foundation
@@ -22,7 +22,7 @@ const CosmeticsFilter = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Eyes</h1>
+          <h2 className="text-lg font-semibold">Eyes</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Mascara
@@ -35,7 +35,7 @@ const CosmeticsFilter = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Lips</h1>
+          <h2 className="text-lg font-semibold">Lips</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Lipstick
@@ -45,7 +45,7 @@ const CosmeticsFilter = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Skincare</h1>
+          <h2 className="text-lg font-semibold">Skincare</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Cleanser

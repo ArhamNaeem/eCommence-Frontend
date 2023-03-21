@@ -6,7 +6,7 @@ const DecorationFilters = () => {
       <div>
         <h1 className="text-2xl font-semibold mb-3">Category</h1>
         <ul className="text-sm ml-5">
-          <h1 className="text-lg font-semibold">Wall</h1>
+          <h2 className="text-lg font-semibold">Wall</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Clocks
@@ -19,7 +19,7 @@ const DecorationFilters = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Table</h1>
+          <h2 className="text-lg font-semibold">Table</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Table Vases
@@ -32,7 +32,7 @@ const DecorationFilters = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Floor</h1>
+          <h2 className="text-lg font-semibold">Floor</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Area rugs
@@ -45,7 +45,7 @@ const DecorationFilters = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Seasonal </h1>
+          <h2 className="text-lg font-semibold">Seasonal </h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Wreaths

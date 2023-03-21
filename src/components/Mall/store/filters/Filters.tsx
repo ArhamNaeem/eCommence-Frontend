@@ -24,11 +24,9 @@ const Filters = (props: propType) => {
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-slate-900 text-white h-full p-10 w-1/4"
+        className="bg-slate-900  text-white h-full p-10 w-1/4"
       >
-        <h1
-          className="text-center text-6xl mb-6 font-semibold border-b pb-4"
-        >
+        <h1 className="text-center text-6xl mb-6 font-semibold border-b pb-4">
           Filters
         </h1>
         {props.enum === "Clothes" ? (
@@ -42,7 +40,7 @@ const Filters = (props: propType) => {
         ) : props.enum === "Decorations" ? (
           <DecorationFilters />
         ) : props.enum === "Appliances" ? (
-          <ClothesFilter />
+          <ApplianceFilter />
         ) : (
           <div className="text-8xl font-bold">404 page no found</div>
         )}

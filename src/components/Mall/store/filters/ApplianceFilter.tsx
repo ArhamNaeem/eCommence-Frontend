@@ -6,7 +6,7 @@ const ApplianceFilter = () => {
       <div>
         <h1 className="text-2xl font-semibold mb-3">Category</h1>
         <ul className="text-sm ml-5">
-          <h1 className="text-lg font-semibold">Kitchen</h1>
+          <h2 className="text-lg font-semibold">Kitchen</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Refrigerators
@@ -25,7 +25,7 @@ const ApplianceFilter = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Laundary</h1>
+          <h2 className="text-lg font-semibold">Laundary</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Washing machines
@@ -38,7 +38,7 @@ const ApplianceFilter = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Cleaning</h1>
+          <h2 className="text-lg font-semibold">Cleaning</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Vacuum cleaners

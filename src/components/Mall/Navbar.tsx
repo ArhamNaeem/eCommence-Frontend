@@ -1,43 +1,60 @@
+import { motion } from 'framer-motion';
 import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useNavbarLogic } from '../../hooks/useNavbarLogic';
 import Logo from '../../utils/Logo'
 const Navbar = () => {
-  const {itemsBought,setItemsBought,showBoughtItems,isThreeDigit} = useNavbarLogic()
+  const {itemsBought,setItemsBought,showBoughtItems,isThreeDigit,scrollDirection} = useNavbarLogic()
   const navigate = useNavigate();
   return (
     <>
-      <div className="p-2 pb-0 bg-gradient-to-br from-black to-slate-800 h-20 w-full text-white">
+      <motion.div
+        initial={scrollDirection ? { y: "0" } : {}}
+        animate={scrollDirection ? { y: "-100vh" } : {}}
+        exit={scrollDirection ? { y: "0" } : {}}
+        transition={{
+          ease: "easeInOut",
+          duration: 0.5,
+        }}
+        className="fixed z-50 p-2 pb-0 bg-slate-900 bg-opacity-70 backdrop-blur-lg h-20 w-full text-white"
+      >
         <div className="flex w-full items-center justify-center">
           <Logo width={50} height={50} mt={1} ml={2} mr={2} textMarginTop={3} />
 
-          <div className=" w-2/3  h-full flex items-center justify-center  mt-3 ">
-            <div className="w-20 h-10 mr-6 mt-2 ">
+          <div className=" w-2/3   h-full flex items-center justify-center  mt-3 ">
+            <div className="flex justify-center w-4/5">
               <select
-                onChange={(e)=>navigate(`store/${e.target.value}`)}
-                id="products" className="p-1 rounded-sm bg-black border ">
-                <option
-                  value="clothes">Clothes</option>
+                onChange={(e) => navigate(`store/${e.target.value}`)}
+                id="products"
+                className="p-1 rounded-sm bg-black border "
+              >
+                <option value="clothes">Clothes</option>
                 <option value="shoes">Shoes</option>
                 <option value="cosmetics">Cosmetics</option>
                 <option value="decorations">Decorations</option>
                 <option value="furniture">Furniture</option>
                 <option value="appliances">Appliances</option>
               </select>
-            </div>
 
-            <input
-              type="text"
-              className="w-1/3 h-9 ml-6 bg-transparent border outline-none rounded-md border-white p-2"
-            />
-            <button className="border h-9 w-20 mx-2 rounded-md  hover:text-slate-200">
-              Search
+              <input
+                type="text"
+                className=" w-3/5 h-9 ml-6 bg-transparent border outline-none rounded-md border-white p-2"
+              />
+              <button className="border h-9 w-20 mx-2 rounded-md  hover:text-slate-200">
+                Search
+              </button>
+            </div>
+            <button
+              onClick={() => navigate("/sign-in")}
+              className="border h-9 w-20 rounded-md  hover:text-slate-200"
+            >
+              Sign in
             </button>
           </div>
+
           <button
             onClick={() => {
-              setItemsBought((itemsBought) => itemsBought + 1)
-           
+              navigate("cart/");
             }}
             className="relative mr-14 mt-3 flex"
           >
@@ -64,7 +81,7 @@ const Navbar = () => {
             <p className="text-lg mr-1 mt-2">Cart</p>
           </button>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

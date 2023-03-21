@@ -6,7 +6,7 @@ const FurnitureFilters = () => {
       <div>
         <h1 className="text-2xl font-semibold mb-3">Category</h1>
         <ul className="text-sm ml-5">
-          <h1 className="text-lg font-semibold">Living Room</h1>
+          <h2 className="text-lg font-semibold">Living Room</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Sofas
@@ -22,7 +22,7 @@ const FurnitureFilters = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Dining Room</h1>
+          <h2 className="text-lg font-semibold">Dining Room</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Dining tables
@@ -38,7 +38,7 @@ const FurnitureFilters = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Bedroom</h1>
+          <h2 className="text-lg font-semibold">Bedroom</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Beds
@@ -54,7 +54,7 @@ const FurnitureFilters = () => {
           </li>
         </ul>
         <ul className="text-sm ml-5 mt-4 ">
-          <h1 className="text-lg font-semibold">Office</h1>
+          <h2 className="text-lg font-semibold">Office</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Desks
