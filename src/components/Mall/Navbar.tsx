@@ -19,14 +19,22 @@ const Navbar = () => {
         className="fixed z-50 p-2 pb-0 bg-slate-900 bg-opacity-70 backdrop-blur-lg h-20 w-full text-white"
       >
         <div className="flex w-full items-center justify-center">
-          <Logo width={50} height={50} mt={1} ml={2} mr={2} textMarginTop={3} />
+          <Logo
+            width={50}
+            height={50}
+            mt={1}
+            ml={2}
+            mr={2}
+            textMarginTop={3}
+            logoColor="white"
+          />
 
           <div className=" w-2/3   h-full flex items-center justify-center  mt-3 ">
             <div className="flex justify-center w-4/5">
               <select
                 onChange={(e) => navigate(`store/${e.target.value}`)}
                 id="products"
-                className="p-1 rounded-sm bg-black border "
+                className="p-1 rounded-sm bg-black bg-opacity-70  border "
               >
                 <option value="clothes">Clothes</option>
                 <option value="shoes">Shoes</option>

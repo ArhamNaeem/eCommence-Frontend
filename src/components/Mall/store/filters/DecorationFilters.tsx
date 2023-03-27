@@ -25,7 +25,7 @@ const DecorationFilters = () => {
             Table Vases
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Table lamps
+            Table Lamps
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             Candles
@@ -35,10 +35,10 @@ const DecorationFilters = () => {
           <h2 className="text-lg font-semibold">Floor</h2>
 
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Area rugs
+            Area Rugs
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
-            Floor vases
+            Floor Vases
           </li>
           <li className="my-1 hover:text-slate-300  transition-colors duration-300">
             floor Lamps

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ProductsFromDB from "../../../data/ProductsFromDB";
 import Navbar from "../../Navbar";
 import Filters from "../filters/Filters";
 
@@ -14,6 +15,7 @@ const ClothStore = () => {
       </h1>
 
       <Filters enum="Clothes" />
+      <ProductsFromDB/>
     </>
   );
 };

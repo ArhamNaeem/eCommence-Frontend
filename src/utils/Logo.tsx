@@ -4,7 +4,7 @@ import React from 'react'
 const Logo = (props:any) => {
   return (
     <>
-      <div className='flex items-center'>
+      <div className="flex items-center">
         <motion.svg
           initial={{ rotate: -180 }}
           animate={{ rotate: -12 }}
@@ -23,7 +23,7 @@ const Logo = (props:any) => {
             cx="20.5"
             cy="41.5"
             r="3.5"
-            fill="white"
+            fill={`${props.logoColor}`}
           />
           <motion.circle
             initial={{ opacity: 0 }}
@@ -32,14 +32,14 @@ const Logo = (props:any) => {
             cx="37.5"
             cy="41.5"
             r="3.5"
-            fill="white"
+            fill={`${props.logoColor}`}
           />
           <motion.path
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
             d="M5 6L14 12L19 34H39L44 17H25"
-            stroke="white"
+            stroke={`${props.logoColor}`}
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -49,7 +49,7 @@ const Logo = (props:any) => {
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
             d="M25 26L32.2727 26L41 26"
-            stroke="white"
+            stroke={`${props.logoColor}`}
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"

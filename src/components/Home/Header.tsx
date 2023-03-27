@@ -100,10 +100,11 @@ const Header = () => {
               mt={0}
               mb={0}
               textSize={"7xl"}
+              logoColor="white"
             />
           </div>
-          <div className="h-full relative z-20 flex items-center text-2xl lg:text-6xl text-white font-semibold text-shadow-100 ml-10">
-            <p className=" w-3/4  lg:w-1/2 h-2/5">
+          <div className="h-full  relative -bottom-20 z-20 flex items-center justify-center text-sm lg:text-xl text-white  text-shadow-100 ml-10">
+            <p className=" w-3/4 backdrop-blur-lg  bg-black bg-opacity-20 justify-center text-center p-3 ">
               {text}
               <Cursor />
             </p>
