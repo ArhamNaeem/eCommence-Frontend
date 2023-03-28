@@ -60,7 +60,7 @@ const SellersThoughts = () => {
           <div
             onMouseEnter={() => addRotation("secDiv")}
             onMouseLeave={() => removeRotation("secDiv")}
-            className="w-1/2 h-1/3 lg:w-1/3 absolute right-8 lg:right-10 top-72 lg:top-36"
+            className="w-1/2 h-1/3 lg:w-1/3 absolute right-8 lg:right-10 top-60 md:top-44 lg:top-36"
           >
             <div className="secDiv transition-transform duration-500 h-full w-full absolute  rounded-xl -rotate-12  bg-slate-800" />
             <div className="shadow-2xl p-2  flex items-center shadow-black  h-full w-full absolute rounded-xl skew-x-3  border border-slate-800 bg-white text-slate-800">
@@ -82,7 +82,7 @@ const SellersThoughts = () => {
           <div
             onMouseEnter={() => addRotation("thirdDiv")}
             onMouseLeave={() => removeRotation("thirdDiv")}
-            className=" w-1/2 h-1/3 lg:w-1/3  absolute  -left-8  lg:left-1/4 bottom-12 lg:bottom-20"
+            className=" w-1/2 h-1/3 lg:w-1/3  absolute  -left-16 md:-left-32 lg:left-1/4 bottom-12 lg:bottom-20"
           >
             <div className=" thirdDiv transition-transform duration-500  h-full w-full absolute  rounded-xl -rotate-12  bg-slate-600" />
             <div className=" shadow-2xl flex items-center shadow-black h-full w-full absolute rounded-xl skew-x-3  border border-slate-600 p-2 bg-white text-slate-600">

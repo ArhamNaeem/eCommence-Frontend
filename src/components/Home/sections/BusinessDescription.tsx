@@ -22,7 +22,7 @@ const BusinessDescription = () => {
               repeat: Infinity,
             },
           }}
-          className="lg:visible lg:relative lg:mt-16 lg:right-8 lg:h-1/2 lg:w-full "
+          className="md:visible md:relative md:mt-16 md:right-1 lg:right-8 md:h-1/2 md:w-full "
         >
           <img
             className="absolute h-9/10 shadow-2xl shadow-black w-3/10 right-5 top-32 hover:scale-105 transition-all duration-500 opacity-75"
@@ -37,11 +37,11 @@ const BusinessDescription = () => {
         </motion.div>
 
         <div
-          className="flex items-center  bg-gradient-to-bl mt-10 md:mt-0 rounded-tl-none from-gray-400 to-gray-300 bg-opacity-10 p-6 shadow-lg h-3/4 lg:h-4/5 shadow-slate-600 rounded-lg  lg:top-28 lg:left-12  text-slate-800 
-        lg:absolute
-        lg:w-2/5"
+          className="flex items-center overflow-auto bg-gradient-to-bl   rounded-tl-none from-gray-400 to-gray-300 bg-opacity-10 p-6 shadow-lg h-3/4 md:h-4/5 shadow-slate-600 rounded-lg  md:top-28  md:left-10  text-slate-800 
+        md:absolute
+        md:w-2/5"
         >
-          <p className=" text-lg">
+          <p className=" text-2xl md:text-lg  h-full">
             "At VibeKart, we believe that the success of our business is tied to
             the success of our sellers and the satisfaction of our customers.
             That's why we've made it our mission to provide the best possible

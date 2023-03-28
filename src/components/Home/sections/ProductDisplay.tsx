@@ -55,7 +55,7 @@ const ProductDisplay = (props: any) => {
           {products.map((product, index) => (
             <div
               key={index}
-              className="w-full h-72 transition-all duration-500 hover:shadow-xl shadow-black hover:scale-105 "
+              className="w-full h-72 transition-all duration-500  shadow-black hover:scale-105  "
             >
               <div className=" hover:opacity-100 hover:z-50 w-full h-full flex justify-center  relative">
                 <h1 className="z-20 absolute text-5xl top-1/3 text-shadow-100  ">

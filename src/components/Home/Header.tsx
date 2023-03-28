@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, lazy, Suspense, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { useGetImage } from "../../hooks/useGetImage";
 import { useHandleLoading } from "../../hooks/useHandleLoading";
@@ -15,6 +16,8 @@ const Header = () => {
   const businessDescRef = useRef();
   const footerRef = useRef();
   const { img } = useGetImage();
+  const navigate = useNavigate();
+
   const { scrollDirection, intersecting } = useHandleLoading(prodDisplayRef);
   const [clicked, setClicked] = useState(false);
   const [text] = useTypewriter({
@@ -31,7 +34,7 @@ const Header = () => {
   });
   return (
     <>
-      <Dropdown clicked={clicked} />
+      {/* <Dropdown clicked={clicked} />
       <AnimatePresence>
         <motion.button
           className="z-50 fixed mt-8  h-16 rounded-full w-16 right-20 bg-white  hover:scale-105 transition-all shadow-sm shadow-black "
@@ -79,7 +82,7 @@ const Header = () => {
             </svg>
           )}
         </motion.button>
-      </AnimatePresence>
+      </AnimatePresence> */}
       <div className=" h-screen ">
         <motion.div
           style={{
@@ -103,6 +106,13 @@ const Header = () => {
               logoColor="white"
             />
           </div>
+          <button
+            onClick={()=>navigate('/mall')}
+            className="absolute top-1/4 left-28  border border-black rounded-md p-6"
+          >
+            Shop Now
+          </button>
+
           <div className="h-full  relative -bottom-20 z-20 flex items-center justify-center text-sm lg:text-xl text-white  text-shadow-100 ml-10">
             <p className=" w-3/4 backdrop-blur-lg  bg-black bg-opacity-20 justify-center text-center p-3 ">
               {text}

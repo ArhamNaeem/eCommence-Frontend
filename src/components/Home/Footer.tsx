@@ -15,7 +15,7 @@ const Footer = () => {
   const footerPStyle2= "ml-7 hover:color:slate-300 my-2 origin-left transition-all duration-300 hover:scale-105"
   return (
     <>
-      <div className="relative flex h-vh-80 w-full bg-black">
+      <div className="relative h-screen md:h-vh-120 items-center flex flex-col lg:items-baseline lg:flex-row lg:h-vh-80 w-full bg-black">
         <section className="w-1/2 h-5/6 flex flex-col items-center">
           <div className="flex mt-10 mr-20">
             <Logo
@@ -26,7 +26,8 @@ const Footer = () => {
               ml={0}
               mb={0}
               textMarginTop={0}
-              textSize={"6xl"}
+              logoColor="white"
+              textSize={"5xl"}
             />
           </div>
           <p className="text-white ml-10 text-sm">
@@ -56,7 +57,7 @@ const Footer = () => {
           </div>
 
           <button
-            className="text-white absolute bottom-20 opacity-70 text-lg "
+            className="text-white absolute bottom-32 xl:bottom-20 opacity-70 text-lg "
             onClick={() => {
               window.scrollTo({
                 top: 0,
@@ -68,7 +69,7 @@ const Footer = () => {
           </button>
         </section>
 
-        <section className="mt-7 flex flex-col h-5/6 w-1/2 text-white p-12  text-4xl font-bold">
+        <section className="hidden mt-7 lg:flex flex-col h-5/6 w-1/2 text-white p-12  text-4xl font-bold">
           <div className="w-full h-full flex">
             <div className="w-full h-full mx-2">
               <h1 className=" border-l-8 ml-10 border-slate-400 pl-3">
@@ -97,8 +98,8 @@ const Footer = () => {
           </div>
         </section>
 
-        <footer className=" absolute bottom-5 text-3xl left-1/3 text-white">
-          Copyright &#169; {getYear()}. All rights reserved.
+        <footer className=" absolute bottom-5  text-xl xl:text-3xl lg:left-1/3 text-white">
+          <p>Copyright &#169; {getYear()}. All rights reserved.</p>
         </footer>
       </div>
     </>
