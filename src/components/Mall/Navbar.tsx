@@ -16,7 +16,7 @@ const Navbar = () => {
           ease: "easeInOut",
           duration: 0.5,
         }}
-        className="fixed z-50 p-2 pb-0 bg-slate-900 bg-opacity-70 backdrop-blur-lg h-20 w-full text-white"
+        className="hidden lg:block fixed z-50 p-2 pb-0 bg-slate-900 bg-opacity-70 backdrop-blur-lg h-20 w-full text-white"
       >
         <div className="flex w-full items-center justify-center">
           <Logo

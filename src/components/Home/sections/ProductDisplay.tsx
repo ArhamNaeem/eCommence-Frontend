@@ -4,34 +4,17 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useCarouseLogic } from "../../../hooks/useCarouselLogic";
 
-const ProductDisplay = (props: any) => {
+const ProductDisplay = () => {
   const { products, carouselProps } = useCarouseLogic();
-  const [visibility, setVisibility] = useState("invisible");
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    console.log(props.intersecting);
-    props.intersecting ? setVisibility("visible") : setVisibility("invisible");
-  }, [props.intersecting]);
-
-  useEffect(() => {
-    if (visibility === "visible") {
-      setIsVisible(true);
-    }
-  }, [visibility]);
-
   return (
     <>
-      <motion.div
-        initial={{ x: "-100vh" }}
-        animate={isVisible ? { x: 0 } : {}}
-        transition={{ease:easeIn}}
-        ref={props.entryRef}
-        className={` ${visibility}   overflow-hidden border  text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full`}
+      <div
+      
+        className={`overflow-hidden border  text-white text-center p-4 text-3xl font-semibold text-shadow-200 bg-black bg-opacity-25 h-vh-85 w-full`}
       >
         <motion.div
           initial={{  x: "-200vh" }}
-          animate={isVisible ? { x:0 } : {}}
+          animate={{ x:0 } }
           transition={{ delay: 0.5 }}
           className="flex items-center"
         >
@@ -73,7 +56,7 @@ const ProductDisplay = (props: any) => {
             </div>
           ))}
         </Carousel>
-      </motion.div>
+      </div>
     </>
   );
 };

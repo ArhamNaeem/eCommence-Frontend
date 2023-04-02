@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect, MutableRefObject } from "react";
-
 export const useHandleLoading = (myRef: MutableRefObject<undefined|Element>) => {
     const scrollYRef = useRef(0);
     //Make the button appear when cursor moved to near top of the screen

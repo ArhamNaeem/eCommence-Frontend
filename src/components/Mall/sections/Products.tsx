@@ -30,14 +30,16 @@ const Products = () => {
   ];
   return (
     <>
-      <div className=" h-full bg-black text-slate-900 bg-opacity-10 p-10">
+      <div className=" h-full  bg-black text-slate-900 bg-opacity-10 p-10">
         <h1 className="text-center text-7xl mb-10 font-bold ">CATEGORIES</h1>
-        <div className="  w-full flex flex-wrap  justify-center m-auto">
+        <div className="  w-full grid place-items-center  md:grid-cols-2">
           {productImgs.map((product, index) => (
             <button
               key={index}
-              onClick={() => navigate(`/mall/store/${product.title.toLowerCase()}`)}
-              className="relative m-3 border hover:scale-105  transition-all duration-300 shadow-lg  flex justify-center  shadow-slate-400 h-96 w-5/12"
+              onClick={() =>
+                navigate(`/mall/store/${product.title.toLowerCase()}`)
+              }
+              className="relative m-3 border hover:scale-105  transition-all duration-300 shadow-lg  flex justify-center  shadow-slate-400 h-96 w-9/10"
             >
               <div className="h-full w-full ">
                 <img
