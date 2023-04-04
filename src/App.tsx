@@ -8,7 +8,8 @@ import ApplianceStore from "./components/Mall/store/productStore/ApplianceStore"
 import FurnitureStore from "./components/Mall/store/productStore/FurnitureStore";
 import DecorationsStore from "./components/Mall/store/productStore/DecorationsStore";
 import Cart from "./components/Mall/cart/Cart";
-import SignIn from "./components/Mall/login/SignIn";
+import SignIn from "./components/Mall/auth/SignIn";
+import Register from "./components/Mall/auth/Register";
 // import Store from "./components/Mall/store/Store";
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
           <Route path="/mall/store/cosmetics" element={<CosmeticStore />} />
           <Route path="/mall/store/appliances" element={<ApplianceStore />} />
           <Route path="/mall/store/furniture" element={<FurnitureStore />} />
-          <Route path="/sign-in" element={<SignIn/>} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/register" element={<Register/>} />
+
           <Route
             path="/mall/store/decorations"
             element={<DecorationsStore />}
