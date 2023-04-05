@@ -9,7 +9,7 @@ import FurnitureStore from "./components/Mall/store/productStore/FurnitureStore"
 import DecorationsStore from "./components/Mall/store/productStore/DecorationsStore";
 import Cart from "./components/Mall/cart/Cart";
 import SignIn from "./components/Mall/auth/SignIn";
-import Register from "./components/Mall/auth/Register";
+import Register from "./components/Mall/auth/RegisterForm";
 // import Store from "./components/Mall/store/Store";
 
 function App() {
