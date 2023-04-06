@@ -8,8 +8,10 @@ const FormError = (props:errorType) => {
   return (
     <>
       <div className="absolute text-sm text-red-900 right-0">
-        <b className='mx-[2px]'>!</b>{props.error}
+        {props.error}
+        <b> !</b>
       </div>
+    
     </>
   );
 }

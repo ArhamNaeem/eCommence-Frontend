@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ZodType, z } from "zod";
 import useRegisterFormValidations from "../../../hooks/useRegisterFormValidations";
+import FormError from "./FormError";
 
 const RegisterForm = () => {
   const {
@@ -18,7 +19,7 @@ const RegisterForm = () => {
       <form onSubmit={handleSubmit(submit)}>
         <div className="w-full flex flex-col  items-center ">
           <div className="w-full flex justify-center">
-            <div className="mt-10 mx-5 relative w-2/5">
+            <div className="mt-9 mx-5 relative w-2/5">
               <label
                 className={`absolute transition-all duration-150 ${
                   inputFocused.name ? "bottom-8 text-sm" : "bottom-4"
@@ -38,9 +39,9 @@ const RegisterForm = () => {
                 type="text"
                 id="name"
               />
-              {errors.name && <span>{errors.name.message}</span>}
+              {errors.name && <FormError error={errors.name.message} />}
             </div>
-            <div className="mt-10 mx-5 relative w-2/5">
+            <div className="mt-9 mx-5 relative w-2/5">
               <label
                 className={`absolute transition-all duration-150 ${
                   inputFocused.username ? "bottom-8 text-sm" : "bottom-4"
@@ -65,10 +66,10 @@ const RegisterForm = () => {
                 type="text"
                 id="uname"
               />
-              {errors.username && <span>{errors.username.message}</span>}
+              {errors.username && <FormError error={errors.username.message} />}
             </div>
           </div>
-          <div className="mt-12 mx-5 relative w-[86.5%] ">
+          <div className="mt-10 mx-5 relative w-[86.5%] ">
             <label
               className={`absolute transition-all duration-150 ${
                 inputFocused.email ? "bottom-7 text-sm" : "bottom-2"
@@ -88,7 +89,7 @@ const RegisterForm = () => {
               type="email"
               id="email"
             />
-            {errors.email && <span>{errors.email.message}</span>}
+            {errors.email && <FormError error={errors.email.message} />}
           </div>
           <div className="w-full flex justify-center">
             <div className="mt-12 mx-5 relative  w-2/5">
@@ -116,7 +117,7 @@ const RegisterForm = () => {
                 type="password"
                 id="password"
               />
-              {errors.password && <span>{errors.password.message}</span>}
+              {errors.password && <FormError error={errors.password.message} />}
             </div>
             <div className="mt-12 mx-5 relative  w-2/5">
               <label
@@ -147,7 +148,7 @@ const RegisterForm = () => {
                 id="confirm-password"
               />
               {errors.confirmPassword && (
-                <span>{errors.confirmPassword.message}</span>
+                <FormError error={errors.confirmPassword.message} />
               )}
             </div>
           </div>

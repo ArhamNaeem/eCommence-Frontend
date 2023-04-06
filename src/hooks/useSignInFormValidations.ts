@@ -12,8 +12,12 @@ const useSignInFormValidations = () => {
   const [focused, setFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const FormSchema: ZodType<formDT> = z.object({
-    uname_email: z.string().email().or(z.string()),
-    password: z.string().min(6),
+    uname_email: z
+      .string()
+      .nonempty("Provide username or email")
+
+      .or(z.string().email().nonempty("Please enter username")),
+    password: z.string().min(6, "Enter valid password"),
   });
 
   const {

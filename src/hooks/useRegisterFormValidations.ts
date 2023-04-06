@@ -22,11 +22,11 @@ const useRegisterFormValidations = () => {
 
   const formSchema: ZodType<formType> = z
     .object({
-      name: z.string().min(2).max(20),
-      username: z.string().min(3).max(15),
-      email: z.string().email(),
-      password: z.string().min(6),
-      confirmPassword: z.string().min(6),
+      name: z.string().min(2, 'Name must contain atleast 2 characters').max(20, 'Cannot have more than 20 characters'),
+      username: z.string().min(3, 'Username must contain atleast 3 characters').max(15, 'Cannot have more than 15 characters'),
+      email: z.string().email('Enter valid email'),
+      password: z.string().min(6,'Password must contain atleast 6 characters'),
+      confirmPassword: z.string().min(6,'Password must contain atleast 6 characters'),
     })
     .refine((data) => data.password === data.confirmPassword, {
       message: "Passwords do not match",

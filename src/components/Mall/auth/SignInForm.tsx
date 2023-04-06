@@ -27,7 +27,7 @@ const SignInForm = () => {
                 type="text"
                 id="uname_email"
               />
-              {/* {errors.uname_email && <FormError />} */}
+            {errors.uname_email && <FormError error={errors.uname_email.message} />}
             </div>
             <div className="relative  w-3/5 flex justify-center">
               <label
@@ -49,7 +49,7 @@ const SignInForm = () => {
                 id="password"
               />
               {errors.password && (
-                <FormError error={"Password must be of atleast 6 characters"} />
+                <FormError error={errors.password.message} />
               )}
             </div>
             <button
