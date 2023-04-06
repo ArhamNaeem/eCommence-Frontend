@@ -1,10 +1,14 @@
+import { useState } from "react";
 import Logo from "../../../utils/Logo";
 import SignInForm from "./SignInForm";
 import { useNavigate } from "react-router-dom";
+import Register from "./Register";
 const SignIn = () => {
- const navigate = useNavigate()
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <>
+      <Register showForm={showForm} setShowForm={setShowForm} />
       <div className="flex flex-col items-center">
         <Logo
           width={82}
@@ -52,9 +56,8 @@ const SignIn = () => {
             <h2 className="text-sm font-semi-bold ">New to VibeKart?</h2>
             <hr className="border border-slate-400 flex-grow ml-1" />
           </div>
-
           <button
-          onClick={()=>navigate('/register')}
+            onClick={() => setShowForm(true)}
             type="submit"
             className="my-6 border border-slate-800 w-[52%] py-3 rounded-md active:bg-slate-200"
           >

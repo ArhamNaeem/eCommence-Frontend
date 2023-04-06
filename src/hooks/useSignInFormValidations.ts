@@ -8,7 +8,7 @@ type formDT = {
   password: string;
 };
 
-const useFormValidations = () => {
+const useSignInFormValidations = () => {
   const [focused, setFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const FormSchema: ZodType<formDT> = z.object({
@@ -38,4 +38,4 @@ const useFormValidations = () => {
   };
 };
 
-export default useFormValidations;
+export default useSignInFormValidations;

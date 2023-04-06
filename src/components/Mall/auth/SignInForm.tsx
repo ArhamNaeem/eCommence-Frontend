@@ -1,9 +1,9 @@
 
-import useFormValidations from "../../../hooks/useFormValidations";
+import useSignInFormValidations from "../../../hooks/useSignInFormValidations";
 import FormError from "./FormError";
 
 const SignInForm = () => {
-  const {handleSubmit,submit,errors,focused,setFocused,register,passwordFocused,setPasswordFocused} = useFormValidations()
+  const { handleSubmit, submit, errors, focused, setFocused, register, passwordFocused, setPasswordFocused } = useSignInFormValidations();
   return (
     <>
         <form onSubmit={handleSubmit(submit)}>
