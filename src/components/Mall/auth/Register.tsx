@@ -1,8 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Dispatch, useState } from "react";
-import { ZodType, z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Dispatch } from "react";
 import RegisterForm from "./RegisterForm";
 type showFormType = {
   showForm: boolean;
