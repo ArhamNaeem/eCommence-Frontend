@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import ProductsFromDB from "../../../data/ProductsFromDB";
 import Navbar from "../../Navbar";
 import Filters from "../filters/Filters";
+import ApplyFilter from "../filters/ApplyFilter";
 
 const ClothStore = () => {
     useEffect(() => {
@@ -9,13 +10,14 @@ const ClothStore = () => {
     }, []);
   return (
     <>
-
       <h1 className="w-3/4 left-1/4 p-8 text-center font-bold  absolute text-7xl text-slate-900   ">
         CLOTHES
       </h1>
 
       <Filters enum="Clothes" />
-      <ProductsFromDB/>
+      {/* <ProductsFromDB/> */}
+      {/* <hr className="absolute border border-slate-700 top-32 left-[20%] w-4/5" /> */}
+    
     </>
   );
 };
