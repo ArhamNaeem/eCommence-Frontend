@@ -6,7 +6,7 @@ import CosmeticsFilter from "./CosmeticsFilter";
 import DecorationFilters from "./DecorationFilters";
 import FurnitureFilters from "./FurnitureFilters";
 import ShoesFilter from "./ShoesFilter";
-import ApplyFilter from "./ApplyFilter";
+import ApplyFilter from "./filtericons/ApplyFilter";
 
 interface propType {
   enum:
@@ -20,13 +20,15 @@ interface propType {
 interface filterType {
   category?: string;
   priceOrder?: string;
-  size?: string;
-  color?: string;
+  size?: string[];
+  color?: string[];
 }
 
 const Filters = (props: propType) => {
   const [filters, setFilters] = useState<filterType>({});
-
+  const [priceOrder, setPriceOrder] = useState("");
+  const [sizes, setSizes] = useState<Array<string>>([]);
+  const [colors, setColors] = useState<Array<string>>([]);
   return (
     <>
       <motion.div
@@ -39,7 +41,16 @@ const Filters = (props: propType) => {
           Filters
         </h1>
         {props.enum === "Clothes" ? (
-          <ClothesFilter filters={filters} setFilters={setFilters} />
+          <ClothesFilter
+            filters={filters}
+            setFilters={setFilters}
+            priceOrder={priceOrder}
+            setPriceOrder={setPriceOrder}
+            sizes={sizes}
+            setSizes={setSizes}
+            colors={colors}
+            setColors={setColors}
+          />
         ) : props.enum === "Shoes" ? (
           <ShoesFilter />
         ) : props.enum === "Cosmetics" ? (
@@ -55,7 +66,13 @@ const Filters = (props: propType) => {
         )}
       </motion.div>
       <div className=" top-32 left-[20%] absolute border-t border-slate-800 w-4/5 h-24 py-2">
-        <ApplyFilter filters={filters} setFilters={setFilters} />
+        <ApplyFilter
+          filters={filters}
+          setFilters={setFilters}
+          setPriceOrder={setPriceOrder}
+          setSizes={setSizes}
+          setColors={setColors}
+        />
       </div>
     </>
   );
