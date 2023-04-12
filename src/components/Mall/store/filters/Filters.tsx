@@ -7,6 +7,7 @@ import DecorationFilters from "./DecorationFilters";
 import FurnitureFilters from "./FurnitureFilters";
 import ShoesFilter from "./ShoesFilter";
 import ApplyFilter from "./filtericons/ApplyFilter";
+import ColorPrice from "./ColorPrice";
 
 interface propType {
   enum:
@@ -40,19 +41,41 @@ const Filters = (props: propType) => {
         <h1 className="text-center text-6xl mb-6 font-semibold border-b pb-4">
           Filters
         </h1>
+
         {props.enum === "Clothes" ? (
-          <ClothesFilter
-            filters={filters}
-            setFilters={setFilters}
-            priceOrder={priceOrder}
-            setPriceOrder={setPriceOrder}
-            sizes={sizes}
-            setSizes={setSizes}
-            colors={colors}
-            setColors={setColors}
-          />
+          <>
+            <ClothesFilter
+              filters={filters}
+              setFilters={setFilters}
+              sizes={sizes}
+              setSizes={setSizes}
+            />
+            <ColorPrice
+              filters={filters}
+              setFilters={setFilters}
+              colors={colors}
+              setColors={setColors}
+              priceOrder={priceOrder}
+              setPriceOrder={setPriceOrder}
+            />
+          </>
         ) : props.enum === "Shoes" ? (
-          <ShoesFilter />
+          <>
+            <ShoesFilter
+              filters={filters}
+              setFilters={setFilters}
+              sizes={sizes}
+              setSizes={setSizes}
+            />
+            <ColorPrice
+              filters={filters}
+              setFilters={setFilters}
+              colors={colors}
+              setColors={setColors}
+              priceOrder={priceOrder}
+              setPriceOrder={setPriceOrder}
+            />
+          </>
         ) : props.enum === "Cosmetics" ? (
           <CosmeticsFilter />
         ) : props.enum === "Furnitures" ? (
@@ -66,13 +89,16 @@ const Filters = (props: propType) => {
         )}
       </motion.div>
       <div className=" top-32 left-[20%] absolute border-t border-slate-800 w-4/5 h-24 py-2">
-        <ApplyFilter
-          filters={filters}
-          setFilters={setFilters}
-          setPriceOrder={setPriceOrder}
-          setSizes={setSizes}
-          setColors={setColors}
-        />
+        <>
+          <ApplyFilter
+            filters={filters}
+            setFilters={setFilters}
+            setPriceOrder={setPriceOrder}
+            setSizes={setSizes}
+            setColors={setColors}
+          />
+   
+        </>
       </div>
     </>
   );

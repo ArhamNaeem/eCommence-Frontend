@@ -11,7 +11,7 @@ const useHandleFilterLogic = (
   filters: filterType,
   setFilters: Dispatch<SetStateAction<filterType>>
 ) => {
-  const clothFilter = (cloth: string) => {
+  const categoryFilter = (cloth: string) => {
     setFilters({ ...filters, category: cloth });
   };
 
@@ -69,7 +69,8 @@ const useHandleFilterLogic = (
     });
   };
 
-  return { clothFilter, priceFilter, removeFilter, sizeFilter, colorFilter };
+
+  return { categoryFilter, priceFilter, removeFilter, sizeFilter, colorFilter };
 };
 
 export default useHandleFilterLogic;

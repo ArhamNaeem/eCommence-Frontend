@@ -4,7 +4,7 @@ const FilterIcons = (props: any) => {
   const { filterName, filterValue, removeFilter } = props;
   return (
     <>
-      <span className="mx-2 bg-white text-sm shadow-xl  h-10 w-full text-black p-2 rounded-lg">
+      <span className="mx-2 mb-3 inline-block max-w-fit bg-white text-sm shadow-xl  h-10 w-full text-black p-2 rounded-lg">
         {filterValue}
         <button onClick={(e) => {
           removeFilter(e, filterName, filterValue)

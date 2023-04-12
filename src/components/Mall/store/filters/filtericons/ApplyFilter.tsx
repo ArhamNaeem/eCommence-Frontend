@@ -55,6 +55,7 @@ const ApplyFilter = (props: filterPropType) => {
       {props.filters["color"] &&
         props.filters["color"].map((color, index) => (
           <FilterIcons
+            key={index}
             filterName="color"
             filterValue={color}
             removeFilter={removeFilter}
