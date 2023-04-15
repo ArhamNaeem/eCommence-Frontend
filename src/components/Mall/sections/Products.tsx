@@ -32,7 +32,7 @@ const Products = () => {
     <>
       <div className=" h-full  bg-black text-slate-900 bg-opacity-10 p-10">
         <h1 className="text-center text-7xl mb-10 font-bold ">CATEGORIES</h1>
-        <div className="  w-full grid place-items-center  md:grid-cols-2">
+        <div className="grid place-items-center  md:grid-cols-2">
           {productImgs.map((product, index) => (
             <button
               key={index}

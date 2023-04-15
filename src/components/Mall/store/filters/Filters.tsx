@@ -49,7 +49,7 @@ const Filters = (props: propType) => {
               setFilters={setFilters}
               sizes={sizes}
               setSizes={setSizes}
-            />
+          />
             <ColorPrice
               filters={filters}
               setFilters={setFilters}
@@ -88,7 +88,7 @@ const Filters = (props: propType) => {
           <div className="text-8xl font-bold">404 page not found</div>
         )}
       </motion.div>
-      <div className=" top-32 left-[20%] absolute border-t border-slate-800 w-4/5 h-24 py-2">
+      <div className=" top-24 left-[20%] absolute border-t  border-slate-800 w-4/5 h-24 py-2">
         <>
           <ApplyFilter
             filters={filters}
