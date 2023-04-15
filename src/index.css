@@ -37,3 +37,9 @@
   right: -70px;
   top:-35px
 }
+/* Hide number input arrows */
+#myNumberInput::-webkit-outer-spin-button,
+#myNumberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
