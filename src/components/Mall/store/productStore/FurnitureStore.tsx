@@ -7,7 +7,7 @@ const FurnitureStore = () => {
     }, []);
   return (
     <>
-      <h1 className="w-3/4 left-1/4 p-8 text-center font-bold  absolute text-7xl text-slate-900  ">
+      <h1 className="w-3/4 left-1/4 p-3 text-center font-bold  absolute text-7xl text-slate-900  ">
         FURNITURE
       </h1>
       <Filters enum="Furnitures" />

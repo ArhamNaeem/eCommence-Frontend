@@ -17,7 +17,7 @@ interface productType {
 }
 
 const useGetProducts = () => {
-  const [productData, setProductData] = useState<productType[]>();
+  const [productData, setProductData] = useState<productType[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
   const getAllProducts = async () => {};
   const fetchData = async () => {
@@ -26,7 +26,7 @@ const useGetProducts = () => {
       `http://localhost:3000/api/v1/products/?page=${pageNumber}`
     );
     const { data: products } = data.data;
-    setProductData(products);
+    setProductData(prev => [...prev,products]);
   };
   useEffect(() => {
     (async () => {
@@ -42,7 +42,7 @@ const useGetProducts = () => {
     })();
   }, []);
 
-  return { productData,fetchData };
+  return { productData,fetchData,setProductData };
 };
 
 export default useGetProducts;

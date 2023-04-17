@@ -4,6 +4,7 @@ import FreeDelivery from './sections/FreeDelivery';
 import Navbar from './Navbar';
 import Products from './sections/Products';
 import { motion, spring } from 'framer-motion';
+import ProductsFromDB from '../data/ProductsFromDB';
  
 
 
@@ -22,7 +23,11 @@ const MallMain = () => {
         <Navbar />
         <FreeDelivery />
         <Products />
-        <Footer />
+        <div className='relative bg-slate-200 h-full w-full'>
+          
+          <ProductsFromDB />
+          </div>
+        {/* <Footer /> */}
       </motion.div>
     </>
   );
