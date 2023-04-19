@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 interface productType {
-  category: string;
+  type: string;
   cloth_type: string;
   color: string[];
   createdAt: Date;
@@ -16,33 +16,29 @@ interface productType {
   _id: string;
 }
 
-const useGetProducts = () => {
+const useGetProducts = (type: string) => {
   const [productData, setProductData] = useState<productType[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
   const getAllProducts = async () => {};
-  const fetchData = async () => {
-    setPageNumber((pageNumber) => pageNumber + 1);
-    const data = await axios.get(
-      `http://localhost:3000/api/v1/products/?page=${pageNumber}`
-    );
-    const { data: products } = data.data;
-    setProductData(prev => [...prev,products]);
+  const getAProduct = async (type: string) => {
+    try {
+      const data = await axios.get(
+        `http://localhost:3000/api/v1/products/?page=${pageNumber}&type=${type}`
+      );
+      const { data: products } = data.data;
+      setProductData(products);
+    } catch (e) {
+      console.error(e);
+    }
   };
+
   useEffect(() => {
     (async () => {
-      try {
-        const data = await axios.get(
-          `http://localhost:3000/api/v1/products/?page=${pageNumber}`
-        );
-        const { data: products } = data.data;
-        setProductData(products);
-      } catch (e) {
-        console.error(e);
-      }
+      await getAProduct(type);
     })();
   }, []);
 
-  return { productData,fetchData,setProductData };
+  return { productData, setProductData };
 };
 
 export default useGetProducts;

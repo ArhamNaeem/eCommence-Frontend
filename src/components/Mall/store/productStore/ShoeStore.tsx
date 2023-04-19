@@ -14,7 +14,7 @@ const ShoeStore = () => {
       </h1>
       <Filters enum="Shoes" />
       {/* <Errors/> */}
-      <ProductsFromDB />
+      <ProductsFromDB type='shoes' />
     </>
   );
 };

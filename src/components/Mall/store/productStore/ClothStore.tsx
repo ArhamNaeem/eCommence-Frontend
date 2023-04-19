@@ -15,7 +15,7 @@ const ClothStore = () => {
       </h1>
 
       <Filters enum="Clothes" />
-      {/* <ProductsFromDB/> */}
+      <ProductsFromDB type="clothes" />
       {/* <hr className="absolute border border-slate-700 top-32 left-[20%] w-4/5" /> */}
     </>
   );

@@ -19,14 +19,15 @@ interface productType {
   __v: number;
   _id: string;
 }
-const ProductsFromDB = (props: any) => {
+interface propType {
+  type?: string;
+}
+
+const ProductsFromDB = (props: propType) => {
   const [clicked, setClicked] = useState(false);
   const [productInfo, setProductInfo] = useState<productType>();
-  const { productData }: { productData?: productType[] } = useGetProducts();
-  const { fetchData } = useGetProducts();
-  const fetchMoreData = () => {
-    fetchData()
-  }
+  const { productData }: { productData?: productType[] } = useGetProducts(props.type ||"");
+ 
   return (
     <>
     {/* TODO: MAKE MODAL ALWAYS APPEAR ON TOP OF/NEAR ITEM CARD */}
