@@ -1,5 +1,8 @@
-import { motion } from "framer-motion";
-import React, { ChangeEvent, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { ChangeEvent, useRef, useState } from "react";
+import { ProductContext } from "../Mall/MallMain";
+import { useContext } from "react";
+import Alert from "./Alert";
 
 type modalType = {
   category: string;
@@ -14,7 +17,29 @@ type modalType = {
   setClicked: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+interface productType {
+  category: string;
+  type: string;
+  color: string;
+  description: string;
+  img_url: string;
+  price: number;
+  quantity: number;
+  size: number | string;
+}
+
 const Modal = (props: modalType) => {
+  const selectedProducts: productType = {
+    category: props.category,
+    type: props.cloth_type || props.shoe_type || "",
+    color: "",
+    description: props.description,
+    img_url: props.img_url,
+    price: Number(props.price.$numberDecimal),
+    quantity: 1,
+    size: 0,
+  };
+  const { setItemsSelected } = useContext(ProductContext);
   const clothSize: Record<number, string> = {
     1: "S",
     2: "M",
@@ -22,8 +47,13 @@ const Modal = (props: modalType) => {
     4: "XL",
     5: "XXL",
   };
-
+  const [selectedColor, setSelectedColor] = useState(-1);
+  const [selectedSize, setSelectedSize] = useState(-1);
   const [quantity, setQuantity] = useState(1);
+  const [showAlert, setShowAlert] = useState(false);
+  const colorRef = useRef("");
+  const sizeRef = useRef(0);
+  const alertMsg = useRef("");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value.length === 0) {
@@ -37,16 +67,34 @@ const Modal = (props: modalType) => {
     setQuantity(parseInt(value));
   };
 
+  const addToCart = (product: productType) => {
+    const { color, size } = product;
+    //  console.log(product)
+    setTimeout(() => {
+      setShowAlert((showAlert) => false);
+    }, 1500);
+    setShowAlert((showAlert) => true);
+    if (!(color && size)) {
+      alertMsg.current = !color
+        ? "PLEASE SELECT COLOR!"
+        : "PLEASE SELECT SIZE!";
+      return;
+    }
+    alertMsg.current = 'ADDED TO CART'
+    
+  };
 
   return (
     <>
-      <div
-        className={`fixed top-0 -left-5 bg-black w-full`}
-      >
+      {showAlert && (
+        <Alert msg={alertMsg.current} setShowAlert={setShowAlert} />
+      )}
+      <div className={`fixed top-0 -left-5 bg-black w-full`}>
         <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
         <motion.div
           initial={{ y: "-100vh" }}
           animate={{ y: 0 }}
+          // exit = {{y:"100vh"}}
           className="flex items-center bg-white  absolute left-1/4 z-50 m-auto mt-16 p-3 h-[80vh] w-3/5 rounded-lg shadow-slate-800 shadow-2xl "
         >
           <button
@@ -77,7 +125,16 @@ const Modal = (props: modalType) => {
               {props.color.map((clr, index) => (
                 <button
                   key={index}
-                  className={`mt-4 border border-slate-500 rounded-full mr-4 bg-[${clr}] w-7 h-7`}
+                  onClick={() => {
+                    colorRef.current = clr;
+                    setSelectedColor((selectedColor) => index);
+                  }}
+                  className={`mt-4 border  border-slate-800 rounded-full mr-4 w-7 h-7`}
+                  style={{
+                    backgroundColor: clr,
+                    opacity: selectedColor === index ? 0.8 : 1,
+                    borderWidth: selectedColor === index ? "2px " : "1px",
+                  }}
                 />
               ))}
             </div>
@@ -86,7 +143,15 @@ const Modal = (props: modalType) => {
               {props.size.map((sz, index) => (
                 <button
                   key={index}
-                  className="mt-4 border border-slate-200 rounded-lg w-9 h-9 text-center text-lg full mr-2"
+                  onClick={() => {
+                    sizeRef.current = sz;
+                    setSelectedSize((selectedSize) => index);
+                  }}
+                  className={`mt-4 border border-slate-200 rounded-lg w-9 h-9 text-center text-lg full mr-2  ${
+                    selectedSize === index
+                      ? "opacity-80 border-2 text-slate-800"
+                      : ""
+                  } `}
                 >
                   {props.cloth_type ? clothSize[sz] : sz}
                 </button>
@@ -96,7 +161,14 @@ const Modal = (props: modalType) => {
             <p className="text-3xl font-bold my-4 mt-6  text-slate-900 ">
               ${(Number(props.price.$numberDecimal) * quantity).toFixed(2)}
             </p>
-            <button className="absolute bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2">
+            <button
+              onClick={() => {
+                selectedProducts.color = colorRef.current;
+                selectedProducts.size = sizeRef.current;
+                addToCart(selectedProducts);
+              }}
+              className="absolute bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2"
+            >
               ADD TO CART
             </button>
 

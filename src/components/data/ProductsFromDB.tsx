@@ -31,13 +31,13 @@ const ProductsFromDB = (props: any) => {
     <>
     {/* TODO: MAKE MODAL ALWAYS APPEAR ON TOP OF/NEAR ITEM CARD */}
       {/* div when being called inside cloth/shoe store */}
-      {/* <div className="absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]"> */}
+      <div className="absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]">
 {/* <div className=" h-full w-full z-50"> */}
-        <h1 className="text-7xl  text-center font-bold text-slate-700 ">
+        {/* <h1 className="text-7xl  text-center font-bold text-slate-700 ">
           Products
-      </h1>
+      </h1> */}
          
-        <div className=" grid grid-cols-4 p-4  h-full">
+        {/* <div className=" grid grid-cols-4 p-4  h-full"> */}
           {productData &&
             productData.map((product: any, index: number) => (
               <div
@@ -66,7 +66,7 @@ const ProductsFromDB = (props: any) => {
                 </div>
               </div>
             ))}
-        </div>
+        {/* </div> */}
    
         {clicked && productInfo && (
           <Modal
@@ -82,7 +82,7 @@ const ProductsFromDB = (props: any) => {
             size={productInfo.size}
           />
         )}
-    {/* </div> */}
+    </div>
     </>
   );
 };
