@@ -1,13 +1,24 @@
-import { motion } from 'framer-motion';
-import React, { useEffect, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useNavbarLogic } from '../../hooks/useNavbarLogic';
-import Logo from '../../utils/Logo'
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useNavbarLogic } from "../../hooks/useNavbarLogic";
+import Logo from "../../utils/Logo";
+import Cart from "./cart/Cart";
 const Navbar = () => {
-  const {itemsBought,setItemsBought,showBoughtItems,isThreeDigit,scrollDirection} = useNavbarLogic()
+  const [showCart, setShowCart] = useState(false);
+  const {
+    itemsBought,
+    setItemsBought,
+    showBoughtItems,
+    isThreeDigit,
+    scrollDirection,
+  } = useNavbarLogic();
   const navigate = useNavigate();
   return (
     <>
+      <AnimatePresence>
+        <Cart showCart={showCart} setShowCart={setShowCart} />
+      </AnimatePresence>
       <motion.div
         initial={scrollDirection ? { y: "0" } : {}}
         animate={scrollDirection ? { y: "-100vh" } : {}}
@@ -62,7 +73,7 @@ const Navbar = () => {
 
           <button
             onClick={() => {
-              navigate("cart/");
+              setShowCart((showCart) => !showCart);
             }}
             className="relative mr-14 mt-3 flex"
           >
@@ -92,6 +103,6 @@ const Navbar = () => {
       </motion.div>
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

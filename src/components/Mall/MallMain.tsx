@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import Footer from "../Home/Footer";
 import FreeDelivery from "./sections/FreeDelivery";
 import Navbar from "./Navbar";
@@ -19,19 +25,19 @@ interface productType {
 }
 interface ProductContextType {
   itemsSelected: productType[];
-  setItemsSelected: (items:productType[])=>void
+  setItemsSelected: Dispatch<SetStateAction<productType[]>>;
 }
 
 export const ProductContext = createContext<ProductContextType>({
   itemsSelected: [],
-  setItemsSelected: () => { }
+  setItemsSelected: () => {},
 });
 
 const MallMain = () => {
+  const [itemsSelected, setItemsSelected] = useState<productType[]>([]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const [itemsSelected, setItemsSelected] = useState<productType[]>([]);
   return (
     <>
       <ProductContext.Provider value={{ itemsSelected, setItemsSelected }}>
@@ -43,8 +49,8 @@ const MallMain = () => {
           <Navbar />
           <FreeDelivery />
           <Products />
+          <ProductsFromDB  callOrigin="main"/>
           {/* <div className="relative bg-slate-200 h-full w-full"> */}
-            {/* <ProductsFromDB /> */}
           {/* </div> */}
           {/* <Footer /> */}
         </motion.div>

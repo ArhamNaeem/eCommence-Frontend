@@ -39,7 +39,7 @@ const Modal = (props: modalType) => {
     quantity: 1,
     size: 0,
   };
-  const { setItemsSelected } = useContext(ProductContext);
+  const { itemsSelected, setItemsSelected } = useContext(ProductContext);
   const clothSize: Record<number, string> = {
     1: "S",
     2: "M",
@@ -69,7 +69,6 @@ const Modal = (props: modalType) => {
 
   const addToCart = (product: productType) => {
     const { color, size } = product;
-    //  console.log(product)
     setTimeout(() => {
       setShowAlert((showAlert) => false);
     }, 1500);
@@ -80,25 +79,34 @@ const Modal = (props: modalType) => {
         : "PLEASE SELECT SIZE!";
       return;
     }
-    alertMsg.current = 'ADDED TO CART'
-    
+   
+    // setItemsSelected( itemsSelected.length ? [...itemsSelected, product] : [product])
+    setItemsSelected((prev) => {
+     return [...prev, product]
+    });
+    console.log(itemsSelected,product)
+    alertMsg.current = "ADDED TO CART";
+   
   };
 
   return (
     <>
+      <AnimatePresence>
       {showAlert && (
         <Alert msg={alertMsg.current} setShowAlert={setShowAlert} />
-      )}
+        )}
+        </AnimatePresence>
       <div className={`fixed top-0 -left-5 bg-black w-full`}>
         <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
         <motion.div
           initial={{ y: "-100vh" }}
           animate={{ y: 0 }}
-          // exit = {{y:"100vh"}}
+          exit = {{y:"-100vh"}}
           className="flex items-center bg-white  absolute left-1/4 z-50 m-auto mt-16 p-3 h-[80vh] w-3/5 rounded-lg shadow-slate-800 shadow-2xl "
         >
           <button
-            onClick={() => props.setClicked((clicked) => false)}
+            onClick={() => props.setClicked((clicked) => false
+            )}
             className="absolute top-2 z-50 text-3xl  text-slate-700 pb-3 text-center hover:bg-slate-100 w-10 h-10 rounded-full right-6"
           >
             &times;
@@ -203,7 +211,9 @@ const Modal = (props: modalType) => {
           </div>
         </motion.div>
       </div>
-    </>
+
+      </>
+
   );
 };
 

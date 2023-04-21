@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 interface productType {
-  type: string;
+  category: string;
   cloth_type: string;
   color: string[];
   createdAt: Date;
@@ -38,7 +38,7 @@ const useGetProducts = (type: string) => {
     })();
   }, []);
 
-  return { productData, setProductData };
+  return { productData};
 };
 
 export default useGetProducts;

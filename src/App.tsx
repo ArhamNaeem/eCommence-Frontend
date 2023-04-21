@@ -25,13 +25,12 @@ function App() {
           <Route path="/mall/store/appliances" element={<ApplianceStore />} />
           <Route path="/mall/store/furniture" element={<FurnitureStore />} />
           <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/register" element={<Register />} />
+
 
           <Route
             path="/mall/store/decorations"
             element={<DecorationsStore />}
           />
-          <Route path="/mall/cart" element={<Cart />} />
         </Routes>
       </Router>
     </>

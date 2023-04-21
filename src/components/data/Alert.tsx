@@ -13,7 +13,7 @@ const Alert = (props:msgProps) => {
           <motion.div
               initial={{ y: '-100vh' }}
               animate={{ y: 0 }}
-              exit={{y:'100vh'}}
+              exit={{y:'-100vh'}}
               className="z-50 fixed top-2 rounded-md font-bold left-[40%] bg-slate-100 shadow-black shadow-2xl h-16 w-1/3   p-1 ">
         <button
             onClick={() => props.setShowAlert((showAlert) => false)}

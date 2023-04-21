@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Modal from "./Modal";
 import useGetProducts from "../../hooks/useGetProducts";
 import InfiniteScroll from "react-infinite-scroll-component";
 //make its type an enum which will accept any valid type of products to call a valid api
-
+import { ProductContext } from "../Mall/MallMain";
+import { useContext } from "react";
+import { AnimatePresence } from "framer-motion";
+import Products from "./Products";
 interface productType {
   category: string;
   cloth_type?: string;
@@ -19,56 +22,42 @@ interface productType {
   __v: number;
   _id: string;
 }
+
 interface propType {
   type?: string;
+  callOrigin: "main" | "category";
 }
 
 const ProductsFromDB = (props: propType) => {
+
   const [clicked, setClicked] = useState(false);
   const [productInfo, setProductInfo] = useState<productType>();
-  const { productData }: { productData?: productType[] } = useGetProducts(props.type ||"");
- 
+
+
   return (
     <>
-    {/* TODO: MAKE MODAL ALWAYS APPEAR ON TOP OF/NEAR ITEM CARD */}
-      {/* div when being called inside cloth/shoe store */}
-      <div className="absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]">
-{/* <div className=" h-full w-full z-50"> */}
-        {/* <h1 className="text-7xl  text-center font-bold text-slate-700 ">
-          Products
-      </h1> */}
-         
-        {/* <div className=" grid grid-cols-4 p-4  h-full"> */}
-          {productData &&
-            productData.map((product: any, index: number) => (
-              <div
-                key={index}
-                onClick={() => {
-                  setProductInfo(product);
-                  setClicked((clicked) => !clicked);
-                }}
-                className="hover:scale-105 bg-white transition-all duration-300 shadow-slate-400 shadow-xl flex flex-col items-center p-2 mx-2 my-10  h-[28rem] w-80"
-              >
-                <img
-                  loading="lazy"
-                  src={product.img_url}
-                  className=" mb-4 shadow-lg w-full h-[70%] object-contain rounded-lg"
-                />
-                <div className="w-full p-2">
-                  <p className="text-slate-500 text-xl font-bold tracking-wider">
-                    {product.cloth_type || product.shoe_type}
-                  </p>
-                  <p className="text-slate-400 font-bold  text-sm tracking-wide">
-                    {product.category}
-                  </p>
-                  <p className="text-slate-400 text-lg">
-                    $ {product.price.$numberDecimal}
-                  </p>
-                </div>
-              </div>
-            ))}
-        {/* </div> */}
    
+      <div
+        className={`${
+          props.callOrigin === "main"
+            ? "h-full w-full z-50"
+            : "absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]"
+        }`}
+      >
+        {props.callOrigin === "main" ? (
+          <h1 className="text-7xl  text-center font-bold text-slate-700 ">
+            Products
+          </h1>
+        ) : null}
+        {props.callOrigin === "main" ? (
+          <div className="grid grid-cols-4 p-4 h-full">
+            <Products type={props.type}  setClicked={setClicked} setProductInfo={setProductInfo}/>
+          </div>
+        ) : (
+          <Products type={props.type} setClicked={setClicked} setProductInfo={setProductInfo}/>
+        )}
+      </div>
+      <AnimatePresence>
         {clicked && productInfo && (
           <Modal
             setClicked={setClicked}
@@ -83,7 +72,8 @@ const ProductsFromDB = (props: propType) => {
             size={productInfo.size}
           />
         )}
-    </div>
+      </AnimatePresence>
+      {/* </div> */}
     </>
   );
 };
