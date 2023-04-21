@@ -18,7 +18,7 @@ const Cart = (props: cartType) => {
             exit={{ x: "100vw" }}
             transition={{ type: "spring", damping: 20 }}
             className="fixed z-[60] w-1/2 right-0 top-0 text-white
-            bg-black h-full "
+            bg-slate-200 shadow-lg shadow-slate-600  h-full "
           >
             <button
               onClick={() => props.setShowCart((showCart) => false)}
