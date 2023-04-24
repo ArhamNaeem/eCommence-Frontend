@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 
 interface msgProps{
     msg: string
-    setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  
 }
 
 const Alert = (props:msgProps) => {

@@ -38,8 +38,7 @@ const ProductsFromDB = (props: propType) => {
         className={`${
           props.callOrigin === "main"
             ? "h-full w-full  z-40"
-            :
-      "absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]"
+            : "absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]"
         }`}
       >
         {props.callOrigin === "main" ? (
@@ -54,7 +53,7 @@ const ProductsFromDB = (props: propType) => {
               setClicked={setClicked}
               setProductInfo={setProductInfo}
             />
-           </div>
+          </div>
         ) : (
           <Products
             type={props.type}

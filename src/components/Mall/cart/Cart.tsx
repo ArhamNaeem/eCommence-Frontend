@@ -28,11 +28,11 @@ const Cart = (props: cartType) => {
             </button>
             Cart
             {
-              itemsSelected.map((item) => (
-                <>
+              itemsSelected.map((item,index) => (
+                <div key={index}>
                 <div>{itemsSelected.length}</div>
                   <div>{item.category}</div>
-                </>
+                </div>
               ))
             }
           </motion.div>

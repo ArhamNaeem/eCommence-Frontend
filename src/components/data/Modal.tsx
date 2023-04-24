@@ -14,6 +14,7 @@ type modalType = {
   price: Record<string, string>;
   quantity: number;
   size: number[];
+
   setClicked: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -79,32 +80,33 @@ const Modal = (props: modalType) => {
         : "PLEASE SELECT SIZE!";
       return;
     }
-   
+
     // setItemsSelected( itemsSelected.length ? [...itemsSelected, product] : [product])
-    setItemsSelected([product]);
-    console.log(itemsSelected,product)
+    setItemsSelected((prev) => [...prev, product]);
+    console.log(itemsSelected, product);
     alertMsg.current = "ADDED TO CART";
-   
   };
 
   return (
     <>
       <AnimatePresence>
-      {showAlert && (
-        <Alert msg={alertMsg.current} setShowAlert={setShowAlert} />
+        {showAlert && (
+          <Alert msg={alertMsg.current} setShowAlert={setShowAlert} />
         )}
-        </AnimatePresence>
+      </AnimatePresence>
       <div className={`fixed z-[60] top-0 -left-5 bg-black w-full`}>
         <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
         <motion.div
           initial={{ y: "-100vh" }}
           animate={{ y: 0 }}
-          exit = {{y:"-100vh"}}
+          exit={{ y: "-100vh" }}
           className="flex items-center bg-white  absolute left-1/4 z-50 m-auto mt-16 p-3 h-[80vh] w-3/5 rounded-lg shadow-slate-800 shadow-2xl "
         >
           <button
-            onClick={() => props.setClicked((clicked) => false
-            )}
+            onClick={() => {
+              props.setClicked((clicked) => false);
+              setShowAlert((showAlert) => false);
+            }}
             className="absolute top-2 z-50 text-3xl  text-slate-700 pb-3 text-center hover:bg-slate-100 w-10 h-10 rounded-full right-6"
           >
             &times;
@@ -209,9 +211,7 @@ const Modal = (props: modalType) => {
           </div>
         </motion.div>
       </div>
-
-      </>
-
+    </>
   );
 };
 
