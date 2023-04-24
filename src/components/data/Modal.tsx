@@ -81,9 +81,7 @@ const Modal = (props: modalType) => {
     }
    
     // setItemsSelected( itemsSelected.length ? [...itemsSelected, product] : [product])
-    setItemsSelected((prev) => {
-     return [...prev, product]
-    });
+    setItemsSelected([product]);
     console.log(itemsSelected,product)
     alertMsg.current = "ADDED TO CART";
    
@@ -96,7 +94,7 @@ const Modal = (props: modalType) => {
         <Alert msg={alertMsg.current} setShowAlert={setShowAlert} />
         )}
         </AnimatePresence>
-      <div className={`fixed top-0 -left-5 bg-black w-full`}>
+      <div className={`fixed z-[60] top-0 -left-5 bg-black w-full`}>
         <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
         <motion.div
           initial={{ y: "-100vh" }}
@@ -118,7 +116,7 @@ const Modal = (props: modalType) => {
             className=" w-2/5 rounded-lg"
           />
           <div className=" w-1/2 absolute right-0 h-full">
-            <h1 className=" tracking-wide text-3xl w-9/10 mt-3 font-bold text-slate-400">
+            <h1 className=" tracking-wide text-3xl w-5/6  mt-3  font-bold text-slate-400">
               {props.cloth_type ? props.cloth_type : props.shoe_type}
             </h1>
             <p className="text-xl font-semibold text-slate-400">

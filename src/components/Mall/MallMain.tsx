@@ -39,23 +39,16 @@ const MallMain = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <>
       <ProductContext.Provider value={{ itemsSelected, setItemsSelected }}>
-        <motion.div
-          initial={{ x: "-100vw" }}
-          animate={{ x: "0vw" }}
-          transition={{ duration: 0.5 }}
-        >
+      
           <Navbar />
           <FreeDelivery />
           <Products />
           <ProductsFromDB  callOrigin="main"/>
-          {/* <div className="relative bg-slate-200 h-full w-full"> */}
-          {/* </div> */}
-          {/* <Footer /> */}
-        </motion.div>
+        
+          <Footer />
+   
       </ProductContext.Provider>
-    </>
   );
 };
 

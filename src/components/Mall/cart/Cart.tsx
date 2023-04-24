@@ -27,6 +27,14 @@ const Cart = (props: cartType) => {
               &times;
             </button>
             Cart
+            {
+              itemsSelected.map((item) => (
+                <>
+                <div>{itemsSelected.length}</div>
+                  <div>{item.category}</div>
+                </>
+              ))
+            }
           </motion.div>
         )}
       </AnimatePresence>

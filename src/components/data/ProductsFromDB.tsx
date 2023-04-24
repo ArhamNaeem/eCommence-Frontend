@@ -29,19 +29,17 @@ interface propType {
 }
 
 const ProductsFromDB = (props: propType) => {
-
   const [clicked, setClicked] = useState(false);
   const [productInfo, setProductInfo] = useState<productType>();
 
-
   return (
     <>
-   
       <div
         className={`${
           props.callOrigin === "main"
-            ? "h-full w-full z-50"
-            : "absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]"
+            ? "h-full w-full  z-40"
+            :
+      "absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]"
         }`}
       >
         {props.callOrigin === "main" ? (
@@ -50,11 +48,19 @@ const ProductsFromDB = (props: propType) => {
           </h1>
         ) : null}
         {props.callOrigin === "main" ? (
-          <div className="grid grid-cols-4 p-4 h-full">
-            <Products type={props.type}  setClicked={setClicked} setProductInfo={setProductInfo}/>
-          </div>
+          <div className="grid  grid-cols-4 p-4 h-full">
+            <Products
+              type={props.type}
+              setClicked={setClicked}
+              setProductInfo={setProductInfo}
+            />
+           </div>
         ) : (
-          <Products type={props.type} setClicked={setClicked} setProductInfo={setProductInfo}/>
+          <Products
+            type={props.type}
+            setClicked={setClicked}
+            setProductInfo={setProductInfo}
+          />
         )}
       </div>
       <AnimatePresence>

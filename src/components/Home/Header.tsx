@@ -44,8 +44,8 @@ const Header = () => {
           className=" object-cover absolute top-0 h-full shadow-inner shadow-black w-full opacity-90 overflow-hidden"
         />
         <div className="bg-black absolute opacity-40 h-full w-full  text-6xl" />
-        <div className=" relative " >
-          <div className="absolute top-20   p-2 ">
+        <div className=" relative  ">
+          <div className="absolute top-20   left-20 p-2 ">
             <Logo
               width={90}
               height={90}
