@@ -10,7 +10,7 @@ export const useGetImage = () => {
   useEffect(() => {
     const fetchImg = async () => {
       const { data } = await axios.get(
-        `https://api.unsplash.com/search/photos?page=1&query=clothes&shoes&client_id=dFpO4dR9jaH3ESxO0Es8oOkYphn0fK6napIha1dFUqE`
+        `https://api.unsplash.com/search/photos?page=1&query=clothes,shoes,cosmetics,furniture&client_id=dFpO4dR9jaH3ESxO0Es8oOkYphn0fK6napIha1dFUqE`
       );
       let count = 0;
       data.results.map((result: any, index: number) => {
