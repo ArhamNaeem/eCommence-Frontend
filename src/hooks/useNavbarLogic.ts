@@ -1,5 +1,8 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 
+
+
+
 export const useNavbarLogic = () => {
   const [scrollDirection, setScrollDirection] = useState<boolean | undefined>();
     const scrollYRef = useRef(0);

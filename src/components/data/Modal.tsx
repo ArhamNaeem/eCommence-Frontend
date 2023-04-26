@@ -3,6 +3,7 @@ import React, { ChangeEvent, useRef, useState } from "react";
 import { ProductContext } from "../Mall/MallMain";
 import { useContext } from "react";
 import Alert from "./Alert";
+import useCartLogic from "../../hooks/useCartLogic";
 
 type modalType = {
   category: string;
@@ -27,6 +28,7 @@ interface productType {
   price: number;
   quantity: number;
   size: number | string;
+  actualQuantity: number;
 }
 
 const Modal = (props: modalType) => {
@@ -39,59 +41,15 @@ const Modal = (props: modalType) => {
     price: Number(props.price.$numberDecimal),
     quantity: 1,
     size: 0,
+    actualQuantity: props.quantity,
   };
   const { itemsSelected, setItemsSelected } = useContext(ProductContext);
-  const clothSize: Record<number, string> = {
-    1: "S",
-    2: "M",
-    3: "L",
-    4: "XL",
-    5: "XXL",
-  };
-  const [selectedColor, setSelectedColor] = useState(-1);
-  const [selectedSize, setSelectedSize] = useState(-1);
-  const [quantity, setQuantity] = useState(1);
-  const [showAlert, setShowAlert] = useState(false);
-  const colorRef = useRef("");
-  const sizeRef = useRef(0);
-  const alertMsg = useRef("");
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (value.length === 0) {
-      setQuantity(1);
-      return;
-    }
-    if (parseInt(value) >= props.quantity) {
-      setQuantity(props.quantity);
-      return;
-    }
-    setQuantity(parseInt(value));
-  };
-
-  const addToCart = (product: productType) => {
-    const { color, size } = product;
-    setTimeout(() => {
-      setShowAlert((showAlert) => false);
-    }, 1500);
-    setShowAlert((showAlert) => true);
-    if (!(color && size)) {
-      alertMsg.current = !color
-        ? "PLEASE SELECT COLOR!"
-        : "PLEASE SELECT SIZE!";
-      return;
-    }
-
-    // setItemsSelected( itemsSelected.length ? [...itemsSelected, product] : [product])
-    setItemsSelected((prev) => [...prev, product]);
-    console.log(itemsSelected, product);
-    alertMsg.current = "ADDED TO CART";
-  };
-
+  const {...rest } = useCartLogic(props.quantity, itemsSelected, setItemsSelected);
   return (
     <>
       <AnimatePresence>
-        {showAlert && (
-          <Alert msg={alertMsg.current} setShowAlert={setShowAlert} />
+        {rest.showAlert && (
+          <Alert msg={rest.alertMsg.current} setShowAlert={rest.setShowAlert} />
         )}
       </AnimatePresence>
       <div className={`fixed z-[60] top-0 -left-5 bg-black w-full`}>
@@ -105,7 +63,7 @@ const Modal = (props: modalType) => {
           <button
             onClick={() => {
               props.setClicked((clicked) => false);
-              setShowAlert((showAlert) => false);
+              rest.setShowAlert((showAlert) => false);
             }}
             className="absolute top-2 z-50 text-3xl  text-slate-700 pb-3 text-center hover:bg-slate-100 w-10 h-10 rounded-full right-6"
           >
@@ -134,14 +92,14 @@ const Modal = (props: modalType) => {
                 <button
                   key={index}
                   onClick={() => {
-                    colorRef.current = clr;
-                    setSelectedColor((selectedColor) => index);
+                    rest.colorRef.current = clr;
+                    rest.setSelectedColor((selectedColor) => index);
                   }}
                   className={`mt-4 border  border-slate-800 rounded-full mr-4 w-7 h-7`}
                   style={{
                     backgroundColor: clr,
-                    opacity: selectedColor === index ? 0.8 : 1,
-                    borderWidth: selectedColor === index ? "2px " : "1px",
+                    opacity: rest.selectedColor === index ? 0.8 : 1,
+                    borderWidth: rest.selectedColor === index ? "2px " : "1px",
                   }}
                 />
               ))}
@@ -152,56 +110,60 @@ const Modal = (props: modalType) => {
                 <button
                   key={index}
                   onClick={() => {
-                    sizeRef.current = sz;
-                    setSelectedSize((selectedSize) => index);
+                    rest.sizeRef.current = props.cloth_type ? rest.clothSize[sz] : sz;
+                    rest.setSelectedSize((selectedSize) => index);
                   }}
                   className={`mt-4 border border-slate-200 rounded-lg w-9 h-9 text-center text-lg full mr-2  ${
-                    selectedSize === index
+                    rest.selectedSize === index
                       ? "opacity-80 border-2 text-slate-800"
                       : ""
                   } `}
                 >
-                  {props.cloth_type ? clothSize[sz] : sz}
+                  {props.cloth_type ? rest.clothSize[sz] : sz}
                 </button>
               ))}
             </div>
 
-            <p className="text-3xl font-bold my-4 mt-6  text-slate-900 ">
-              ${(Number(props.price.$numberDecimal) * quantity).toFixed(2)}
+            <p
+              ref={rest.priceRef}
+              className="text-3xl font-bold my-4 mt-6  text-slate-900 "
+            >
+              ${(Number(props.price.$numberDecimal) * rest.quantity).toFixed(2)}
             </p>
             <button
               onClick={() => {
-                selectedProducts.color = colorRef.current;
-                selectedProducts.size = sizeRef.current;
-                addToCart(selectedProducts);
+                selectedProducts.color = rest.colorRef.current;
+                selectedProducts.size = rest.sizeRef.current;
+                rest.addToCart(selectedProducts);
               }}
               className="absolute bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2"
             >
               ADD TO CART
             </button>
-
+          
+            
             <div className="absolute right-14 bottom-[3.2rem] ">
               {/* <p className="text-slate-900 text-sm font-semibold text-center">In Stock</p> */}
               <button
                 onClick={() =>
-                  quantity > 1 && setQuantity((quantity) => quantity - 1)
+                  rest.quantity > 1 && rest.setQuantity((quantity) => quantity - 1)
                 }
                 className="text-2xl font-bold"
               >
                 &#8722;
               </button>
               <input
-                value={quantity}
+                value={rest.quantity}
                 min={1}
                 type="number"
                 id="myNumberInput"
-                onChange={handleChange}
+                onChange={rest.handleChange}
                 className="w-20 py-1 mx-4 outline-none text-center   bg-slate-100"
               />
               <button
                 onClick={() =>
-                  quantity < props.quantity &&
-                  setQuantity((quantity) => quantity + 1)
+                  rest.quantity < props.quantity &&
+                  rest.setQuantity((quantity) => quantity + 1)
                 }
                 className="text-2xl font-bold"
               >

@@ -1,10 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useEffect, useMemo, useState } from "react";
+import { useState,useContext } from "react";
+import { ProductContext } from "./MallMain";
 import { useNavigate } from "react-router-dom";
 import { useNavbarLogic } from "../../hooks/useNavbarLogic";
 import Logo from "../../utils/Logo";
 import Cart from "./cart/Cart";
 const Navbar = () => {
+  const {itemsSelected} = useContext(ProductContext)
   const [showCart, setShowCart] = useState(false);
   const {
     itemsBought,
