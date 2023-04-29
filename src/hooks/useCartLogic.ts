@@ -13,8 +13,8 @@ interface productType {
 }
 
 enum ModeValue {
-  INCREMENT='INCREMENT',
-  DECREMENT='DECREMENT'
+  INCREMENT = "INCREMENT",
+  DECREMENT = "DECREMENT",
 }
 
 const useCartLogic = (
@@ -41,6 +41,7 @@ const useCartLogic = (
     actualQuantity: number
   ) => {
     const value = e.target.value;
+    // console.log('handle change')
     if (value.length === 0) {
       setQuantity(1);
       return;
@@ -55,9 +56,11 @@ const useCartLogic = (
   const addToCart = (
     product: productType,
     actualQuantity: number,
-    price: number
+    price: number,
+    selectedItemQuantity: number[]
   ) => {
     const { color, size } = product;
+    let ITEM_ALREADY_EXISTS = false;
     setTimeout(() => {
       setShowAlert((showAlert) => false);
     }, 1000);
@@ -66,6 +69,24 @@ const useCartLogic = (
       alertMsg.current = !color
         ? "PLEASE SELECT COLOR!"
         : "PLEASE SELECT SIZE!";
+      return;
+    }
+    itemsSelected.map((item, index) => {
+      if (item.color === color && item.size === size) {
+        addAlreadyExistItemQuantity(
+          quantity,
+          selectedItemQuantity,
+          item,
+          index
+        );
+        ITEM_ALREADY_EXISTS = true;
+        return;
+      }
+    });
+    // console.log(ITEM_ALREADY_EXISTS);
+    if (ITEM_ALREADY_EXISTS) {
+      alertMsg.current = "ADDED TO CART";
+
       return;
     }
     product["quantity"] = quantity;
@@ -105,7 +126,12 @@ const useCartLogic = (
     alertMsg.current = "REMOVED FROM CART";
   };
 
-  const changeQuantity = (mode: ModeValue,selectedItemQuantity:number[],item:productType,index:number) => {
+  const changeQuantity = (
+    mode: ModeValue,
+    selectedItemQuantity: number[],
+    item: productType,
+    index: number
+  ) => {
     if (mode === "INCREMENT") {
       if (selectedItemQuantity[index] >= item.actualQuantity) return;
       const updatedItemQuantity = [...selectedItemQuantity];
@@ -119,6 +145,21 @@ const useCartLogic = (
       updatedItemQuantity[index]--;
       // setSelectedItemQuantity(updatedItemQuantity);
     }
+  };
+
+  const addAlreadyExistItemQuantity = (
+    quantity: number,
+    selectedItemQuantity: number[],
+    item: productType,
+    index: number
+  ) => {
+    if (selectedItemQuantity[index] >= item.actualQuantity) return;
+    const updatedItemQuantity = [...selectedItemQuantity];
+    updatedItemQuantity[index] += quantity;
+    if(updatedItemQuantity[index] >item.actualQuantity) {
+      updatedItemQuantity[index] = item.actualQuantity;
+    }
+    setSelectedItemQuantity(updatedItemQuantity);
   };
 
   return {

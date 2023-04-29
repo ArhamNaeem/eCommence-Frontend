@@ -22,7 +22,6 @@ const Cart = (props: cartType) => {
     setSelectedItemsCount,
   } = useContext(ProductContext);
   const {
-    handleChange,
     showAlert,
     setShowAlert,
     removeFromCart,
@@ -113,9 +112,8 @@ const Cart = (props: cartType) => {
                             min={1}
                             type="number"
                             id="myNumberInput"
-                            onChange={(e) =>
-                              handleChange(e, item.actualQuantity)
-                            }
+                            
+                            readOnly
                             className="w-14 py-1 mx-2 outline-none text-center   bg-slate-100"
                           />
                           <button
