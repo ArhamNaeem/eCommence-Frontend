@@ -133,7 +133,7 @@ const Modal = (props: modalType) => {
             </div>
 
             <p
-              ref={rest.priceRef}
+              
               className="text-3xl font-bold my-4 mt-6  text-slate-900 "
             >
               ${(Number(props.price.$numberDecimal) * rest.quantity).toFixed(2)}
@@ -142,7 +142,7 @@ const Modal = (props: modalType) => {
               onClick={() => {
                 selectedProducts.color = rest.colorRef.current;
                 selectedProducts.size = rest.sizeRef.current;
-                rest.addToCart(selectedProducts,props.quantity);
+                rest.addToCart(selectedProducts,props.quantity,Number(props.price.$numberDecimal));
               }}
               className="absolute bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2"
             >

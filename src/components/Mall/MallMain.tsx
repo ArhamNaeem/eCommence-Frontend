@@ -27,19 +27,19 @@ interface productType {
 interface ProductContextType {
   itemsSelected: productType[];
   setItemsSelected: Dispatch<SetStateAction<productType[]>>;
-  selectedItemQuantity:number;
-  setSelectedItemQuantity: Dispatch<SetStateAction<number>>;
+  selectedItemQuantity:number[];
+  setSelectedItemQuantity: Dispatch<SetStateAction<number[]>>;
 }
 
 export const ProductContext = createContext<ProductContextType>({
   itemsSelected: [],
   setItemsSelected: () => {},
-  selectedItemQuantity: 0,
+  selectedItemQuantity: [],
   setSelectedItemQuantity: () => {},
 });
 
 const MallMain = () => {
-  const [selectedItemQuantity,setSelectedItemQuantity] = useState(0);
+  const [selectedItemQuantity,setSelectedItemQuantity] = useState<Array<number>>([]);
   const [itemsSelected, setItemsSelected] = useState<productType[]>([]);
   useEffect(() => {
     window.scrollTo(0, 0);

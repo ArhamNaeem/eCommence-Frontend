@@ -8,9 +8,18 @@ interface cartType {
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const Cart = (props: cartType) => {
-  const { itemsSelected, setItemsSelected, selectedItemQuantity,setSelectedItemQuantity } =
-    useContext(ProductContext);
-    const {handleChange} = useCartLogic(itemsSelected,setItemsSelected,setSelectedItemQuantity)
+  const {
+    itemsSelected,
+    setItemsSelected,
+    selectedItemQuantity,
+    setSelectedItemQuantity,
+  } = useContext(ProductContext);
+  const { handleChange } = useCartLogic(
+    itemsSelected,
+    setItemsSelected,
+    setSelectedItemQuantity
+  );
+
   return (
     <>
       <AnimatePresence>
@@ -29,9 +38,13 @@ const Cart = (props: cartType) => {
             >
               &times;
             </button>
-
+<AnimatePresence>
             {itemsSelected.map((item, index) => (
-              <div
+              <motion.div
+                initial={{ x: "-100vw" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100vw" }}
+                transition={{ type: "tween", delay: 0.1 * index }}
                 className=" w-10/12 m-2 my-10 flex h-2/5 shadow-lg shadow-slate-400 text-slate-800"
                 key={index}
               >
@@ -47,35 +60,48 @@ const Cart = (props: cartType) => {
                   <div className="flex my-1 ">
                     Color:
                     <p
-                      className={`mx-2  w-7 h-7 border border-slate-500 rounded-full`}
+                      className={`mx-2 mt-[2px]  w-6 h-6 border border-slate-500 rounded-full`}
                       style={{ backgroundColor: item.color }}
                     />
                   </div>
                   <div className="mt-4 flex justify-between items-center">
-                    <p className="text-lg font-bold">${item.price}</p>
+                    <p className="text-lg font-bold">
+                      $
+                      {Number(item.price * selectedItemQuantity[index]).toFixed(
+                        2
+                      )}
+                    </p>
                     <div>
                       <button
-                        onClick={() =>
-                          //cannot set global state as every item will have item own unique quantity
-                          selectedItemQuantity > 1 && setSelectedItemQuantity((selectedItemQuantity) => selectedItemQuantity - 1)
-                        }
+                        onClick={() => {
+                          if (selectedItemQuantity[index] === 1) return;
+                          const updatedItemQuantity = [...selectedItemQuantity];
+                          updatedItemQuantity[index]--;
+                          setSelectedItemQuantity(updatedItemQuantity);
+                        }}
                         className="text-2xl font-bold"
                       >
                         &#8722;
                       </button>
                       <input
-                        value={item.quantity}
+                        value={selectedItemQuantity[index]}
                         min={1}
                         type="number"
                         id="myNumberInput"
-                        onChange={(e)=>handleChange(e,item.actualQuantity)}
+                        onChange={(e) => handleChange(e, item.actualQuantity)}
                         className="w-14 py-1 mx-2 outline-none text-center   bg-slate-100"
                       />
                       <button
-                        onClick={() =>
-                          selectedItemQuantity < item.actualQuantity &&
-                          setSelectedItemQuantity((selectedItemQuantity) => selectedItemQuantity + 1)
-                        }
+                        onClick={(e) => {
+                          if (
+                            selectedItemQuantity[index] >= item.actualQuantity
+                          )
+                            return;
+                          const updatedItemQuantity = [...selectedItemQuantity];
+                          updatedItemQuantity[index]++;
+                          setSelectedItemQuantity(updatedItemQuantity);
+                          console.log(index, selectedItemQuantity);
+                        }}
                         className="text-2xl font-bold"
                       >
                         &#43;
@@ -84,6 +110,11 @@ const Cart = (props: cartType) => {
                   </div>
                   <button
                     onClick={() => {
+                      setSelectedItemQuantity(
+                        selectedItemQuantity.filter((itemQuantity, i) => {
+                          return i !== index;
+                        })
+                      );
                       setItemsSelected(
                         itemsSelected.filter((selectedItem) => {
                           return (
@@ -98,8 +129,9 @@ const Cart = (props: cartType) => {
                     REMOVE FROM CART
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>

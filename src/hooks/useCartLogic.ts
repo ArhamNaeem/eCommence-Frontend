@@ -15,7 +15,7 @@ interface productType {
 const useCartLogic = (
   itemsSelected: productType[],
   setItemsSelected: React.Dispatch<SetStateAction<productType[]>>,
-  setSelectedItemQuantity: React.Dispatch<SetStateAction<number>>
+  setSelectedItemQuantity: React.Dispatch<SetStateAction<number[]>>
 ) => {
   const clothSize: Record<number, string> = {
     1: "S",
@@ -27,6 +27,7 @@ const useCartLogic = (
   const [selectedColor, setSelectedColor] = useState(-1);
   const [selectedSize, setSelectedSize] = useState(-1);
   const [quantity, setQuantity] = useState(1);
+
   const [showAlert, setShowAlert] = useState(false);
   const colorRef = useRef("");
   const sizeRef = useRef<number | string>(0);
@@ -48,7 +49,7 @@ const useCartLogic = (
     setQuantity(parseInt(value));
   };
 
-  const addToCart = (product: productType, actualQuantity: number) => {
+  const addToCart = (product: productType, actualQuantity: number,price:number) => {
     const { color, size } = product;
     setTimeout(() => {
       setShowAlert((showAlert) => false);
@@ -62,8 +63,8 @@ const useCartLogic = (
     }
     product["quantity"] = quantity;
     product["actualQuantity"] = actualQuantity;
-    product["price"] = Number(priceRef.current?.textContent?.slice(1));
-    setSelectedItemQuantity(quantity);
+    product["price"] = price;
+    setSelectedItemQuantity(prev=>[...prev,quantity]);
     setItemsSelected((prev) => [...prev, product]);
     // console.log(itemsSelected, product);
     alertMsg.current = "ADDED TO CART";
@@ -82,7 +83,7 @@ const useCartLogic = (
     setSelectedSize,
     selectedSize,
     clothSize,
-    priceRef,
+   
     addToCart,
     quantity,
     setQuantity,
