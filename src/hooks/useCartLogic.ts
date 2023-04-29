@@ -12,6 +12,11 @@ interface productType {
   actualQuantity: number;
 }
 
+enum ModeValue {
+  INCREMENT='INCREMENT',
+  DECREMENT='DECREMENT'
+}
+
 const useCartLogic = (
   itemsSelected: productType[],
   setItemsSelected: React.Dispatch<SetStateAction<productType[]>>,
@@ -27,12 +32,10 @@ const useCartLogic = (
   const [selectedColor, setSelectedColor] = useState(-1);
   const [selectedSize, setSelectedSize] = useState(-1);
   const [quantity, setQuantity] = useState(1);
-
   const [showAlert, setShowAlert] = useState(false);
   const colorRef = useRef("");
   const sizeRef = useRef<number | string>(0);
   const alertMsg = useRef("");
-  const priceRef = useRef<HTMLParagraphElement>(null);
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,
     actualQuantity: number
@@ -49,7 +52,11 @@ const useCartLogic = (
     setQuantity(parseInt(value));
   };
 
-  const addToCart = (product: productType, actualQuantity: number,price:number) => {
+  const addToCart = (
+    product: productType,
+    actualQuantity: number,
+    price: number
+  ) => {
     const { color, size } = product;
     setTimeout(() => {
       setShowAlert((showAlert) => false);
@@ -64,7 +71,7 @@ const useCartLogic = (
     product["quantity"] = quantity;
     product["actualQuantity"] = actualQuantity;
     product["price"] = price;
-    setSelectedItemQuantity(prev=>[...prev,quantity]);
+    setSelectedItemQuantity((prev) => [...prev, quantity]);
     setItemsSelected((prev) => [...prev, product]);
     // console.log(itemsSelected, product);
     alertMsg.current = "ADDED TO CART";
@@ -72,6 +79,48 @@ const useCartLogic = (
     setSelectedSize(-1);
     setQuantity(1);
   };
+
+  const removeFromCart = (
+    index: number,
+    item: productType,
+    selectedItemQuantity: number[]
+  ) => {
+    setTimeout(() => {
+      setShowAlert((showAlert) => false);
+    }, 1000);
+    setShowAlert((showAlert) => true);
+    setSelectedItemQuantity(
+      selectedItemQuantity.filter((itemQuantity, i) => {
+        return i !== index;
+      })
+    );
+    setItemsSelected(
+      itemsSelected.filter((selectedItem) => {
+        return (
+          item.size !== selectedItem.size ||
+          item.img_url !== selectedItem.img_url
+        );
+      })
+    );
+    alertMsg.current = "REMOVED FROM CART";
+  };
+
+  const changeQuantity = (mode: ModeValue,selectedItemQuantity:number[],item:productType,index:number) => {
+    if (mode === "INCREMENT") {
+      if (selectedItemQuantity[index] >= item.actualQuantity) return;
+      const updatedItemQuantity = [...selectedItemQuantity];
+      updatedItemQuantity[index]++;
+      setSelectedItemQuantity(updatedItemQuantity);
+      // console.log(index, selectedItemQuantity);
+    }
+    if (mode === "DECREMENT") {
+      if (selectedItemQuantity[index] === 1) return;
+      const updatedItemQuantity = [...selectedItemQuantity];
+      updatedItemQuantity[index]--;
+      // setSelectedItemQuantity(updatedItemQuantity);
+    }
+  };
+
   return {
     showAlert,
     alertMsg,
@@ -83,10 +132,11 @@ const useCartLogic = (
     setSelectedSize,
     selectedSize,
     clothSize,
-   
+    removeFromCart,
     addToCart,
     quantity,
     setQuantity,
+    changeQuantity,
     handleChange,
   };
 };

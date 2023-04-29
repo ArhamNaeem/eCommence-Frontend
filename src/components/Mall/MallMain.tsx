@@ -29,6 +29,8 @@ interface ProductContextType {
   setItemsSelected: Dispatch<SetStateAction<productType[]>>;
   selectedItemQuantity:number[];
   setSelectedItemQuantity: Dispatch<SetStateAction<number[]>>;
+  selectedItemsCount: number;
+  setSelectedItemsCount: Dispatch<SetStateAction<number>>;
 }
 
 export const ProductContext = createContext<ProductContextType>({
@@ -36,16 +38,19 @@ export const ProductContext = createContext<ProductContextType>({
   setItemsSelected: () => {},
   selectedItemQuantity: [],
   setSelectedItemQuantity: () => {},
+  selectedItemsCount: 0,
+  setSelectedItemsCount: () => {},
 });
 
 const MallMain = () => {
   const [selectedItemQuantity,setSelectedItemQuantity] = useState<Array<number>>([]);
+  const [selectedItemsCount,setSelectedItemsCount] = useState(0);
   const [itemsSelected, setItemsSelected] = useState<productType[]>([]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-      <ProductContext.Provider value={{ itemsSelected, setItemsSelected,selectedItemQuantity,setSelectedItemQuantity }}>
+      <ProductContext.Provider value={{ itemsSelected, setItemsSelected,selectedItemQuantity,setSelectedItemQuantity,selectedItemsCount,setSelectedItemsCount }}>
       
           <Navbar />
           <FreeDelivery />

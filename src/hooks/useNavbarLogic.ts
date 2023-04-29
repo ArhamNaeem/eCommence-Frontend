@@ -1,11 +1,11 @@
-import { useState, useMemo, useEffect, useRef } from "react";
-
-
+import { useState, useMemo, useEffect, useRef, useContext } from "react";
+import { ProductContext } from "../components/Mall/MallMain";
 
 
 export const useNavbarLogic = () => {
   const [scrollDirection, setScrollDirection] = useState<boolean | undefined>();
     const scrollYRef = useRef(0);
+    // const {selectedItemsCount} = useContext(ProductContext)
 
       const [itemsBought, setItemsBought] = useState(0);
   const [ isThreeDigit, showBoughtItems] = useMemo(() => {

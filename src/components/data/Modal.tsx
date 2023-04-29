@@ -43,13 +43,19 @@ const Modal = (props: modalType) => {
     size: 0,
     actualQuantity: props.quantity,
   };
-  const { itemsSelected, setItemsSelected, setSelectedItemQuantity } =
-    useContext(ProductContext);
+  const {
+    itemsSelected,
+    setItemsSelected,
+    setSelectedItemQuantity,
+    setSelectedItemsCount,
+    selectedItemsCount
+  } = useContext(ProductContext);
   const { ...rest } = useCartLogic(
     // props.quantity,
     itemsSelected,
     setItemsSelected,
-    setSelectedItemQuantity
+    setSelectedItemQuantity,
+    
   );
   return (
     <>
@@ -132,17 +138,20 @@ const Modal = (props: modalType) => {
               ))}
             </div>
 
-            <p
-              
-              className="text-3xl font-bold my-4 mt-6  text-slate-900 "
-            >
+            <p className="text-3xl font-bold my-4 mt-6  text-slate-900 ">
               ${(Number(props.price.$numberDecimal) * rest.quantity).toFixed(2)}
             </p>
             <button
               onClick={() => {
                 selectedProducts.color = rest.colorRef.current;
                 selectedProducts.size = rest.sizeRef.current;
-                rest.addToCart(selectedProducts,props.quantity,Number(props.price.$numberDecimal));
+                rest.addToCart(
+                  selectedProducts,
+                  props.quantity,
+                  Number(props.price.$numberDecimal)
+                );
+                setSelectedItemsCount((prev) => prev + 1);
+                console.log(selectedItemsCount)
               }}
               className="absolute bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2"
             >
@@ -165,7 +174,7 @@ const Modal = (props: modalType) => {
                 min={1}
                 type="number"
                 id="myNumberInput"
-                onChange={(e)=>rest.handleChange(e,props.quantity)}
+                onChange={(e) => rest.handleChange(e, props.quantity)}
                 className="w-20 py-1 mx-4 outline-none text-center   bg-slate-100"
               />
               <button

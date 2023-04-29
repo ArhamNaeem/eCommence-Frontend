@@ -6,7 +6,7 @@ import { useNavbarLogic } from "../../hooks/useNavbarLogic";
 import Logo from "../../utils/Logo";
 import Cart from "./cart/Cart";
 const Navbar = () => {
-  const {itemsSelected} = useContext(ProductContext)
+
   const [showCart, setShowCart] = useState(false);
   const {
     itemsBought,
