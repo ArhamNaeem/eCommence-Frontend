@@ -9,13 +9,13 @@ interface productType {
   price: number;
   quantity: number;
   size: number | string;
-
+  actualQuantity: number;
 }
 
 const useCartLogic = (
-  actualQuantity: number,
   itemsSelected: productType[],
-  setItemsSelected: React.Dispatch<SetStateAction<productType[]>>
+  setItemsSelected: React.Dispatch<SetStateAction<productType[]>>,
+  setSelectedItemQuantity: React.Dispatch<SetStateAction<number>>
 ) => {
   const clothSize: Record<number, string> = {
     1: "S",
@@ -32,7 +32,10 @@ const useCartLogic = (
   const sizeRef = useRef<number | string>(0);
   const alertMsg = useRef("");
   const priceRef = useRef<HTMLParagraphElement>(null);
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    actualQuantity: number
+  ) => {
     const value = e.target.value;
     if (value.length === 0) {
       setQuantity(1);
@@ -45,11 +48,11 @@ const useCartLogic = (
     setQuantity(parseInt(value));
   };
 
-  const addToCart = (product: productType) => {
+  const addToCart = (product: productType, actualQuantity: number) => {
     const { color, size } = product;
     setTimeout(() => {
       setShowAlert((showAlert) => false);
-    }, 1500);
+    }, 1000);
     setShowAlert((showAlert) => true);
     if (!(color && size)) {
       alertMsg.current = !color
@@ -58,10 +61,15 @@ const useCartLogic = (
       return;
     }
     product["quantity"] = quantity;
+    product["actualQuantity"] = actualQuantity;
     product["price"] = Number(priceRef.current?.textContent?.slice(1));
+    setSelectedItemQuantity(quantity);
     setItemsSelected((prev) => [...prev, product]);
-    console.log(itemsSelected, product);
+    // console.log(itemsSelected, product);
     alertMsg.current = "ADDED TO CART";
+    setSelectedColor(-1);
+    setSelectedSize(-1);
+    setQuantity(1);
   };
   return {
     showAlert,

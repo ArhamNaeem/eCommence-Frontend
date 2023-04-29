@@ -9,10 +9,10 @@ export const useNavbarLogic = () => {
 
       const [itemsBought, setItemsBought] = useState(0);
   const [ isThreeDigit, showBoughtItems] = useMemo(() => {
-        const showBoughtItems = itemsBought >= 99 ? "99+" : "";
+        const showBoughtItems = itemsBought > 99 ? "99+" : "";
         const distance = itemsBought >= 10 ? 'left-[0.9rem]' : 'left-[1.2rem]';
         const isThreeDigit =
-          itemsBought >= 99
+          itemsBought > 99
             ? "top-3 left-[0.8rem] text-sm  tracking-tighter"
             : `top-2 ${distance}`;
         return [ isThreeDigit, showBoughtItems];

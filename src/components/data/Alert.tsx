@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 
 interface msgProps{
     msg: string
+    showAlert:boolean;
   setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
   
 }
@@ -10,9 +11,11 @@ interface msgProps{
 const Alert = (props:msgProps) => {
   return (
       <>
-        
-          <motion.div
-              initial={{ y: '-100vh' }}
+      <AnimatePresence>
+
+        {props.showAlert === true && 
+        (  <motion.div
+          initial={{ y: '-100vh' }}
               animate={{ y: 0 }}
               exit={{y:'-100vh'}}
               className="z-[100] fixed top-2 rounded-md font-bold left-[40%] bg-slate-100 shadow-black shadow-2xl h-16 w-1/3   p-1 ">
@@ -25,7 +28,9 @@ const Alert = (props:msgProps) => {
         <p className="w-full text-2xl text-center text-slate-800 flex items-center h-full justify-center">
           {props.msg}
         </p>
-      </motion.div>
+      </motion.div>)
+}
+          </AnimatePresence>
     </>
   );
 };

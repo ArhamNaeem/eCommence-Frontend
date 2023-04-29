@@ -21,25 +21,31 @@ interface productType {
   img_url: string;
   price: number;
   quantity: number;
+  actualQuantity:number;
   size: number | string;
 }
 interface ProductContextType {
   itemsSelected: productType[];
   setItemsSelected: Dispatch<SetStateAction<productType[]>>;
+  selectedItemQuantity:number;
+  setSelectedItemQuantity: Dispatch<SetStateAction<number>>;
 }
 
 export const ProductContext = createContext<ProductContextType>({
   itemsSelected: [],
   setItemsSelected: () => {},
+  selectedItemQuantity: 0,
+  setSelectedItemQuantity: () => {},
 });
 
 const MallMain = () => {
+  const [selectedItemQuantity,setSelectedItemQuantity] = useState(0);
   const [itemsSelected, setItemsSelected] = useState<productType[]>([]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-      <ProductContext.Provider value={{ itemsSelected, setItemsSelected }}>
+      <ProductContext.Provider value={{ itemsSelected, setItemsSelected,selectedItemQuantity,setSelectedItemQuantity }}>
       
           <Navbar />
           <FreeDelivery />

@@ -43,15 +43,21 @@ const Modal = (props: modalType) => {
     size: 0,
     actualQuantity: props.quantity,
   };
-  const { itemsSelected, setItemsSelected } = useContext(ProductContext);
-  const {...rest } = useCartLogic(props.quantity, itemsSelected, setItemsSelected);
+  const { itemsSelected, setItemsSelected, setSelectedItemQuantity } =
+    useContext(ProductContext);
+  const { ...rest } = useCartLogic(
+    // props.quantity,
+    itemsSelected,
+    setItemsSelected,
+    setSelectedItemQuantity
+  );
   return (
     <>
-      <AnimatePresence>
-        {rest.showAlert && (
-          <Alert msg={rest.alertMsg.current} setShowAlert={rest.setShowAlert} />
-        )}
-      </AnimatePresence>
+      <Alert
+        msg={rest.alertMsg.current}
+        showAlert={rest.showAlert}
+        setShowAlert={rest.setShowAlert}
+      />
       <div className={`fixed z-[60] top-0 -left-5 bg-black w-full`}>
         <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
         <motion.div
@@ -110,7 +116,9 @@ const Modal = (props: modalType) => {
                 <button
                   key={index}
                   onClick={() => {
-                    rest.sizeRef.current = props.cloth_type ? rest.clothSize[sz] : sz;
+                    rest.sizeRef.current = props.cloth_type
+                      ? rest.clothSize[sz]
+                      : sz;
                     rest.setSelectedSize((selectedSize) => index);
                   }}
                   className={`mt-4 border border-slate-200 rounded-lg w-9 h-9 text-center text-lg full mr-2  ${
@@ -134,19 +142,19 @@ const Modal = (props: modalType) => {
               onClick={() => {
                 selectedProducts.color = rest.colorRef.current;
                 selectedProducts.size = rest.sizeRef.current;
-                rest.addToCart(selectedProducts);
+                rest.addToCart(selectedProducts,props.quantity);
               }}
               className="absolute bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2"
             >
               ADD TO CART
             </button>
-          
-            
+
             <div className="absolute right-14 bottom-[3.2rem] ">
               {/* <p className="text-slate-900 text-sm font-semibold text-center">In Stock</p> */}
               <button
                 onClick={() =>
-                  rest.quantity > 1 && rest.setQuantity((quantity) => quantity - 1)
+                  rest.quantity > 1 &&
+                  rest.setQuantity((quantity) => quantity - 1)
                 }
                 className="text-2xl font-bold"
               >
@@ -157,7 +165,7 @@ const Modal = (props: modalType) => {
                 min={1}
                 type="number"
                 id="myNumberInput"
-                onChange={rest.handleChange}
+                onChange={(e)=>rest.handleChange(e,props.quantity)}
                 className="w-20 py-1 mx-4 outline-none text-center   bg-slate-100"
               />
               <button
