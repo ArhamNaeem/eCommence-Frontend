@@ -11,8 +11,8 @@ const {itemsSelected} = useContext(ProductContext)
   const {
     // itemsBought,
     // setItemsBought,
-    showBoughtItems,
-    isThreeDigit,
+    ITEM_BOUGHT_GT_99,
+    ISTHREEDIGIT,
     scrollDirection,
   } = useNavbarLogic();
   const navigate = useNavigate();
@@ -80,8 +80,8 @@ const {itemsSelected} = useContext(ProductContext)
             className="relative mr-14 mt-3 flex"
           >
             {/* when >=10 0.93rem */}
-            <h5 className={`absolute ${isThreeDigit} `}>
-              {showBoughtItems ? showBoughtItems : itemsSelected.length}
+            <h5 className={`absolute ${ISTHREEDIGIT} `}>
+              {ITEM_BOUGHT_GT_99 ? ITEM_BOUGHT_GT_99 : itemsSelected.length}
             
             </h5>
             <svg

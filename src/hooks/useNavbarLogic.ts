@@ -11,14 +11,14 @@ const {itemsSelected} = useContext(ProductContext)
     // const {selectedItemsCount} = useContext(ProductContext)
 
       // const [itemsBought,setItemsBought] = useState(0);
-  const [ isThreeDigit, showBoughtItems] = useMemo(() => {
-        const showBoughtItems = itemsSelected.length > 99 ? "99+" : "";
-        const distance = itemsSelected.length >= 10 ? 'left-[0.9rem]' : 'left-[1.2rem]';
-        const isThreeDigit =
+  const [ ISTHREEDIGIT, ITEM_BOUGHT_GT_99] = useMemo(() => {
+        const ITEM_BOUGHT_GT_99 = itemsSelected.length > 99 ? "99+" : "";
+        const DISTANCE = itemsSelected.length >= 10 ? 'left-[0.9rem]' : 'left-[1.2rem]';
+        const ISTHREEDIGIT =
           itemsSelected.length > 99
             ? "top-3 left-[0.8rem] text-sm  tracking-tighter"
-            : `top-2 ${distance}`;
-        return [ isThreeDigit, showBoughtItems];
+            : `top-2 ${DISTANCE}`;
+        return [ ISTHREEDIGIT, ITEM_BOUGHT_GT_99];
       }, [itemsSelected.length]);
 
       useEffect(() => {
@@ -44,9 +44,9 @@ const {itemsSelected} = useContext(ProductContext)
       }, []);
    return {
     //  itemsSelected.length,
-     isThreeDigit,
+     ISTHREEDIGIT,
     //  setitemsSelected.length,
-     showBoughtItems,
+     ITEM_BOUGHT_GT_99,
      scrollDirection,
    };
 }

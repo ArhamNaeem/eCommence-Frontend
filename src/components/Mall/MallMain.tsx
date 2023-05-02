@@ -9,7 +9,6 @@ import Footer from "../Home/Footer";
 import FreeDelivery from "./sections/FreeDelivery";
 import Navbar from "./Navbar";
 import Products from "./sections/Products";
-import { motion, spring } from "framer-motion";
 import ProductsFromDB from "../data/ProductsFromDB";
 import { createContext } from "react";
 
