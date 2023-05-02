@@ -6,11 +6,11 @@ import { useNavbarLogic } from "../../hooks/useNavbarLogic";
 import Logo from "../../utils/Logo";
 import Cart from "./cart/Cart";
 const Navbar = () => {
-
+const {itemsSelected} = useContext(ProductContext)
   const [showCart, setShowCart] = useState(false);
   const {
-    itemsBought,
-    setItemsBought,
+    // itemsBought,
+    // setItemsBought,
     showBoughtItems,
     isThreeDigit,
     scrollDirection,
@@ -81,7 +81,8 @@ const Navbar = () => {
           >
             {/* when >=10 0.93rem */}
             <h5 className={`absolute ${isThreeDigit} `}>
-              {showBoughtItems ? showBoughtItems : itemsBought}
+              {showBoughtItems ? showBoughtItems : itemsSelected.length}
+            
             </h5>
             <svg
               xmlns="http://www.w3.org/2000/svg"

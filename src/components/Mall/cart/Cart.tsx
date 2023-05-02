@@ -8,6 +8,7 @@ interface cartType {
   showCart: boolean;
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
+//TODO : MAKE PRODUCT QUANTITY CHANGE ON ITEM ADDITION + CREATE COMPONENT FOR FINAL PRICE
 
 enum ModeValue {
   INCREMENT = "INCREMENT",
