@@ -1,12 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import { ProductContext } from "./MallMain";
 import { useNavigate } from "react-router-dom";
 import { useNavbarLogic } from "../../hooks/useNavbarLogic";
 import Logo from "../../utils/Logo";
 import Cart from "./cart/Cart";
+import Alert from "../data/Alert";
 const Navbar = () => {
-const {itemsSelected} = useContext(ProductContext)
+  const { itemsSelected } = useContext(ProductContext);
   const [showCart, setShowCart] = useState(false);
   const {
     // itemsBought,
@@ -75,14 +76,13 @@ const {itemsSelected} = useContext(ProductContext)
 
           <button
             onClick={() => {
-              setShowCart((showCart) => !showCart);
+              itemsSelected.length && setShowCart((showCart) => !showCart);
             }}
             className="relative mr-14 mt-3 flex"
           >
             {/* when >=10 0.93rem */}
             <h5 className={`absolute ${ISTHREEDIGIT} `}>
               {ITEM_BOUGHT_GT_99 ? ITEM_BOUGHT_GT_99 : itemsSelected.length}
-            
             </h5>
             <svg
               xmlns="http://www.w3.org/2000/svg"
