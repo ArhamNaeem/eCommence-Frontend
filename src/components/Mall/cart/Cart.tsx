@@ -4,6 +4,7 @@ import { ProductContext } from "../MallMain";
 import { AnimatePresence, motion } from "framer-motion";
 import useCartLogic from "../../../hooks/useCartLogic";
 import Alert from "../../data/Alert";
+import { CartTotal } from "./CartTotal";
 interface cartType {
   showCart: boolean;
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +21,7 @@ const Cart = (props: cartType) => {
     setItemsSelected,
     selectedItemQuantity,
     setSelectedItemQuantity,
-  //  setSelectedItemsCount,
+    //  setSelectedItemsCount,
   } = useContext(ProductContext);
   const {
     showAlert,
@@ -28,7 +29,7 @@ const Cart = (props: cartType) => {
     removeFromCart,
     changeQuantity,
     setTotalPrice,
-    totalPrice
+    totalPrice,
   } = useCartLogic(itemsSelected, setItemsSelected, setSelectedItemQuantity);
 
   return (
@@ -115,7 +116,6 @@ const Cart = (props: cartType) => {
                             min={1}
                             type="number"
                             id="myNumberInput"
-                            
                             readOnly
                             className="w-14 py-1 mx-2 outline-none text-center   bg-slate-100"
                           />
@@ -136,7 +136,7 @@ const Cart = (props: cartType) => {
                       </div>
                       <button
                         onClick={() => {
-                         // setSelectedItemsCount((prev) => prev - 1);
+                          // setSelectedItemsCount((prev) => prev - 1);
                           // setShowAlert(showAlert=>true)
                           removeFromCart(index, item, selectedItemQuantity);
                         }}
@@ -148,6 +148,7 @@ const Cart = (props: cartType) => {
                   </motion.div>
                 ))}
               </AnimatePresence>
+            <CartTotal />
             </motion.div>
           </>
         )}
