@@ -47,9 +47,9 @@ const Modal = (props: modalType) => {
     itemsSelected,
     setItemsSelected,
     setSelectedItemQuantity,
-    setSelectedItemsCount,
+    // setSelectedItemsCount,
     selectedItemQuantity,
-    selectedItemsCount
+    // selectedItemsCount
   } = useContext(ProductContext);
   const { ...rest } = useCartLogic(
     // props.quantity,
@@ -152,7 +152,7 @@ const Modal = (props: modalType) => {
                   Number(props.price.$numberDecimal),
                   selectedItemQuantity
                 );
-                setSelectedItemsCount((prev) => prev + 1);
+                // setSelectedItemsCount((prev) => prev + 1);
                 // console.log(selectedItemsCount)
               }}
               className="absolute bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2"

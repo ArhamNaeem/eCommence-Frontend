@@ -20,7 +20,7 @@ const Cart = (props: cartType) => {
     setItemsSelected,
     selectedItemQuantity,
     setSelectedItemQuantity,
-    setSelectedItemsCount,
+  //  setSelectedItemsCount,
   } = useContext(ProductContext);
   const {
     showAlert,
@@ -134,7 +134,7 @@ const Cart = (props: cartType) => {
                       </div>
                       <button
                         onClick={() => {
-                          setSelectedItemsCount((prev) => prev - 1);
+                         // setSelectedItemsCount((prev) => prev - 1);
                           // setShowAlert(showAlert=>true)
                           removeFromCart(index, item, selectedItemQuantity);
                         }}
