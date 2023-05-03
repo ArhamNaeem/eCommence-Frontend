@@ -61,16 +61,19 @@ const useCartLogic = (
   ) => {
     const { color, size } = product;
     let ITEM_ALREADY_EXISTS = false;
+    setShowAlert((showAlert) => true);
+    
     setTimeout(() => {
       setShowAlert((showAlert) => false);
     }, 1000);
-    setShowAlert((showAlert) => true);
+
     if (!(color && size)) {
       alertMsg.current = !color
         ? "PLEASE SELECT COLOR!"
         : "PLEASE SELECT SIZE!";
       return;
     }
+    
     itemsSelected.map((item, index) => {
       if (item.color === color && item.size === size) {
         addAlreadyExistItemQuantity(
@@ -83,12 +86,15 @@ const useCartLogic = (
         return;
       }
     });
+    setSelectedColor(-1);
+    setSelectedSize(-1);
+    setQuantity(1);
     // console.log(ITEM_ALREADY_EXISTS);
     if (ITEM_ALREADY_EXISTS) {
       alertMsg.current = "ADDED TO CART";
-
       return;
     }
+   
     product["quantity"] = quantity;
     product["actualQuantity"] = actualQuantity;
     product["price"] = price;
@@ -96,9 +102,7 @@ const useCartLogic = (
     setItemsSelected((prev) => [...prev, product]);
     // console.log(itemsSelected, product);
     alertMsg.current = "ADDED TO CART";
-    setSelectedColor(-1);
-    setSelectedSize(-1);
-    setQuantity(1);
+  
   };
 
   const removeFromCart = (
@@ -119,7 +123,8 @@ const useCartLogic = (
       itemsSelected.filter((selectedItem) => {
         return (
           item.size !== selectedItem.size ||
-          item.img_url !== selectedItem.img_url
+          item.img_url !== selectedItem.img_url || item.size !== selectedItem.size
+          || item.color!== selectedItem.color
         );
       })
     );

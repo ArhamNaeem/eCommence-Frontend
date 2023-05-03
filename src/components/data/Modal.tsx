@@ -152,6 +152,8 @@ const Modal = (props: modalType) => {
                   Number(props.price.$numberDecimal),
                   selectedItemQuantity
                 );
+               rest.colorRef.current = ""
+               rest.sizeRef.current = ""
                 // setSelectedItemsCount((prev) => prev + 1);
                 // console.log(selectedItemsCount)
               }}
