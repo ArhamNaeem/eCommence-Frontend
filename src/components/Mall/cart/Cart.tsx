@@ -27,6 +27,8 @@ const Cart = (props: cartType) => {
     setShowAlert,
     removeFromCart,
     changeQuantity,
+    setTotalPrice,
+    totalPrice
   } = useCartLogic(itemsSelected, setItemsSelected, setSelectedItemQuantity);
 
   return (
