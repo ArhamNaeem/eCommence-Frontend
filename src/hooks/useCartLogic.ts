@@ -147,7 +147,7 @@ const useCartLogic = (
       if (selectedItemQuantity[index] >= item.actualQuantity) return;
       const updatedItemQuantity = [...selectedItemQuantity];
       updatedItemQuantity[index]++;
-      setSelectedItemQuantity(updatedItemQuantity);
+      setSelectedItemQuantity (updatedItemQuantity);
       // console.log(index, selectedItemQuantity);
     }
     if (mode === "DECREMENT") {

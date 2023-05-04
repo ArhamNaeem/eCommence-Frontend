@@ -40,7 +40,7 @@ const Cart = (props: cartType) => {
         setShowAlert={setShowAlert}
       />
       <AnimatePresence>
-        {props.showCart && itemsSelected.length !== 0 && (
+        {props.showCart && (
           <>
             <motion.button
               initial={{ y: "-100vh" }}
@@ -148,7 +148,7 @@ const Cart = (props: cartType) => {
                   </motion.div>
                 ))}
               </AnimatePresence>
-            <CartTotal />
+              <CartTotal />
             </motion.div>
           </>
         )}

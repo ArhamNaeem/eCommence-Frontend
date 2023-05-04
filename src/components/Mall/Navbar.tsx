@@ -76,7 +76,8 @@ const Navbar = () => {
 
           <button
             onClick={() => {
-              itemsSelected.length && setShowCart((showCart) => !showCart);
+            itemsSelected.length && setShowCart((showCart) => !showCart);
+        
             }}
             className="relative mr-14 mt-3 flex"
           >
