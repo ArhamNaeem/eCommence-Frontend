@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { ChangeEvent, useRef, useState } from "react";
-import { ProductContext } from "../Mall/MallMain";
+import { ProductContext } from "../../App";
 import { useContext } from "react";
 import Alert from "./Alert";
 import useCartLogic from "../../hooks/useCartLogic";

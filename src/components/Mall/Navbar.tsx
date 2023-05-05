@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useContext } from "react";
-import { ProductContext } from "./MallMain";
+import { ProductContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { useNavbarLogic } from "../../hooks/useNavbarLogic";
 import Logo from "../../utils/Logo";

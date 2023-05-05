@@ -1,6 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import { ProductContext } from "../MallMain";
-
+import { ProductContext } from "../../../App";
 export const CartTotal = () => {
   const { itemsSelected,selectedItemQuantity } = useContext(ProductContext);
   const [totalPrice, setTotalPrice] = useState(0);

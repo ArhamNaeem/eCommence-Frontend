@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import Filters from "../filters/Filters";
 import ProductsFromDB from "../../../data/ProductsFromDB";
-import Errors from "../../../data/Alert";
-import Navbar from "../../Navbar";
 import Cart from "../../cart/Cart";
 
 const ShoeStore = () => {
@@ -13,13 +11,11 @@ const ShoeStore = () => {
   
   const [showCart,setShowCart] = useState(false)
 
-
   return (
     <>
       <Cart showCart={showCart} setShowCart={setShowCart}/>
       <button
         onClick={() => {
-      
           setShowCart((showCart) => !showCart);
         }}
         className="absolute top-3 z-10 right-10 mt-3 flex "

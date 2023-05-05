@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import useGetProducts from "../../hooks/useGetProducts";
 import InfiniteScroll from "react-infinite-scroll-component";
 //make its type an enum which will accept any valid type of products to call a valid api
-import { ProductContext } from "../Mall/MallMain";
+import { ProductContext } from "../../App";
 import { useContext } from "react";
 import { AnimatePresence } from "framer-motion";
 import Products from "./Products";
