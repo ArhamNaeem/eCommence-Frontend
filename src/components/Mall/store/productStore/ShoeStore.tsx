@@ -3,27 +3,24 @@ import { useState } from "react";
 import Filters from "../filters/Filters";
 import ProductsFromDB from "../../../data/ProductsFromDB";
 import Cart from "../../cart/Cart";
-
+import { ProductContext } from "../../../../App";
+import { useNavbarLogic } from "../../../../hooks/useNavbarLogic";
 const ShoeStore = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
-  const [showCart,setShowCart] = useState(false)
-
+  const { itemsSelected } = useContext(ProductContext);
+  const [showCart, setShowCart] = useState(false);
+  const { ISTHREEDIGIT, ITEM_BOUGHT_GT_99 } = useNavbarLogic();
   return (
     <>
-      <Cart showCart={showCart} setShowCart={setShowCart}/>
+      <Cart showCart={showCart} setShowCart={setShowCart} />
       <button
         onClick={() => {
-          setShowCart((showCart) => !showCart);
+         itemsSelected.length &&  setShowCart((showCart) => !showCart);
         }}
         className="absolute top-3 z-10 right-10 mt-3 flex "
       >
-        {/* when >=10 0.93rem */}
-        {/* <h5 className={`absolute ${isThreeDigit} `}> */}
-        {/* {showBoughtItems ? showBoughtItems : itemsBought} */}
-        {/* </h5> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="45"
@@ -40,7 +37,11 @@ const ShoeStore = () => {
                  1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
           />
         </svg>
-        <p className="text-lg mr-1 mt-2">Cart</p>
+        <p className={`absolute ${ISTHREEDIGIT}`}>
+        
+          {ITEM_BOUGHT_GT_99 ? ITEM_BOUGHT_GT_99 : itemsSelected.length}
+        </p>
+        <h1 className="text-lg mr-1 mt-2">Cart</h1>
       </button>
 
       <h1 className=" w-3/4 left-1/4 p-2 text-center font-bold  absolute text-7xl text-slate-900   ">
@@ -48,10 +49,9 @@ const ShoeStore = () => {
       </h1>
       <Filters enum="Shoes" />
 
-      <ProductsFromDB type="shoes" callOrigin="category"/>
+      <ProductsFromDB type="shoes" callOrigin="category" />
     </>
   );
 };
 
 export default ShoeStore;
-
