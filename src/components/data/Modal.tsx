@@ -65,8 +65,8 @@ const Modal = (props: modalType) => {
         showAlert={rest.showAlert}
         setShowAlert={rest.setShowAlert}
       />
-      <div className={`fixed z-[60] top-0 -left-5 bg-black w-full`}>
-        <div className="fixed inset-0 bg-black opacity-50 z-40"></div>
+      <div className={`fixed z-[90] top-0 -left-5  bg-black w-full`}>
+        <div className="fixed inset-0 bg-black opacity-50 "></div>
         <motion.div
           initial={{ y: "-100vh" }}
           animate={{ y: 0 }}
