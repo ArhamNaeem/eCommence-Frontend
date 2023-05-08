@@ -30,7 +30,7 @@ const useCartLogic = (
     5: "XXL",
   };
   const [selectedColor, setSelectedColor] = useState(-1);
-  const [totalPrice,setTotalPrice]= useState(0);
+ 
   const [selectedSize, setSelectedSize] = useState(-1);
   const [quantity, setQuantity] = useState(1);
   const [showAlert, setShowAlert] = useState(false);
@@ -72,6 +72,8 @@ const useCartLogic = (
       alertMsg.current = !color
         ? "PLEASE SELECT COLOR!"
         : "PLEASE SELECT SIZE!";
+        setSelectedColor(-1)
+        setSelectedSize(-1)
       return;
     }
     
@@ -114,8 +116,7 @@ const useCartLogic = (
     item: productType,
     selectedItemQuantity: number[]
   ) => {
-    // setTotalPrice(totalPrice => totalPrice -(item.price * item.quantity));
-   console.log(totalPrice)
+ 
     setTimeout(() => {
       setShowAlert((showAlert) => false);
     }, 1000);
@@ -190,8 +191,6 @@ const useCartLogic = (
     setQuantity,
     changeQuantity,
     handleChange,
-    totalPrice,
-    setTotalPrice,
   };
 };
 
