@@ -1,7 +1,8 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useGetProducts } from "../../hooks/api/useGetProducts";
 import { ProductsDisplay } from "./ProductsDisplay";
+import Alert from "./Alert";
 
 interface productType {
   category: string;
@@ -29,7 +30,6 @@ const Products = (props: propType) => {
   const { getProducts } = useGetProducts();
   const {
     data,
-    error,
     fetchNextPage,
     hasNextPage,
     isFetching,
@@ -42,31 +42,34 @@ const Products = (props: propType) => {
       return lastPage.nbHits == 12 ? pages.length + 1 : undefined;
     },
   });
-  return (
+ const [showAlert,setShowAlert] = useState(true)
+    return status === 'loading' ? (
+      <p>Loading...</p>
+    ) : status === 'error' ? (
+      <Alert msg='Error Occurred' showAlert={showAlert} setShowAlert={setShowAlert} />
+    ) : (
     <>
       {data &&
         data.pages
           .flatMap((page) => page.data)
           .map((product: productType, index: number) => (
-            <ProductsDisplay key={index} product={product} />
+            <ProductsDisplay key={index} setClicked = {props.setClicked} setProductInfo = {props.setProductInfo} product={product} />
           ))}
       <div>
         <button
           onClick={() => {
             fetchNextPage();
           }}
-          disabled={!hasNextPage || isFetchingNextPage}
+          hidden={!hasNextPage}
+          disabled={isFetchingNextPage}
+          className="bg-black text-2xl text-white font-semibold p-3 my-2"
         >
-          {isFetchingNextPage
-            ? "Loading more..."
-            : hasNextPage
-            ? "Load More"
-            : "Nothing more to load"}
+         Load More
         </button>
       </div>
-      <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div>
+      {/* <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div> */}
     </>
-  );
+    )
 };
 
 export default Products;

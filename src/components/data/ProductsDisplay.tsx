@@ -14,9 +14,16 @@ interface productType {
   _id: string;
 }
 
-export const ProductsDisplay = ({ product }: { product: productType }) => {
+export const ProductsDisplay = ({setClicked,setProductInfo, product }: {
+  setClicked: React.Dispatch<React.SetStateAction<boolean>>,
+  setProductInfo:React.Dispatch<React.SetStateAction<productType | undefined>>,
+  product: productType }) => {
   return (
     <div
+    onClick={() => {
+      setProductInfo(product);
+      setClicked((clicked) => true);
+    }}
       className="hover:scale-105 bg-white transition-all duration-300 shadow-slate-400 shadow-xl flex flex-col items-center p-2 mx-2 my-10  h-[28rem] w-80"
     >
       <img

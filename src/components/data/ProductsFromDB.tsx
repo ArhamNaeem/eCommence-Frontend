@@ -46,7 +46,7 @@ const ProductsFromDB = (props: propType) => {
           </h1>
         ) : null}
         {props.callOrigin === "main" ? (
-          <div className="grid  grid-cols-4 p-4 h-full">
+          <div className="grid   grid-cols-4 p-4 h-full">
             <Products
               type={props.type}
               setClicked={setClicked}
