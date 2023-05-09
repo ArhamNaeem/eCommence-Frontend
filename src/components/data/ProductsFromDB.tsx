@@ -41,7 +41,7 @@ const ProductsFromDB = (props: propType) => {
         }`}
       >
         {props.callOrigin === "main" ? (
-          <h1 className="text-7xl  text-center font-bold text-slate-700 ">
+          <h1 className="text-7xl ml-10 text-center font-bold text-slate-700 ">
             Products
           </h1>
         ) : null}

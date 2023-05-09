@@ -6,7 +6,7 @@ export const useGetProducts = () => {
 
   const getProducts = async ( pageParam = 1 , type: string) => {
     try {
-      const response = await instance.get(`/?page=${pageParam}`);
+      const response = await instance.get(`/?page=${pageParam}&type=${type}`);
       const data = response.data;
       return data;
     } catch (e) {
