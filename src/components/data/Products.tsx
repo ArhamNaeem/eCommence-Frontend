@@ -28,32 +28,35 @@ interface propType {
 
 const Products = (props: propType) => {
   const { getProducts } = useGetProducts();
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteQuery({
-    queryKey: ["posts"],
-    queryFn: ({ pageParam = 1 }) => getProducts(pageParam, props.type || ""),
-    getNextPageParam: (lastPage, pages) => {
-      return lastPage.nbHits == 12 ? pages.length + 1 : undefined;
-    },
-  });
- const [showAlert,setShowAlert] = useState(true)
-    return status === 'loading' ? (
-      <p>Loading...</p>
-    ) : status === 'error' ? (
-      <Alert msg='Error Occurred' showAlert={showAlert} setShowAlert={setShowAlert} />
-    ) : (
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
+    useInfiniteQuery({
+      queryKey: ["posts"],
+      queryFn: ({ pageParam = 1 }) => getProducts(pageParam, props.type || ""),
+      getNextPageParam: (lastPage, pages) => {
+        return lastPage.nbHits == 12 ? pages.length + 1 : undefined;
+      },
+    });
+  const [showAlert, setShowAlert] = useState(true);
+  return status === "loading" ? (
+    <p className="font-bold text-5xl relative left-[40vw]">Loading...</p>
+  ) : status === "error" ? (
+    <Alert
+      msg="Error Occurred"
+      showAlert={showAlert}
+      setShowAlert={setShowAlert}
+    />
+  ) : (
     <>
       {data &&
         data.pages
           .flatMap((page) => page.data)
           .map((product: productType, index: number) => (
-            <ProductsDisplay key={index} setClicked = {props.setClicked} setProductInfo = {props.setProductInfo} product={product} />
+            <ProductsDisplay
+              key={index}
+              setClicked={props.setClicked}
+              setProductInfo={props.setProductInfo}
+              product={product}
+            />
           ))}
       <div>
         <button
@@ -62,14 +65,14 @@ const Products = (props: propType) => {
           }}
           hidden={!hasNextPage}
           disabled={isFetchingNextPage}
-          className="bg-black text-2xl text-white font-semibold p-3 my-2"
+          className="bg-black text-2xl transition-all duration-150 rounded-sm relative border border-black 
+          left-[40vw]  text-white font-semibold py-3 px-8  my-2 hover:scale-105 "
         >
-         Load More
+          Load More
         </button>
       </div>
-      {/* <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div> */}
     </>
-    )
+  );
 };
 
 export default Products;
