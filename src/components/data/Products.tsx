@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import useGetProducts from "../../hooks/useGetProducts";
+import { useMemo } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useGetProducts } from "../../hooks/api/useGetProducts";
+import { ProductsDisplay } from "./ProductsDisplay";
 
 interface productType {
   category: string;
@@ -18,46 +20,51 @@ interface productType {
 }
 
 interface propType {
-    type?: string;
-    setClicked: React.Dispatch<React.SetStateAction<boolean>>;
-    setProductInfo:  React.Dispatch<React.SetStateAction<productType | undefined>>;
+  type?: string;
+  setClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  setProductInfo: React.Dispatch<React.SetStateAction<productType | undefined>>;
 }
-const Products = (props: propType) => {
-  
 
-  const { productData }: { productData: productType[] } = useGetProducts(
-    props.type || ""
-  );
+const Products = (props: propType) => {
+  const { getProducts } = useGetProducts();
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteQuery({
+    queryKey: ["posts"],
+    queryFn: ({ pageParam = 1 }) => getProducts(pageParam, props.type || ""),
+    getNextPageParam: (lastPage, pages) => {
+      return lastPage.nbHits == 12 ? pages.length + 1 : undefined;
+    },
+  });
   return (
     <>
-      {productData &&
-        productData.map((product, index: number) => (
-          <div
-            key={index}
-            onClick={() => {
-              props.setProductInfo(product);
-              props.setClicked((clicked) => true);
-            }}
-            className="hover:scale-105 bg-white transition-all duration-300 shadow-slate-400 shadow-xl flex flex-col items-center p-2 mx-2 my-10  h-[28rem] w-80"
-          >
-            <img
-              loading="lazy"
-              src={product.img_url}
-              className=" mb-4 shadow-lg w-full h-[70%] object-contain rounded-lg"
-            />
-            <div className="w-full p-2">
-              <p className="text-slate-500 text-xl font-bold tracking-wider">
-                {product.cloth_type || product.shoe_type}
-              </p>
-              <p className="text-slate-400 font-bold  text-sm tracking-wide">
-                {product.category}
-              </p>
-              <p className="text-slate-400 text-lg">
-                $ {product.price.$numberDecimal}
-              </p>
-            </div>
-          </div>
-        ))}
+      {data &&
+        data.pages
+          .flatMap((page) => page.data)
+          .map((product: productType, index: number) => (
+            <ProductsDisplay key={index} product={product} />
+          ))}
+      <div>
+        <button
+          onClick={() => {
+            fetchNextPage();
+          }}
+          disabled={!hasNextPage || isFetchingNextPage}
+        >
+          {isFetchingNextPage
+            ? "Loading more..."
+            : hasNextPage
+            ? "Load More"
+            : "Nothing more to load"}
+        </button>
+      </div>
+      <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div>
     </>
   );
 };
