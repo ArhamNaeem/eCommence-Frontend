@@ -16,7 +16,7 @@ const FilterIcons = (props: any) => {
               props.setColors((prev:string[]) => prev.filter((clr) => clr != filterValue));
           }
         }}
-         className="ml-1 font-bold ">
+         className="ml-1 pb-[2px] font-bold hover:bg-slate-200  rounded-full w-5 ">
           &times;
         </button>
       </span>

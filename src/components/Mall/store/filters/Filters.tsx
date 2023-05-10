@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ApplianceFilter from "./ApplianceFilter";
 import ClothesFilter from "./ClothesFilter";
 import CosmeticsFilter from "./CosmeticsFilter";
@@ -30,6 +30,9 @@ const Filters = (props: propType) => {
   const [priceOrder, setPriceOrder] = useState("");
   const [sizes, setSizes] = useState<Array<string>>([]);
   const [colors, setColors] = useState<Array<string>>([]);
+  // useEffect(()=>{
+
+  // },[filters,priceOrder,sizes,colors])
   return (
     <>
       <motion.div

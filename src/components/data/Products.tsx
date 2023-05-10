@@ -27,11 +27,13 @@ interface propType {
 }
 
 const Products = (props: propType) => {
-  const { getProducts } = useGetProducts();
+  const { getAllProducts ,getFilteredProducts} = useGetProducts();
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery({
       queryKey: ["posts"],
-      queryFn: ({ pageParam = 1 }) => getProducts(pageParam, props.type || ""),
+      queryFn:  ({ pageParam = 1 }) => { 
+       return props.type?getFilteredProducts(pageParam,{type:props.type}):
+        getAllProducts(pageParam)},
       getNextPageParam: (lastPage, pages) => {
         return lastPage.nbHits == 12 ? pages.length + 1 : undefined;
       },
@@ -66,7 +68,7 @@ const Products = (props: propType) => {
           hidden={!hasNextPage}
           disabled={isFetchingNextPage}
           className="bg-black text-2xl transition-all duration-150 rounded-sm relative border border-black 
-          left-[40vw]  text-white font-semibold py-3 px-8  my-2 hover:scale-105 "
+          left-[40vw]  text-white font-semibold py-3 px-8  my-8 hover:scale-105 "
         >
           Load More
         </button>

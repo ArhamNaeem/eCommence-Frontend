@@ -1,8 +1,5 @@
 import React, { useRef, useState } from "react";
 import Modal from "./Modal";
-//make its type an enum which will accept any valid type of products to call a valid api
-import { ProductContext } from "../../App";
-import { useContext } from "react";
 import { AnimatePresence } from "framer-motion";
 import Products from "./Products";
 interface productType {
