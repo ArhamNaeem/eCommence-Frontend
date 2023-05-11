@@ -40,10 +40,10 @@ const ShoesFilter = (props: filterPropType) => {
             Loafers
           </li>
           <li
-            onClick={() => categoryFilter("Category: Scandals")}
+            onClick={() => categoryFilter("Category: Sandals")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Scandals
+            Sandals
           </li>
           <li
             onClick={() => categoryFilter("Category: Flats")}
@@ -52,10 +52,10 @@ const ShoesFilter = (props: filterPropType) => {
             Flats
           </li>
           <li
-            onClick={() => categoryFilter("Category: Sports Shoes")}
+            onClick={() => categoryFilter("Category: Sport shoes")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Sports Shoes
+            Sport shoes
           </li>
           <li
             onClick={() => categoryFilter("Category: Heels")}

@@ -8,6 +8,7 @@ import FurnitureFilters from "./FurnitureFilters";
 import ShoesFilter from "./ShoesFilter";
 import ApplyFilter from "./filtericons/ApplyFilter";
 import ColorPrice from "./ColorPrice";
+import ProductsFromDB from "../../../data/ProductsFromDB";
 
 interface propType {
   enum:
@@ -30,9 +31,9 @@ const Filters = (props: propType) => {
   const [priceOrder, setPriceOrder] = useState("");
   const [sizes, setSizes] = useState<Array<string>>([]);
   const [colors, setColors] = useState<Array<string>>([]);
-  // useEffect(()=>{
-
-  // },[filters,priceOrder,sizes,colors])
+  //   useEffect(()=>{
+  // console.log(filters)
+  //   },[filters])
   return (
     <>
       <motion.div
@@ -52,7 +53,7 @@ const Filters = (props: propType) => {
               setFilters={setFilters}
               sizes={sizes}
               setSizes={setSizes}
-          />
+            />
             <ColorPrice
               filters={filters}
               setFilters={setFilters}
@@ -91,6 +92,12 @@ const Filters = (props: propType) => {
           <div className="text-8xl font-bold">404 page not found</div>
         )}
       </motion.div>
+ {/* currently just showing clothes and shoes as only shoes and clothes product available in db */}
+      {props.enum === "Clothes" ? (
+        <ProductsFromDB type="clothes" callOrigin="category" filters={filters}/>
+      ) : (
+        <ProductsFromDB type="shoes" callOrigin="category" filters={filters}/>
+      )}
       <div className=" top-24 left-[20%] absolute border-t  border-slate-800 w-4/5 h-24 py-2">
         <>
           <ApplyFilter
@@ -100,7 +107,6 @@ const Filters = (props: propType) => {
             setSizes={setSizes}
             setColors={setColors}
           />
-   
         </>
       </div>
     </>

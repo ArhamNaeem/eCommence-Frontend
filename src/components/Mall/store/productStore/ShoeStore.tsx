@@ -49,7 +49,7 @@ const ShoeStore = () => {
       </h1>
       <Filters enum="Shoes" />
 
-      <ProductsFromDB type="shoes" callOrigin="category" />
+      {/* <ProductsFromDB type="shoes" callOrigin="category" /> */}
     </>
   );
 };

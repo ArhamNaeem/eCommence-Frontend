@@ -24,52 +24,52 @@ const ClothesFilter = (props: filterPropType) => {
         <h1 className="text-2xl font-semibold mb-3">Category</h1>
         <ul className="text-sm ml-5">
           <li
-            onClick={() => categoryFilter("Category: Men Shirts")}
+            onClick={() => categoryFilter("Category: Men shirts")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Men Shirts
+            Men shirts
           </li>
           <li
-            onClick={() => categoryFilter("Category: Men T-Shirts")}
+            onClick={() => categoryFilter("Category: Men t-shirts")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Men T-Shirts
+            Men t-shirts
           </li>
           <li
-            onClick={() => categoryFilter("Category: Men Trousers")}
+            onClick={() => categoryFilter("Category: Men trousers")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Men Trousers
+            Men trousers
           </li>
           <li
-            onClick={() => categoryFilter("Category: Men Jeans")}
+            onClick={() => categoryFilter("Category: Men jeans")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Men Jeans
+            Men jeans
           </li>
           <li
-            onClick={() => categoryFilter("Category: Women T-Shirts")}
+            onClick={() => categoryFilter("Category: Women t-shirts")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Women T-Shirts
+            Women t-shirts
           </li>
           <li
-            onClick={() => categoryFilter("Category: Women Jeans")}
+            onClick={() => categoryFilter("Category: Women jeans")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Women Jeans
+            Women jeans
           </li>
           <li
-            onClick={() => categoryFilter("Category: Women Trousers")}
+            onClick={() => categoryFilter("Category: Women trousers")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Women Trousers
+            Women trousers
           </li>
           <li
-            onClick={() => categoryFilter("Category: Women Dresses")}
+            onClick={() => categoryFilter("Category: Women dresses")}
             className="my-1 hover:text-slate-300  transition-colors duration-300"
           >
-            Women Dresses
+            Women dresses
           </li>
         </ul>
       </div>

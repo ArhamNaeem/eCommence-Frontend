@@ -17,10 +17,17 @@ interface productType {
   __v: number;
   _id: string;
 }
+interface filterType {
+  category?: string;
+  priceOrder?: string;
+  size?: string[];
+  color?: string[];
+}
 
 interface propType {
   type?: string;
   callOrigin: "main" | "category";
+  filters?:filterType;
 }
 
 const ProductsFromDB = (props: propType) => {
@@ -54,6 +61,7 @@ const ProductsFromDB = (props: propType) => {
             type={props.type}
             setClicked={setClicked}
             setProductInfo={setProductInfo}
+            filters = {props.filters}
           />
         )}
       </div>
