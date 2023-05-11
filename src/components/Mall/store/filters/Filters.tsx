@@ -95,9 +95,9 @@ const Filters = (props: propType) => {
  {/* currently just showing clothes and shoes as only shoes and clothes product available in db */}
       {props.enum === "Clothes" ? (
         <ProductsFromDB type="clothes" callOrigin="category" filters={filters}/>
-      ) : (
+      ) : props.enum ==='Shoes'?(
         <ProductsFromDB type="shoes" callOrigin="category" filters={filters}/>
-      )}
+      ) : null}
       <div className=" top-24 left-[20%] absolute border-t  border-slate-800 w-4/5 h-24 py-2">
         <>
           <ApplyFilter
