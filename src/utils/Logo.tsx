@@ -56,7 +56,7 @@ const Logo = (props:any) => {
           />
         </motion.svg>
         <h1
-          className={`text-2xl lg:text-${props.textSize}  text-white font-semibold text-shadow-100 mt-${props.textMarginTop}`}
+          className={`text-4xl lg:text-${props.textSize}  text-white font-semibold text-shadow-100 mt-${props.textMarginTop}`}
         >
           VibeKart
         </h1>
