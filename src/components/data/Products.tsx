@@ -58,8 +58,9 @@ if(props.filters){
           : getAllProducts(pageParam);
       },
       getNextPageParam: (lastPage, pages) => {
-        return lastPage.nbHits == 12 ? pages.length + 1 : undefined;
+        return  lastPage?.nbHits == 12 ? pages.length + 1 : undefined;
       },
+      retry:3
     });
   const [showAlert, setShowAlert] = useState(true);
   return status === "loading" ? (
@@ -70,12 +71,9 @@ if(props.filters){
       showAlert={showAlert}
       setShowAlert={setShowAlert}
     />
-  ) : (
+  ) :(
     <>
-      {data &&
-        data.pages
-          .flatMap((page) => page.data)
-          .map((product: productType, index: number) => (
+      { data?.pages?.flatMap((page) => page?.data)?.map((product: productType, index: number) => (
             <ProductsDisplay
               key={index}
               setClicked={props.setClicked}

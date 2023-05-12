@@ -34,7 +34,7 @@ export const useGetProducts = () => {
       const data = response.data;
       return data;
     } catch (e) {
-      console.log(e);
+      console.log('error Occurred',e);
     }
   };
 
