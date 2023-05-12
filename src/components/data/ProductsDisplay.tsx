@@ -30,7 +30,7 @@ export const ProductsDisplay = ({
           setProductInfo(product);
           setClicked((clicked) => true);
         }}
-        className="hover:scale-105 bg-white transition-all duration-300 shadow-slate-400 shadow-xl flex flex-col items-center p-2 mx-2 my-10  h-[28rem] w-80"
+        className=" hover:scale-105 bg-white transition-all duration-300 shadow-slate-400 shadow-xl flex flex-col items-center p-2 mx-2 my-10   h-[28rem] lg:w-80"
       >
         <img
           loading="lazy"

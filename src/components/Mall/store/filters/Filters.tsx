@@ -40,7 +40,7 @@ const Filters = (props: propType) => {
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-slate-900  text-white h-full p-10 w-1/5"
+        className="bg-slate-900 hidden lg:block text-white h-full p-10 w-1/5"
       >
         <h1 className="text-center text-6xl mb-6 font-semibold border-b pb-4">
           Filters
@@ -98,7 +98,7 @@ const Filters = (props: propType) => {
       ) : props.enum ==='Shoes'?(
         <ProductsFromDB type="shoes" callOrigin="category" filters={filters}/>
       ) : null}
-      <div className=" top-24 left-[20%] absolute border-t  border-slate-800 w-4/5 h-24 py-2">
+      <div className=" top-24 lg:left-[20%] absolute border-t  border-slate-800 w-full lg:w-4/5 h-24 py-2">
         <>
           <ApplyFilter
             filters={filters}

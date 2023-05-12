@@ -31,7 +31,7 @@ const Products = () => {
   return (
     <>
       <div className=" h-full  bg-black text-slate-900 bg-opacity-10 p-10">
-        <h1 className="text-center text-7xl mb-10 font-bold ">CATEGORIES</h1>
+        <h1 className="text-center  text-4xl md:text-6xl lg:text-7xl mb-10 font-bold ">CATEGORIES</h1>
         <div className="grid place-items-center  md:grid-cols-2">
           {productImgs.map((product, index) => (
             <button
@@ -45,7 +45,7 @@ const Products = () => {
                 <img
                   src={`${product.link}`}
                   alt=""
-                  className="-z-10 duration-500 h-full m-auto"
+                  className="-z-10 duration-500 object-cover h-full m-auto"
                 />
                 <div className="absolute top-0  bg-black h-full w-full  opacity-40 z-10" />
               </div>

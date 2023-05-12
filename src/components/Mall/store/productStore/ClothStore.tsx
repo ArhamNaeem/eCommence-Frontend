@@ -21,7 +21,7 @@ const ClothStore = () => {
         onClick={() => {
          itemsSelected.length &&  setShowCart((showCart) => !showCart);
         }}
-        className="absolute top-3 z-10 right-10 mt-3 flex "
+        className="absolute  top-3 z-10 right-3 lg:right-10 mt-3 flex "
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,10 +43,10 @@ const ClothStore = () => {
         
           {ITEM_BOUGHT_GT_99 ? ITEM_BOUGHT_GT_99 : itemsSelected.length}
         </p>
-        <h1 className="text-lg mr-1 mt-2">Cart</h1>
+        <h1 className="hidden lg:block text-lg mr-1 mt-2">Cart</h1>
       </button>
 
-      <h1 className="w-3/4 left-1/4 p-2 text-center font-bold  absolute text-7xl text-slate-900   ">
+      <h1 className="w-full lg:w-3/4 lg:left-1/4 p-2   text-center font-bold  absolute text-7xl text-slate-900   ">
         CLOTHES
       </h1>
 

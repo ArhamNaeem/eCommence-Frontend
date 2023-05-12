@@ -71,7 +71,8 @@ const Modal = (props: modalType) => {
           initial={{ y: "-100vh" }}
           animate={{ y: 0 }}
           exit={{ y: "-100vh" }}
-          className="flex items-center bg-white  absolute left-1/4 z-50 m-auto mt-16 p-3 h-[80vh] w-3/5 rounded-lg shadow-slate-800 shadow-2xl "
+          className=" flex items-center bg-white  absolute
+          left-[15%] md:left-1/4 z-50 m-auto mt-16 p-3 h-[80vh] w-4/5 md:w-3/5 rounded-lg shadow-slate-800 shadow-2xl "
         >
           <button
             onClick={() => {
@@ -88,7 +89,7 @@ const Modal = (props: modalType) => {
             alt="Sneaker"
             className=" w-2/5 rounded-lg"
           />
-          <div className=" w-1/2 absolute right-0 h-full">
+          <div className="w-1/2 absolute right-0 h-full">
             <h1 className=" tracking-wide text-3xl w-5/6  mt-3  font-bold text-slate-400">
               {props.cloth_type ? props.cloth_type : props.shoe_type}
             </h1>

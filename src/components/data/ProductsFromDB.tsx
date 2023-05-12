@@ -40,16 +40,16 @@ const ProductsFromDB = (props: propType) => {
         className={`${
           props.callOrigin === "main"
             ? "h-full w-full  z-40"
-            : "absolute grid grid-cols-3 w-4/5 h-full top-48 left-[20%]"
+            : "absolute grid grid-cols-2 md:grid-cols-3 w-full lg:w-4/5 h-full top-48 lg:left-[20%]"
         }`}
       >
         {props.callOrigin === "main" ? (
-          <h1 className="text-7xl ml-10 text-center font-bold text-slate-700 ">
+          <h1 className=" text-4xl mt-10 md:mt-0 md:text-6xl lg:text-7xl ml-10 text-center font-bold text-slate-700 ">
             Products
           </h1>
         ) : null}
         {props.callOrigin === "main" ? (
-          <div className="grid w-full grid-cols-4 place-items-center p-4 h-full">
+          <div className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center p-4 h-full">
             <Products
               type={props.type}
               setClicked={setClicked}
