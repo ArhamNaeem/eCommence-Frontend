@@ -55,7 +55,7 @@ const Cart = (props: cartType) => {
               animate={{ x: 0 }}
               exit={{ x: "100vw" }}
               transition={{ type: "spring", damping: 20 }}
-              className="fixed  overflow-y-scroll z-[60] w-1/2 right-0 top-0 text-white
+              className="fixed  overflow-y-scroll z-[60] w-4/5 md:w-2/3 lg:w-1/2 right-0 top-0 text-white
             bg-slate-200 flex flex-col items-center shadow-lg shadow-slate-600  h-full "
             >
               <h1 className="text-5xl font-bold text-slate-800  h-[12%] text-center pt-3">

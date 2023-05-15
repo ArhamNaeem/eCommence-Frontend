@@ -65,9 +65,9 @@ const Header = () => {
           </button>
         </div>
       </main>
-      {/* <Suspense fallback="Footer...">
+      <Suspense fallback="Footer...">
         <Footer />
-      </Suspense> */}
+      </Suspense>
     </>
   );
 };

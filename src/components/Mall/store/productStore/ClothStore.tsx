@@ -46,7 +46,7 @@ const ClothStore = () => {
         <h1 className="hidden lg:block text-lg mr-1 mt-2">Cart</h1>
       </button>
 
-      <h1 className="w-full lg:w-3/4 lg:left-1/4 p-2   text-center font-bold  absolute text-7xl text-slate-900   ">
+      <h1 className="w-full lg:w-3/4 lg:left-1/4 p-2   text-center font-bold  absolute text-5xl top-4 md:top-2 lg:top-0 md:text-6xl lg:text-7xl text-slate-900   ">
         CLOTHES
       </h1>
 

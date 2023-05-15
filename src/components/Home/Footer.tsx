@@ -15,7 +15,7 @@ const Footer = () => {
   const footerPStyle2= "ml-7 hover:color:slate-300 my-2 origin-left transition-all duration-300 hover:scale-105"
   return (
     <>
-      <div className="relative h-screen md:h-vh-120 items-center flex flex-col lg:items-baseline lg:flex-row lg:h-vh-80 w-full bg-black">
+      <div className="relative h-full items-center flex flex-col lg:items-baseline lg:flex-row lg:h-vh-80 w-full bg-black">
         <section className="w-1/2 h-5/6 flex flex-col items-center">
           <div className="flex mt-10 mr-20">
             <Logo
@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
 
           <button
-            className="text-white absolute bottom-32 xl:bottom-20 opacity-70 text-lg "
+            className="text-white absolute bottom-1 md:bottom-2 lg:bottom-32 xl:bottom-20 opacity-70 text-lg "
             onClick={() => {
               window.scrollTo({
                 top: 0,
@@ -69,13 +69,13 @@ const Footer = () => {
           </button>
         </section>
 
-        <section className="hidden mt-7 lg:flex flex-col h-5/6 w-1/2 text-white p-12  text-4xl font-bold">
-          <div className="w-full h-full flex">
-            <div className="w-full h-full mx-2">
+        <section className="mt-7 lg:flex flex-col items-center h-5/6 w-full lg:w-1/2 text-white p-12  text-4xl font-bold">
+          <div className=" h-full  flex md:flex-row ml-10 items-center flex-col">
+            <div className="w-full h-full mx-2   mb-10">
               <h1 className=" border-l-8 ml-10 border-slate-400 pl-3">
                 VibeKart
               </h1>
-              <div className=" text-xl font-normal mt-4 ">
+              <div className="text-sm lg:text-xl font-normal mt-4 ">
                 <p className={`${footerPStyle1}`}>Who are we</p>
                 <p className={`${footerPStyle1}`}>Contact</p>
                 <p className={`${footerPStyle1}`}>Our impact</p>
@@ -84,11 +84,11 @@ const Footer = () => {
                 <p className={`${footerPStyle1}`}>How to shop</p>
               </div>
             </div>
-            <div className="w-full h-full mt-1">
+            <div className="w-full h-full  mt-1">
               <h1 className="border-l-8 ml-3 border-slate-400 pl-3">
                 Work with us
               </h1>
-              <div className=" text-xl font-normal mt-5">
+              <div className="text-sm lg:text-xl font-normal mt-5">
                 <p className={`${footerPStyle2}`}>Sell with us</p>
                 <p className={`${footerPStyle2}`}>How to get started</p>
                 <p className={`${footerPStyle2}`}>Partner testimonal</p>
@@ -98,9 +98,9 @@ const Footer = () => {
           </div>
         </section>
 
-        <footer className=" absolute bottom-5  text-xl xl:text-3xl lg:left-1/3 text-white">
+        {/* <footer className=" absolute bottom-5  text-xl xl:text-3xl lg:left-1/3 text-white">
           <p>Copyright &#169; {getYear()}. All rights reserved.</p>
-        </footer>
+        </footer> */}
       </div>
     </>
   );
