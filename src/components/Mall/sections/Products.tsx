@@ -49,7 +49,7 @@ const Products = () => {
                 />
                 <div className="absolute top-0  bg-black h-full w-full  opacity-40 z-10" />
               </div>
-              <p className="top-1/3 z-40 text-shadow-100 text-white text-5xl absolute border border-x-0 border-y-1 border-white py-3 transition-colors duration-300 hover:text-slate-200">
+              <p className="top-1/3 z-40 text-shadow-100 text-white text-3xl lg:text-5xl absolute border border-x-0 border-y-1 border-white py-3 transition-colors duration-300 hover:text-slate-200">
                 {product?.title}
               </p>
             </button>

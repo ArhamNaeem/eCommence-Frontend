@@ -71,7 +71,7 @@ const Modal = (props: modalType) => {
           initial={{ y: "-100vh" }}
           animate={{ y: 0 }}
           exit={{ y: "-100vh" }}
-          className=" flex items-center bg-white  absolute
+          className=" flex  items-center bg-white  absolute
           left-[15%] md:left-1/4 z-50 m-auto mt-16 p-3 h-[80vh] w-4/5 md:w-3/5 rounded-lg shadow-slate-800 shadow-2xl "
         >
           <button
@@ -87,20 +87,25 @@ const Modal = (props: modalType) => {
           <img
             src={props.img_url}
             alt="Sneaker"
-            className=" w-2/5 rounded-lg"
+            className="hidden lg:block w-2/5 rounded-lg"
           />
-          <div className="w-1/2 absolute right-0 h-full">
-            <h1 className=" tracking-wide text-3xl w-5/6  mt-3  font-bold text-slate-400">
+          <div className=" lg:w-1/2 absolute right-0 h-full">
+            <h1 className=" tracking-wide ml-2 lg:ml-0 text-2xl lg:text-3xl w-5/6  mt-3  font-bold text-slate-400">
               {props.cloth_type ? props.cloth_type : props.shoe_type}
             </h1>
-            <p className="text-xl font-semibold text-slate-400">
-              {props.category}
+            <p className="ml:ml-0 ml-2 text-xl font-semibold text-slate-400">
+              {props.category} 
             </p>
-            <p className=" text-lg  mt-8 mb-2 w-9/10 text-slate-900 ">
+            <p className="text-center lg:text-left ml-2 lg:ml-0 text-base lg:text-lg  mt-2 lg:mt-8 mb-2 w-9/10 text-slate-900 ">
               {props.description}
             </p>
-
-            <div className="flex my-4 ">
+            <img
+            src={props.img_url}
+            alt="Sneaker"
+            // className=" lg:hidden w-2/5 relative left-1/4 mt-4 rounded-lg"
+            className="lg:hidden w-2/5  left-1/4 mt-4 rounded-lg"
+          />
+            <div className="flex lg:justify-start justify-center my-4 ">
               {/* {console.log(color)} */}
               {props.color.map((clr, index) => (
                 <button
@@ -119,7 +124,7 @@ const Modal = (props: modalType) => {
               ))}
             </div>
 
-            <div className="flex my-4">
+            <div className="flex  lg:justify-start justify-center my-4">
               {props.size.map((sz, index) => (
                 <button
                   key={index}
@@ -140,7 +145,7 @@ const Modal = (props: modalType) => {
               ))}
             </div>
 
-            <p className="text-3xl font-bold my-4 mt-6  text-slate-900 ">
+            <p className="text-3xl font-bold mb-4 mt-6 lg:text-left text-center  text-slate-900 ">
               ${(Number(props.price.$numberDecimal) * rest.quantity).toFixed(2)}
             </p>
             <button
@@ -158,12 +163,16 @@ const Modal = (props: modalType) => {
                 // setSelectedItemsCount((prev) => prev + 1);
                 // console.log(selectedItemsCount)
               }}
-              className="absolute bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2"
+              className="absolute lg:left-0 left-1/4 bottom-1 lg:bottom-12 font-bold bg-slate-900 text-slate-300 rounded-lg p-2"
             >
               ADD TO CART
             </button>
 
-            <div className="absolute right-14 bottom-[3.2rem] ">
+            <div 
+            className="absolute  lg:right-14  bottom-12 lg:bottom-[3.2rem] "
+            // className="absolute  bottom-12 right-14 lg:bottom-[3.2rem] "
+
+            >
               {/* <p className="text-slate-900 text-sm font-semibold text-center">In Stock</p> */}
               <button
                 onClick={() =>
