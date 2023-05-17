@@ -9,6 +9,7 @@ import ShoesFilter from "./ShoesFilter";
 import ApplyFilter from "./filtericons/ApplyFilter";
 import ColorPrice from "./ColorPrice";
 import ProductsFromDB from "../../../data/ProductsFromDB";
+import Footer from "../../../Home/Footer";
 
 interface propType {
   enum:
@@ -109,6 +110,8 @@ const Filters = (props: propType) => {
           />
         </>
       </div>
+   
+   <Footer/>
     </>
   );
 };
