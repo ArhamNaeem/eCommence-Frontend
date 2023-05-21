@@ -93,11 +93,15 @@ const Filters = (props: propType) => {
           <div className="text-8xl font-bold">404 page not found</div>
         )}
       </motion.div>
- {/* currently just showing clothes and shoes as only shoes and clothes product available in db */}
+      {/* currently just showing clothes and shoes as only shoes and clothes product available in db */}
       {props.enum === "Clothes" ? (
-        <ProductsFromDB type="clothes" callOrigin="category" filters={filters}/>
-      ) : props.enum ==='Shoes'?(
-        <ProductsFromDB type="shoes" callOrigin="category" filters={filters}/>
+        <ProductsFromDB
+          type="clothes"
+          callOrigin="category"
+          filters={filters}
+        />
+      ) : props.enum === "Shoes" ? (
+        <ProductsFromDB type="shoes" callOrigin="category" filters={filters} />
       ) : null}
       <div className=" top-24 lg:left-[20%] absolute border-t  border-slate-800 w-full lg:w-4/5 h-24 py-2">
         <>
@@ -110,8 +114,7 @@ const Filters = (props: propType) => {
           />
         </>
       </div>
-   
-   <Footer/>
+
     </>
   );
 };

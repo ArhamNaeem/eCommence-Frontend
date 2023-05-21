@@ -19,7 +19,7 @@ const ShoeStore = () => {
         onClick={() => {
          itemsSelected.length &&  setShowCart((showCart) => !showCart);
         }}
-        className="absolute top-3 z-10 right-10 mt-3 flex "
+        className="absolute hidden top-3 z-10 right-10 mt-3 lg:flex "
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
